@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+	<definition name="index.tiles" template="/WEB-INF/views/layout.jsp" >
+		<put-attribute name="header" value="여기는 헤더"/>
+		<put-attribute name="menu" value="/WEB-INF/views/home.jsp"/>
+		<put-attribute name="content" value="컨텐츠"/>
+		<put-attribute name="footer" value="푸터"/>
+	</definition>
+	
+	<definition name="change.tiles" extends="index.tiles">
+		<put-attribute name="content" value="/WEB-INF/views/picture.jsp"/>
+	</definition>
+	
+	
+</tiles-definitions>
+
+
+
+
+
