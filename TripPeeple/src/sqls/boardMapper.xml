@@ -10,6 +10,6 @@
 	</selectKey>
 	
 	INSERT INTO BOARD(BOARD_NUM, MEMBER_NUM, CITY_NUM, CONTENT, CREATE_TIME, MODIFY_TIME, LIKES)
- 	VALUES(#board_num#, #member_num#, #city_num#, #content#, #create_time#, #modify_time#, #likes#)
+ 	VALUES(#board_num#, #member_num#, #city_num#, #content#, SYSDATE, SYSDATE, #likes#)
 </insert>
 </sqlMap>

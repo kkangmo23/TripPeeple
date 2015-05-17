@@ -37,6 +37,9 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
+	
+	<beans:bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver"> </beans:bean>
+	
 
 	<!-- 4-2-3 -->
 	<!-- 무조건 base-package에 선언된 하위 package를 검색하게 된다 -->

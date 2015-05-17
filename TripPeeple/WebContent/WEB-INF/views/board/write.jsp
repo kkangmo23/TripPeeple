@@ -14,7 +14,7 @@
 <!--header //-->
 <header>
 	<div class="main_logo">
-		<a href="#"><img alt="메인로고" src="./img/mainLogo.png" width="40px" height="40px" /></a>
+		<a href="index.do"><img alt="메인로고" src="./img/mainLogo.png" width="40px" height="40px" /></a>
 	</div>
 	<div class="main_nav">
 		<ul class="navigation">
@@ -49,7 +49,7 @@
 		<div >
 			<label>파일명</label>
 			<span >
-				<input type="file" name="file_name" size="40"/>
+<!-- 				<input type="file" name="file_name" size="40"/> -->
 			</span>
 		</div>
 		

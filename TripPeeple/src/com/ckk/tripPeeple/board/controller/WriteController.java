@@ -1,7 +1,8 @@
 package com.ckk.tripPeeple.board.controller;
 
 
-import java.util.Date;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,19 +24,9 @@ public class WriteController {
 	}
 
 	@RequestMapping(value="/write.do", method=RequestMethod.POST)	
-	public String insertBoard(BoardDto boardDto){
+	public String insertBoard(BoardDto boardDto, HttpSession session, HttpServletRequest request){
 		
-		
-		
-		Date date=new Date();
-		boardDto.setCreate_time(date);
-		boardDto.setModify_time(date);
-		boardDto.getBoard_num();
-		boardDto.getMember_num();
-		boardDto.getCreate_time();
-		boardDto.getModify_time();
-		boardDto.getCity_num();
-		boardDto.getContent();
+		boardDto.setMember_num((int)session.getAttribute("member_num"));	
 		
 		try {
 			if(boardService.insertBoard(boardDto)){
@@ -47,4 +38,8 @@ public class WriteController {
 		}
 		return "board/write";
 	}
+	
+	
+	
+	
 }
