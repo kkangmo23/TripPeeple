@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="board">
+
+<typeAlias alias="BDto" type="com.ckk.tripPeeple.board.BoardDto"/>
+
+<insert id="boardInsert" parameterClass="BDto">
+	<selectKey resultClass="java.lang.Integer" keyProperty="board_num">
+		SELECT BOARD_NUM_SEQ.NEXTVAL AS BOARD_NUM FROM DUAL
+	</selectKey>
+	
+	INSERT INTO BOARD(BOARD_NUM, MEMBER_NUM, CITY_NUM, CONTENT, CREATE_TIME, MODIFY_TIME, LIKES)
+ 	VALUES(#board_num#, #member_num#, #city_num#, #content#, #create_time#, #modify_time#, #likes#)
+</insert>
+</sqlMap>
