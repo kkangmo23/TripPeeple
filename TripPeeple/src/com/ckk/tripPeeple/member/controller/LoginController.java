@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.ckk.tripPeeple.member.MemberDto;
 import com.ckk.tripPeeple.member.MemberService;
 
 @Controller
@@ -20,10 +21,13 @@ public class LoginController {
 
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-
+		
 		try {
-			if (password.equals(memberService.memberLogin(email, password).getPassword().trim())) {
-				session.setAttribute("member_id", memberService.memberLogin(email, password).getMember_id());
+			MemberDto memberData=memberService.memberLogin(email, password);
+			if (password.equals(memberData.getPassword().trim())) {
+				session.setAttribute("member_num", memberData.getMember_num());
+				session.setAttribute("member_id", memberData.getMember_id());
+				session.setAttribute("email", memberData.getEmail());
 				return "member/loginOk";
 			} else{
 				request.setAttribute("errorMsg", "비밀번호가 일치하지않습니다.");

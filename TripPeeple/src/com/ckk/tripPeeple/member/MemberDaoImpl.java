@@ -11,10 +11,8 @@ public class MemberDaoImpl implements MemberDao {
 	@Autowired
 	private SqlMapClient sqlMapClient;
 	
-	public MemberDto memberLogin(String email) throws Exception {
-		 MemberDto memberData = (MemberDto) sqlMapClient.queryForObject("member.selectAll",email);
-		
-		return memberData;
+	public MemberDto memberLogin(String email) throws Exception {		
+		return (MemberDto) sqlMapClient.queryForObject("member.selectAll",email);
 	}
 
 	public int insertMember(MemberDto dto) throws Exception {
@@ -25,6 +23,11 @@ public class MemberDaoImpl implements MemberDao {
 	
 	public String checkEmail(String email) throws Exception{
 		return (String) sqlMapClient.queryForObject("member.checkEmail",email);
+	}
+
+	@Override
+	public MemberDto getMemberData(String email) throws Exception {
+		return (MemberDto) sqlMapClient.queryForObject("member.selectAll",email);
 	}
 
 }

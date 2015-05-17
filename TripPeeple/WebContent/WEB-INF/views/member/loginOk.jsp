@@ -19,7 +19,7 @@
 	<div class="main_nav">
 		<ul class="navigation">
 			<li><a>${member_id}님</a></li>		
-			<li><a href="#">수정</a></li>	
+			<li><a href="modifyForm.do">수정</a></li>	
 			<li><a href="logout.do">로그아웃</a></li>			
 		</ul>		
 	</div>	

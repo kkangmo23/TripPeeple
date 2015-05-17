@@ -28,4 +28,8 @@ public class MemberServiceImpl implements MemberService {
 		return isc;
 	}
 
+	@Override
+	public MemberDto getMemberData(String email) throws Exception {
+		return memberDao.getMemberData(email);
+	}
 }
