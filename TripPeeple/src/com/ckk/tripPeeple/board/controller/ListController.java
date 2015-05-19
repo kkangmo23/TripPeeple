@@ -23,7 +23,7 @@ public class ListController {
 		return "board/list";
 	}
 	
-	@RequestMapping(value="/list.do", method=RequestMethod.POST)	
+	@RequestMapping(value="/list.do", method=RequestMethod.POST) 
 	public String getBoardList(HttpSession session) throws Exception{
 		// int board_num=(int)session.getAttribute("board_num");
 		System.out.println("234236457587655475468547657");
@@ -31,7 +31,7 @@ public class ListController {
 //		
 //		List<BoardDto> boardList=boardService.getBoardList(board_num);
 //		request.setAttribute("boardList", boardList);
-//		
+		
 		return "board/list";
 	}
 }
