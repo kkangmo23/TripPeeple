@@ -20,10 +20,11 @@ public class BoardDaoImp implements BoardDao{
 	}
 
 	@Override
-	public List<BoardDto> getBoardList(int board_num) throws Exception {
-		System.out.println("asdfasdf");
-		List<BoardDto> boardList=(List<BoardDto>) sqlMapClient.queryForObject("board.getBoardList",board_num);
-		// System.out.println("asdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+	public List<BoardDto> getBoardList() throws Exception {
+		// System.out.println("passed");
+		@SuppressWarnings("unchecked")
+		List<BoardDto> boardList=(List<BoardDto>) sqlMapClient.queryForList("board.getBoardList");
+		// System.out.println("a");
 		
 		return boardList;
 	}
@@ -36,12 +37,13 @@ public class BoardDaoImp implements BoardDao{
 //		return null;
 //	}
 //
-//	@Override
-//	public int delete(int boardNumber, String password) {
-//		// TODO Auto-generated method stub
-//		return 0;
-//	}
-//
+	@Override
+	public int deleteBoardList(int board_num) throws Exception {
+		System.out.println("boardimp");
+		int check=sqlMapClient.delete("board.deleteBoardList", board_num);
+		return check;
+	}
+
 //	@Override
 //	public BoardDto updateRead(int boardNumber) {
 //		// TODO Auto-generated method stub

@@ -19,12 +19,13 @@ public class WriteController {
 	
 	
 	@RequestMapping(value="/writeForm.do", method=RequestMethod.GET)
-	public String writeForm() {
+	public String writeForm(HttpServletRequest request) {
 		return "board/write";
 	}
 
 	@RequestMapping(value="/write.do", method=RequestMethod.POST)	
-	public String insertBoard(BoardDto boardDto, HttpSession session, HttpServletRequest request){
+	public String insertBoard(BoardDto boardDto, HttpSession session, HttpServletRequest request) throws Exception{
+		request.setCharacterEncoding("utf-8");
 		
 		boardDto.setMember_num((int)session.getAttribute("member_num"));
 		try {

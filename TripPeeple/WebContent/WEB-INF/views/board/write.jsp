@@ -35,6 +35,7 @@
 		<div>
 			<label>도시</label>
 			<span >
+				<!--  <input type="hidden" name="board_num" value="${board_num}"/> -->
 				<input type="text" name="city_num"/>
 			</span>
 		</div>

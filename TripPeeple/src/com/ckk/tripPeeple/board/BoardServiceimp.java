@@ -20,8 +20,14 @@ public class BoardServiceimp implements BoardService{
 	}
 
 	@Override
-	public List<BoardDto> getBoardList(int board_num) throws Exception {
-		System.out.println("qqqqqqqqqq");
-		return boardDao.getBoardList(board_num);
+	public List<BoardDto> getBoardList() throws Exception {
+		// System.out.println("passed");
+		return boardDao.getBoardList();
+	}
+
+	@Override
+	public int deleteBoardList(int board_num) throws Exception{
+		System.out.println("serviceimp");
+		return boardDao.deleteBoardList(board_num);
 	}
 }

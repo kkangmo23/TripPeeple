@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +12,20 @@
 
 <link rel="shortcut icon" href="./img/favicon.ico">
 <link rel="stylesheet" type="text/css" href="./css/basic.css" />
+<script type="text/javascript">
+	function boardDelete(url){
+	var board_num="${boardDto.board_num}";
+	var str=url+"?board_num="+board_num;
+	
+	if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+		location.href=str;
+	}else{   //취소
+	    return;
+	}
+	
+	
+}
+</script>
 
 </head>
 <body>
@@ -34,15 +49,15 @@
 	<section>
 		<c:forEach var="board" items="${boardList}">
 			<div class="board-content">
-				<p>안녕하세여</p>
-				<span>${board.member_num}</span>
-				<span>${board.content}</span>
+				<span>${board.member_num}</span><br/>
+				<span>${board.city_num}에서</span><br/><br/>
+				<span>${board.content}</span><br/><br/>
+				<span><fmt:formatDate value="${board.modify_time}" pattern="yyyy-MM-dd hh:mm:ss"/></span><br/>
+				<span>${board.likes}</span><br/>
+				<input type="button" value="글수정" onclick="javascript:boardUpdate('update.do')"/>
+				<input type="button" value="글삭제" onclick="javascript:boardDelete('deleteForm.do')"/>
 			</div>
 		</c:forEach>
-		
-			<div class="board-content">
-				<p>안녕하세여asdf</p>
-			</div>
 	</section>
 </div>
 <!--// content-->	
