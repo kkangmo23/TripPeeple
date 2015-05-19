@@ -26,20 +26,24 @@ public class WriteController {
 	@RequestMapping(value="/write.do", method=RequestMethod.POST)	
 	public String insertBoard(BoardDto boardDto, HttpSession session, HttpServletRequest request){
 		
-		boardDto.setMember_num((int)session.getAttribute("member_num"));	
-		
+		boardDto.setMember_num((int)session.getAttribute("member_num"));
 		try {
-			if(boardService.insertBoard(boardDto)){
+			boolean check=boardService.insertBoard(boardDto);
+			if(check==true){
+				// System.out.println("true");
+				request.setAttribute("check", check);
+				
+				return "board/writeOk";
+			}else{
+				// System.out.println("false");
+				request.setAttribute("check", check);
 				return "board/writeOk";
 			}
 		} catch (Exception e) {
 			System.out.println("WriteController insertBoard Error");
 			e.printStackTrace();
 		}
-		return "board/write";
+		
+		return "board/writeOk";
 	}
-	
-	
-	
-	
 }

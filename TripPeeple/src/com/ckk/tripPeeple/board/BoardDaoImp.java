@@ -1,5 +1,7 @@
 package com.ckk.tripPeeple.board;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -13,15 +15,20 @@ public class BoardDaoImp implements BoardDao{
 	@Override
 	public int insertBoard(BoardDto boardDto) throws Exception{
 		int seq=(int) sqlMapClient.insert("board.boardInsert", boardDto);
-		System.out.println(seq);
+		// System.out.println(seq);
 		return seq;
 	}
 
-//	@Override
-//	public List<BoardDto> getBoardList(int startRow, int endRow) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	@Override
+	public List<BoardDto> getBoardList(int board_num) throws Exception {
+		System.out.println("asdfasdf");
+		List<BoardDto> boardList=(List<BoardDto>) sqlMapClient.queryForObject("board.getBoardList",board_num);
+		// System.out.println("asdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+		
+		return boardList;
+	}
+
+
 //
 //	@Override
 //	public BoardDto read(int boardNumber) {

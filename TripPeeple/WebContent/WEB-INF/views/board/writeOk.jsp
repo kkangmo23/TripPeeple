@@ -8,17 +8,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-		<c:if test="${check >0 }">
+	<c:if test="${check==true}">
 			<script type="text/javascript">
 				alert("게시물이 등록 되었습니다.");
-				location.href="/board/list.do";
+				location.href="listForm.do";
 			</script>
-		</c:if>
+	</c:if>
 		
-		<c:if test="${check==0 }">
+	<c:if test="${check==false}">
 		<script type="text/javascript">
 			alert("게시물이 등록 되지 않았습니다.");
-			location.href="/board/write.do";
+			location.href="/board/writeForm.do";
 		</script>
 	</c:if>
 </body>

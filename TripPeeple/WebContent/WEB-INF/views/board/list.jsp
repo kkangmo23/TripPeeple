@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,11 +32,17 @@
 <!--content //-->
 <div id="content">
 	<section>
-	
-		<div class="board-content">
-			<p>안녕하세여</p>
-		</div>
+		<c:forEach var="board" items="${boardList}">
+			<div class="board-content">
+				<p>안녕하세여</p>
+				<span>${board.member_num}</span>
+				<span>${board.content}</span>
+			</div>
+		</c:forEach>
 		
+			<div class="board-content">
+				<p>안녕하세여asdf</p>
+			</div>
 	</section>
 </div>
 <!--// content-->	

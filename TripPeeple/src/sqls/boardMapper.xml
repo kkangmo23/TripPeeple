@@ -3,6 +3,22 @@
 <sqlMap namespace="board">
 
 <typeAlias alias="BDto" type="com.ckk.tripPeeple.board.BoardDto"/>
+	<resultMap class="BDto" id="mapBDto">                       
+		<result property="board_num" column="BOARD_NUM"/>
+		<result property="member_num" column="MEMBER_NUM"/>
+		<result property="file_name" column="FILE_NAME"/>
+		<result property="file_path" column="FILE_PATH"/>
+		<result property="file_size" column="FILE_SIZE"/>
+		<result property="file_type" column="FILE_TYPE"/>
+		<result property="content" column="CONTENT"/>
+		<result property="create_time" column="CREATE_TIME"/>
+		<result property="modify_time" column="MODIFY_TIME"/>
+		<result property="likes" column="LIKES"/>
+	</resultMap>
+	
+	<sql id="column">
+		BOARD_NUM, MEMBER_NUM, FILE_NAME, FILE_PATH, FILE_SIZE, FILE_TYPE, CONTENT, CREATE_TIME, MODIFY_TIME, LIKES
+	</sql>
 
 <insert id="boardInsert" parameterClass="BDto">
 	<selectKey resultClass="java.lang.Integer" keyProperty="board_num">
@@ -12,4 +28,13 @@
 	INSERT INTO BOARD(BOARD_NUM, MEMBER_NUM, CITY_NUM, CONTENT, CREATE_TIME, MODIFY_TIME, LIKES)
  	VALUES(#board_num#, #member_num#, #city_num#, #content#, SYSDATE, SYSDATE, #likes#)
 </insert>
+
+<select id="getBoardList" parameterClass="java.lang.Integer" resultMap="mapBDto">
+	SELECT 
+	<include refid="column"/>
+	FROM board
+	WHERE BOARD_NUM = #board_num#
+	ORDER BY BOARD_NUM DESC
+</select>
+
 </sqlMap>

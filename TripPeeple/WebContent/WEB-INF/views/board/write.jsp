@@ -55,8 +55,7 @@
 		
 		<div>
 			<input type="submit" value="게시하기"/>
-			<input type="button" value="목록보기" 
-								onclick="location.href=writeOk.do"/>
+			<a href="listForm.do">목록보기</a>
 		</div>
 					
 	</form>
