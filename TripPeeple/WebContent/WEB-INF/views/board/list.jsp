@@ -13,8 +13,8 @@
 <link rel="shortcut icon" href="./img/favicon.ico">
 <link rel="stylesheet" type="text/css" href="./css/basic.css" />
 <script type="text/javascript">
-	function boardDelete(url){
-	var board_num="${boardDto.board_num}";
+	function boardDelete(url, board_num){
+	// alert(board_num);
 	var str=url+"?board_num="+board_num;
 	
 	if (confirm("정말 삭제하시겠습니까??") == true){    //확인
@@ -22,8 +22,6 @@
 	}else{   //취소
 	    return;
 	}
-	
-	
 }
 </script>
 
@@ -55,7 +53,7 @@
 				<span><fmt:formatDate value="${board.modify_time}" pattern="yyyy-MM-dd hh:mm:ss"/></span><br/>
 				<span>${board.likes}</span><br/>
 				<input type="button" value="글수정" onclick="javascript:boardUpdate('update.do')"/>
-				<input type="button" value="글삭제" onclick="javascript:boardDelete('deleteForm.do')"/>
+				<input type="button" value="글삭제" onclick="javascript:boardDelete('delete.do','${board.board_num}')"/>
 			</div>
 		</c:forEach>
 	</section>

@@ -34,4 +34,8 @@
 	SELECT <include refid="column"/> FROM BOARD	ORDER BY MODIFY_TIME DESC
 </select>
 
+<delete id="deleteBoardList" parameterClass="java.lang.Integer">
+	DELETE FROM BOARD WHERE BOARD_NUM=#board_num#
+</delete>
+
 </sqlMap>
