@@ -1,0 +1,164 @@
+/*
+ * Globals
+ */
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+/*
+ * Base structure
+ */
+
+body {
+	text-align: center;
+	background-color: #e9eaed;
+}
+
+footer {		
+	margin-right: auto;
+	margin-left: auto;
+	position: relative;
+	margin-top: 40px;
+	padding-top: 20px;
+	padding-bottom: 10px;	
+	line-height: 1.5;	
+	border-top: 1px solid #cacaca;
+}
+
+
+#main-content {	
+	padding: 8% 0;
+}
+
+#content {	
+	padding: 50px 0px;
+	margin-top: 50px;
+	margin-right: auto;
+	margin-left: auto;
+	overflow: hidden;
+}
+
+
+.board-content {
+	background-color: white;
+	overflow: hidden;	
+}
+
+.form-content {	
+	background-color: white;
+	overflow: hidden;
+}
+
+
+/* 	layer popup */
+.layer {
+	display: none;
+	position: fixed;
+	_position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+}
+
+.layer .bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: .5;
+	filter: alpha(opacity = 50);
+}
+
+.layer .pop-layer {
+	display: block;
+}
+
+.pop-layer {	
+	display: none;
+	position: relative;	
+	margin-left: auto;
+	margin-right: auto;
+	height: auto;
+	background-color: #fff;	
+	z-index: 10;
+}
+
+.pop-layer .pop-container {
+	padding: 25px 25px 15px 25px;
+}
+
+.pop-layer .btn-r {
+	width: 100%;
+	margin: 10px 0 20px;
+	padding-top: 10px;
+	border-top: 1px solid #DDD;
+	text-align: center;
+}
+
+.cbtn {
+	width: 90%;
+	display: inline-block;
+	text-decoration: none;
+	height: 40px;
+	padding: 0 14px 0;
+	border: 1px solid #304a8a;
+	background-color: #3f5a9d;
+	font-size: 20px;
+	font-weight: bold;
+	color: #fff;
+	line-height: 25px;
+}
+
+.cbtn:hover {
+	border: 1px solid #091940;
+	background-color: #1f326a;
+	color: #fff;
+	cursor: pointer;
+}
+
+.input-login {
+	padding: 5px 20px;
+	text-align: center;
+}
+
+/* 	layer popup */
+
+
+@media (min-width: 275px){
+	.pop-layer  {
+		width: 90%;
+		top: 35%;
+	}
+	
+	.board-content {		
+		margin: 10px 5%;
+		padding: 80px 10%;
+	}
+	
+	.form-content {		
+		margin: 10px 5%;
+		padding: 80px 10%;
+	}	
+}
+
+@media (min-width: 500px){
+	.pop-layer  {
+		width: 410px;
+		top: 150px;
+	}
+	
+	.board-content {		
+		margin: 20px 10%;
+		padding: 100px 10%;
+	}
+	
+	.form-content {		
+		margin: 20px 10%;
+		padding: 100px 10%;
+	}
+}

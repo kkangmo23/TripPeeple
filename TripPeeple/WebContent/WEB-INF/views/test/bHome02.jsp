@@ -70,56 +70,6 @@
 	}
 </script>
 
-<script type="text/javascript">
-	function checkEmail(){	
- 		window.open("checkEmailForm.do", "", "width=350, height=200");
-	}
-	function checkId(){
-		window.open("checkIdForm.do", "", "width=350, height=200");
-	}
-	
-	function erase(){
-		document.getElementById("member_id").value="";
-	}
-	
-	function checkPassword(){
-		var password=document.getElementById("password").value;
-		var checkPwd=document.getElementById("checkPwd").value;
-		var span =document.getElementById("span");
-		if(password==checkPwd){
-			span.textContent="비밀번호가 일치합니다.";
-			document.getElementById("span").style.color="blue";
-		}else{
-			span.textContent="비밀번호가 일치하지 않습니다.";
-			document.getElementById("span").style.color="red";
-		}
-	}
-	
-	function regist(){
-		var email=document.getElementById("email").value;
-		var password=document.getElementById("password").value;
-		var checkPwd=document.getElementById("checkPwd").value;
-		var id=document.getElementsByName("member_id")[0].value;
-		if(email=="" || email==null){
-			alert("이메일을 입력해주세요.");
-		}else if(password=="" || password==null){
-			alert("비밀번호를 입력해주세요.");
- 			document.getElementById("password").value="";
- 			document.getElementById("password").focus();
-		}else if(password!=checkPwd){
- 			alert("비밀번호를 확인해주세요.");
- 			document.getElementById("checkPwd").value="";
- 			document.getElementById("checkPwd").focus();
- 		}else if(id=="" || id==null){
- 			document.getElementsByName("member_id")[0].value=email;
- 			document.forms["form"].submit();
- 		}
- 		else{
-			document.forms["form"].submit();
- 		}
-	}
-</script>
-
 </head>
 
 <body>
@@ -132,7 +82,7 @@
 					<span class="sr-only">Toggle navigation</span> <span
 						class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="./index.do">Trip Peeple</a>				
+				<a class="navbar-brand" href="#">Project Name</a>				
 			</div>
 			
 			<div id="navbar" class="navbar-collapse collapse">
@@ -143,7 +93,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="registerForm.do" name="menu-by-size" data-container="body" data-toggle="tooltip" title="회원가입">
+						<a href="#" name="menu-by-size" data-container="body" data-toggle="tooltip" title="회원가입">
 							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>						
 						</a>
 					</li>
@@ -153,63 +103,26 @@
 		</div>
 	</nav>
 
-	<div id="content">
-		<div class="form-content">		
-		
-		<form class="form-horizontal">
-		  <div class="form-group">
-		    <label for="email" class="col-sm-2 control-label">Email</label>
-		    <div class="col-sm-10">
-		      <input type="email" name="email" id="email" class="form-control" placeholder="Email" onclick="checkEmail()">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label for="password" class="col-sm-2 control-label">Password</label>
-		    <div class="col-sm-10">
-		      <input type="password" name="password" id="password" class="form-control" placeholder="Password" onkeyup="checkPassword()">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label for="checkPwd" class="col-sm-2 control-label">Confirm Password</label>
-		    <div class="col-sm-10">
-		      <input type="password" name="checkPwd" id="checkPwd" class="form-control" placeholder="Confirm Password" onkeyup="checkPassword()">
-		    </div>
-		  </div>
-		  	<div>	
-			<span id="span"></span>
-			</div>
-			
-		  <div class="form-group">
-		    <label for="email" class="col-sm-2 control-label">Nick Name</label>
-		    <div class="col-sm-10">
-		    	<input type="text" name="member_id" id="member_id" class="form-control" placeholder="Nick Name" onclick="checkId()">
-		    	<button type="button" class="btn btn-default" onclick="erase()">지우기</button>
-		    </div>
-		  </div>
-		  
-		  <div>
-				<label>선호국가</label>
-				<input type="checkbox" name="like_country" value="한국"/> 한국 &nbsp;
-				<input type="checkbox" name="like_country" value="중국"/> 중국 &nbsp;	
-				<input type="checkbox" name="like_country" value="미국"/> 미국 &nbsp;	
-				<input type="checkbox" name="like_country" value="일본"/> 일본 &nbsp;	
-			</div>		
-		  <hr>
-		  <div class="form-group">
-		    <div class="col-sm-offset-2 col-sm-10">
-		      <button type="button" class="btn btn-default" onclick="regist()">회원가입</button>
-		      <button type="button" class="btn btn-default" onclick="window.history.back(-1)">취소</button>
-		    </div>
-		  </div>
-		</form>
-
+	<div id="content" style="background-image: url('./img/main_bg.jpg'); background-size: 100%; background-repeat: no-repeat;">
+	<div id="main-content">
+		<div class="container">
+			<h1>Hello, world!</h1>
+			<p>This is a template for a simple marketing or informational
+				website. It includes a large callout called a jumbotron and three
+				supporting pieces of content. Use it as a starting point to create
+				something more unique.</p>
+			<p>
+				<a class="btn btn-primary btn-lg" href="#" role="button">Learn
+					more &raquo;</a>
+			</p>
 		</div>
+	</div>
 	</div>
 
 	<div class="container">		
 
 	<footer>
-		<p>&copy; CopyRight @ km</p>
+		<p>&copy; Company 2014</p>
 	</footer>
 	</div>
 	<!-- /container -->
@@ -220,7 +133,7 @@
 		
 		<div id="layer-login" class="pop-layer">
 			<div class="pop-container">			
-				<form action="memberLogin.do" method="post">
+				<form action="#" method="post">
 					<div class="input-login">
 						<input type="email" class="form-control" name="email" placeholder=" E-mail">
 					</div>
