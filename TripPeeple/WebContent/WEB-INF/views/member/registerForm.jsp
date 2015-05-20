@@ -82,18 +82,18 @@
 		document.getElementById("member_id").value="";
 	}
 	
-	function checkPassword(){
-		var password=document.getElementById("password").value;
-		var checkPwd=document.getElementById("checkPwd").value;
-		var span =document.getElementById("span");
-		if(password==checkPwd){
-			span.textContent="비밀번호가 일치합니다.";
-			document.getElementById("span").style.color="blue";
-		}else{
-			span.textContent="비밀번호가 일치하지 않습니다.";
-			document.getElementById("span").style.color="red";
-		}
-	}
+// 	function checkPassword(){
+// 		var password=document.getElementById("password").value;
+// 		var checkPwd=document.getElementById("checkPwd").value;
+// 		var span =document.getElementById("span");
+// 		if(password==checkPwd){
+// 			span.textContent="비밀번호가 일치합니다.";
+// 			document.getElementById("span").style.color="blue";
+// 		}else{
+// 			span.textContent="비밀번호가 일치하지 않습니다.";
+// 			document.getElementById("span").style.color="red";
+// 		}
+// 	}
 	
 	function regist(){
 		var email=document.getElementById("email").value;
@@ -119,6 +119,25 @@
  		}
 	}
 </script>
+
+<script type="text/javascript">
+	function checkPassword() {
+		var password=document.getElementById("password").value;
+		var checkPwd=document.getElementById("checkPwd").value;
+		var cp = document.getElementById("confirmPwd");
+		var cpi = document.getElementById("confirmPwdIcon");
+		if(password==checkPwd){
+			cp.className = "form-group has-success has-feedback";
+			cpi.className = "glyphicon glyphicon-ok form-control-feedback";			
+		}else{
+			cp.className = "form-group has-error has-feedback";
+			cpi.className = "glyphicon glyphicon-remove form-control-feedback";
+		}		
+	}
+
+</script>
+
+
 
 </head>
 
@@ -169,15 +188,15 @@
 		      <input type="password" name="password" id="password" class="form-control" placeholder="Password" onkeyup="checkPassword()">
 		    </div>
 		  </div>
-		  <div class="form-group">
+		  
+		  
+		  <div class="form-group" id="confirmPwd">
 		    <label for="checkPwd" class="col-sm-4 control-label">Confirm Password</label>
 		    <div class="col-sm-5">
 		      <input type="password" name="checkPwd" id="checkPwd" class="form-control" placeholder="Confirm Password" onkeyup="checkPassword()">
+		   		<span id="confirmPwdIcon" aria-hidden="true"></span> 				
 		    </div>
-		  </div>
-		  	<div>	
-			<span id="span"></span>
-			</div>
+		  </div>		  
 			
 		  <div class="form-group">
 		    <label for="member_id" class="col-sm-4 control-label">Nick Name</label>
