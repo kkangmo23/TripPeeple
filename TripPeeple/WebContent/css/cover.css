@@ -142,7 +142,7 @@ footer {
 	
 	.form-content {		
 		margin: 10px 5%;
-		padding: 80px 10%;
+		padding: 30px 8% 50px 8%;
 	}	
 }
 
@@ -159,6 +159,6 @@ footer {
 	
 	.form-content {		
 		margin: 20px 10%;
-		padding: 100px 10%;
+		padding: 80px 10% 100px 10%;
 	}
 }

@@ -137,8 +137,6 @@
 
 </script>
 
-
-
 </head>
 
 <body>
@@ -173,7 +171,10 @@
 	</nav>
 
 	<div id="content">
-		<div class="form-content">		
+		<div class="form-content">
+		
+<!-- 		<h2 style="text-align: right; padding-right: 200px">Join Trip Peeple</h2> -->
+<!-- 		<hr> -->
 		
 		<form class="form-horizontal" name="form" method="post">
 		  <div class="form-group">
