@@ -17,7 +17,7 @@
 <table>
 	<tr>
 		<td>닉네임</td>
-		<td><input type="member_id" name="member_id" required="required"></td>
+		<td><input type="text" name="member_id" required="required"></td>
 	</tr>
 	<tr>
 		<td colspan="2" align="center">
