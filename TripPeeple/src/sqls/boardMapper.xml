@@ -38,4 +38,12 @@
 	DELETE FROM BOARD WHERE BOARD_NUM=#board_num#
 </delete>
 
+<select id="boardUpdateRead" parameterClass="java.lang.Integer" resultMap="mapBDto">
+	SELECT <include refid="column"/> FROM BOARD WHERE BOARD_NUM=#board_num#
+</select>
+
+<update id="boardUpdateBoard" parameterClass="BDto">
+	UPDATE BOARD SET CITY_NUM=#city_num#, CONTENT=#content#, MODIFY_TIME=SYSDATE WHERE BOARD_NUM=#board_num# 
+</update>
+
 </sqlMap>

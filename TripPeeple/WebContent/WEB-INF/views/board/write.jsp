@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,8 +31,7 @@
 	<section>
 	
 	<form action="write.do"  method="post" enctype="multipart/form-data">
-		
-					
+	<c:set var="member_num" value="${member_num}" scope="session"/>
 		<div>
 			<label>도시</label>
 			<span >

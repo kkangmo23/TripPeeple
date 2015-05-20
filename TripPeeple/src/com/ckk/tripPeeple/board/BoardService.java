@@ -8,4 +8,8 @@ public interface BoardService {
 	public List<BoardDto> getBoardList() throws Exception;
 
 	public int deleteBoardList(int board_num) throws Exception;
+
+	public BoardDto updateRead(int board_num) throws Exception;
+
+	public int updateBoard(BoardDto boardDto) throws Exception;
 }

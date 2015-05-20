@@ -28,34 +28,37 @@ public class BoardDaoImp implements BoardDao{
 		
 		return boardList;
 	}
-
-
 //
 //	@Override
 //	public BoardDto read(int boardNumber) {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
-//
 	@Override
 	public int deleteBoardList(int board_num) throws Exception {
-		System.out.println("boardimp");
+		// System.out.println("boardimp");
 		int check=sqlMapClient.delete("board.deleteBoardList", board_num);
 		return check;
 	}
 
-//	@Override
-//	public BoardDto updateRead(int boardNumber) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public int update(BoardDto boardDto) {
-//		// TODO Auto-generated method stub
-//		return 0;
-//	}
-	
+	@Override
+	public BoardDto updateRead(int board_num) throws Exception{
+		// System.out.println("updateRead boardimp");
+		BoardDto board=(BoardDto)sqlMapClient.queryForObject("board.boardUpdateRead", board_num);
+		return board;
+	}
+
+	@Override
+	public int updateBoard(BoardDto boardDto) throws Exception {
+		// System.out.println("updateBoard boardimp");
+		System.out.println(boardDto.getBoard_num());
+		System.out.println(boardDto.getCity_num());
+		System.out.println(boardDto.getContent());
+		System.out.println(boardDto.getCreate_time());
+		System.out.println(boardDto.getModify_time());
+		int check=sqlMapClient.update("board.boardUpdateBoard", boardDto);
+		return check;
+	}
 }
 
 

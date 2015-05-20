@@ -33,7 +33,7 @@ public class WriteController {
 			if(check==true){
 				// System.out.println("true");
 				request.setAttribute("check", check);
-				
+				session.setAttribute("session", boardDto.getMember_num());
 				return "board/writeOk";
 			}else{
 				// System.out.println("false");
