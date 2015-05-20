@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta  http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
 <link rel="shortcut icon" href="./img/favicon.ico">
@@ -17,6 +17,7 @@
 				for (var j = i; j < test2.length; j++) {
 					if(result[i]==test2[j].value){
 						test2[j].checked=true;
+// 			parent.location.reload();
 						break;
 					}				
 				}
@@ -62,13 +63,15 @@
 
 <!--header //-->
 <header>
+${member_id}
+${member_num}
 	<div class="main_logo">
 		<a href="./index.do"><img alt="메인로고" src="./img/mainLogo.png" width="40px" height="40px" /></a>
 	</div>
 	<div class="main_nav">
 		<ul class="navigation">
 			<li><a>${member_id}님</a></li>		
-			<li><a href="#">수정</a></li>	
+			<li><a href="modifyForm.do">수정</a></li>	
 			<li><a href="logout.do">로그아웃</a></li>			
 		</ul>		
 	</div>	

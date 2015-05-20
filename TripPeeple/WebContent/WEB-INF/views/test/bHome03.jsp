@@ -44,7 +44,7 @@ $(function () {
 </head>
 
 <body>
-	
+<!-- header -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -77,8 +77,10 @@ $(function () {
 			<!--/.navbar-collapse -->
 		</div>
 	</nav>
+<!-- //header -->
 
 
+<!-- content -->
 	<div id="content">
 		<div class="container">
 			<div class="board-content">
@@ -92,14 +94,17 @@ $(function () {
 			</div>
 		</div>
 	</div>
+	
+<!-- //content -->
 
-	<div class="container">		
 
-	<footer>
-		<p>&copy; Company 2014</p>
-	</footer>
+<!-- footer -->
+	<div class="container">
+		<footer>
+			<p>&copy; Company 2014</p>
+		</footer>
 	</div>
-	<!-- /container -->
+<!-- //footer -->
 	
 
 	

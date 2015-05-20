@@ -73,6 +73,7 @@
 </head>
 
 <body>
+<!-- header -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -102,7 +103,11 @@
 			<!--/.navbar-collapse -->
 		</div>
 	</nav>
+<!-- //header -->
 
+
+
+<!-- content -->
 	<div id="content" style="background-image: url('./img/main_bg.jpg'); background-size: 100%; background-repeat: no-repeat;">
 	<div id="main-content">
 		<div class="container">
@@ -118,14 +123,17 @@
 		</div>
 	</div>
 	</div>
+	
+<!-- //content -->
 
-	<div class="container">		
 
-	<footer>
-		<p>&copy; Company 2014</p>
-	</footer>
+<!-- footer -->
+	<div class="container">
+		<footer>
+			<p>&copy; Company 2014</p>
+		</footer>
 	</div>
-	<!-- /container -->
+<!-- //footer -->
 
 	<!--layer //-->
 	<div class="layer">

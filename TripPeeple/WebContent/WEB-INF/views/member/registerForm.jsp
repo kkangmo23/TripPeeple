@@ -158,20 +158,20 @@
 		
 		<form class="form-horizontal">
 		  <div class="form-group">
-		    <label for="email" class="col-sm-2 control-label">Email</label>
-		    <div class="col-sm-10">
+		    <label for="email" class="col-sm-4 control-label">Email</label>
+		    <div class="col-sm-5">
 		      <input type="email" name="email" id="email" class="form-control" placeholder="Email" onclick="checkEmail()">
 		    </div>
 		  </div>
 		  <div class="form-group">
-		    <label for="password" class="col-sm-2 control-label">Password</label>
-		    <div class="col-sm-10">
+		    <label for="password" class="col-sm-4 control-label">Password</label>
+		    <div class="col-sm-5">
 		      <input type="password" name="password" id="password" class="form-control" placeholder="Password" onkeyup="checkPassword()">
 		    </div>
 		  </div>
 		  <div class="form-group">
-		    <label for="checkPwd" class="col-sm-2 control-label">Confirm Password</label>
-		    <div class="col-sm-10">
+		    <label for="checkPwd" class="col-sm-4 control-label">Confirm Password</label>
+		    <div class="col-sm-5">
 		      <input type="password" name="checkPwd" id="checkPwd" class="form-control" placeholder="Confirm Password" onkeyup="checkPassword()">
 		    </div>
 		  </div>
@@ -180,10 +180,10 @@
 			</div>
 			
 		  <div class="form-group">
-		    <label for="email" class="col-sm-2 control-label">Nick Name</label>
-		    <div class="col-sm-10">
+		    <label for="email" class="col-sm-4 control-label">Nick Name</label>
+		    <div class="col-sm-5">
 		    	<input type="text" name="member_id" id="member_id" class="form-control" placeholder="Nick Name" onclick="checkId()">
-		    	<button type="button" class="btn btn-default" onclick="erase()">지우기</button>
+<!-- 		    	<button type="button" class="btn btn-default" onclick="erase()">지우기</button> -->
 		    </div>
 		  </div>
 		  
@@ -195,12 +195,10 @@
 				<input type="checkbox" name="like_country" value="일본"/> 일본 &nbsp;	
 			</div>		
 		  <hr>
-		  <div class="form-group">
-		    <div class="col-sm-offset-2 col-sm-10">
+		 
 		      <button type="button" class="btn btn-default" onclick="regist()">회원가입</button>
 		      <button type="button" class="btn btn-default" onclick="window.history.back(-1)">취소</button>
-		    </div>
-		  </div>
+		    
 		</form>
 
 		</div>
