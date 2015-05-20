@@ -1,12 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta  http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="shortcut icon" href="./img/favicon.ico">
-<link rel="stylesheet" type="text/css" href="./css/basic.css" />
+<link rel="icon" href="./img/favicon.ico">
+
+<title>Cover Template for Bootstrap</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- Custom styles for this template -->
+<link href="./css/cover.css" rel="stylesheet">
+
+<script type="text/javascript">
+	$(function () {
+		$('[data-toggle="tooltip"]').tooltip({'placement': 'bottom'})
+	})
+</script>
+
+<script type="text/javascript">
+	window.onresize = function () {
+		var width = window.innerWidth;
+	   	var menus = document.getElementsByName("menu-by-size");
+		if (width < 768) {
+	    	menus[0].innerHTML = "회원정보수정";
+	    	menus[1].innerHTML = "로그아웃";
+		} else {
+			menus[0].innerHTML = "<span class='glyphicon glyphicon-cog' aria-hidden='true'></span>";
+			menus[1].innerHTML = "<span class='glyphicon glyphicon-log-out' aria-hidden='true'></span>";
+		}
+	}
+</script>
+
 <script type="text/javascript">
 	window.onload=function test(){
 			var test="${dto.like_country}";
@@ -58,82 +92,107 @@
  		}
 	}
 </script>
+
 </head>
+
 <body>
-
-<!--header //-->
-<header>
-${member_id}
-${member_num}
-	<div class="main_logo">
-		<a href="./index.do"><img alt="메인로고" src="./img/mainLogo.png" width="40px" height="40px" /></a>
-	</div>
-	<div class="main_nav">
-		<ul class="navigation">
-			<li><a>${member_id}님</a></li>		
-			<li><a href="modifyForm.do">수정</a></li>	
-			<li><a href="logout.do">로그아웃</a></li>			
-		</ul>		
-	</div>	
-</header>
-<!--// header-->
-
-<!--content //-->
-<div id="content">
-	<section>
-		<div align="center">
-			<font size="2"><b>회원정보수정</b></font>
+	<!-- header -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> 
+					<span class="icon-bar"></span> <span class="icon-bar"></span> 
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="./index.do">Project Name</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a>${member_id}님</a></li>
+					<li>
+						<a href="modifyForm.do" name="menu-by-size" data-container="body" data-toggle="tooltip" title="회원정보수정">
+							<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>						
+						</a>
+					</li>
+					<li>
+						<a href="logout.do" name="menu-by-size" data-container="body" data-toggle="tooltip" title="로그아웃">
+							<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>						
+						</a>					
+					</li>					
+				</ul>
+				<form class="navbar-form navbar-right">
+					<input type="text" class="form-control" placeholder="Search...">
+				</form>					
+			</div>
+			<!--/.navbar-collapse -->
 		</div>
+	</nav>
+<!-- //header -->
+
+	<div id="content">
+		<div class="form-content">		
 		
-		<div align="center">
-		<form action="updateMember.do" name="form" method="post">
-			<input type="hidden" value="${dto.member_num}" name="member_num">
-			<div>
-				<label>이메일</label><input id="email" type="email" name="email" 
-				readonly="readonly" value="${dto.email}">
+		<form class="form-horizontal" action="updateMember.do" name="form" method="post">
+		<input type="hidden" value="${dto.member_num}" name="member_num">
+		  <div class="form-group">
+		    <label for="email" class="col-sm-4 control-label">Email</label>
+		    <div class="col-sm-5">
+		    <p class="form-control-static" style="text-align: left; font-weight: bold">${dto.email}</p>		      
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="password" class="col-sm-4 control-label">Password</label>
+		    <div class="col-sm-5">
+		      <input type="password" name="password" id="password" class="form-control" value="${dto.password}" placeholder="Password" onkeyup="checkPassword()">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="checkPwd" class="col-sm-4 control-label">Confirm Password</label>
+		    <div class="col-sm-5">
+		      <input type="password" name="checkPwd" id="checkPwd" class="form-control" value="${dto.password}" placeholder="Confirm Password" onkeyup="checkPassword()">
+		    </div>
+		  </div>
+		  	<div>	
+			<span id="span"></span>
 			</div>
 			
-			<div>
-				<label>비밀번호변경</label><input type="password" id="password" 
-				name="password" onkeyup="checkPassword()" value="${dto.password}">
-			</div>
-			
-			<div>
-				<label>비밀번호확인</label><input type="password" id="checkPwd" 
-				name="checkPwd" onkeyup="checkPassword()" value="${dto.password}">
-			</div>
-			<div>
-				<span id="span"></span>
-			</div>
-			
-			<div>
-				<label>닉네임</label><input type="text" name="member_id" id="member_id"
-				value="${dto.member_id}">
-			</div>
-			
-			<div>
+		  <div class="form-group">
+		    <label for="member_id" class="col-sm-4 control-label">Nick Name</label>
+		    <div class="col-sm-5">
+		    	<input type="text" name="member_id" id="member_id" class="form-control" value="${dto.member_id}" placeholder="Nick Name" onclick="checkId()">
+<!-- 		    	<button type="button" class="btn btn-default" onclick="erase()">지우기</button> -->
+		    </div>
+		  </div>
+		  
+		  <div>
 				<label>선호국가</label>
 				<input type="checkbox" name="like_country" value="한국"/> 한국 &nbsp;
 				<input type="checkbox" name="like_country" value="중국"/> 중국 &nbsp;	
 				<input type="checkbox" name="like_country" value="미국"/> 미국 &nbsp;	
 				<input type="checkbox" name="like_country" value="일본"/> 일본 &nbsp;	
 			</div>		
-			
-			<div>
-				<input type="button" value="회원정보수정" onclick="modify()">
-				<input type="button" value="취소" onclick="window.history.back(-1)">
-			</div>
+		  <hr>
+		 
+		      <button type="button" class="btn btn-default" onclick="modify()">회원정보수정</button>
+		      <button type="button" class="btn btn-default" onclick="window.history.back(-1)">취소</button>
+		    
 		</form>
-	</div>	
-	</section>
-</div>
-<!--// content-->	
 
-<!--footer //-->
-<footer>
-	<div id="copyRight">CopyRight @ km</div>
-</footer>
-<!--// footer-->
+		</div>
+	</div>
 
+
+<!-- footer -->
+	<div class="container">
+		<footer>
+			<p>&copy; CopyRight @ km</p>
+		</footer>
+	</div>
+<!-- //footer -->
+
+	
 </body>
 </html>

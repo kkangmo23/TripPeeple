@@ -156,7 +156,7 @@
 	<div id="content">
 		<div class="form-content">		
 		
-		<form class="form-horizontal">
+		<form class="form-horizontal" name="form" method="post">
 		  <div class="form-group">
 		    <label for="email" class="col-sm-4 control-label">Email</label>
 		    <div class="col-sm-5">
@@ -180,7 +180,7 @@
 			</div>
 			
 		  <div class="form-group">
-		    <label for="email" class="col-sm-4 control-label">Nick Name</label>
+		    <label for="member_id" class="col-sm-4 control-label">Nick Name</label>
 		    <div class="col-sm-5">
 		    	<input type="text" name="member_id" id="member_id" class="form-control" placeholder="Nick Name" onclick="checkId()">
 <!-- 		    	<button type="button" class="btn btn-default" onclick="erase()">지우기</button> -->
