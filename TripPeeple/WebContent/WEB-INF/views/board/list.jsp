@@ -54,7 +54,7 @@
 	<section>
 		<c:forEach var="board" items="${boardList}">
 			<div class="board-content">
-				<span>${board.member_num}</span><br/>
+				<a href="myListForm.do">${board.member_num}</a><br/>
 				<span>${board.city_num}에서</span><br/><br/>
 				<span>${board.content}</span><br/><br/>
 				<span><fmt:formatDate value="${board.modify_time}" pattern="yyyy-MM-dd hh:mm:ss"/></span><br/>

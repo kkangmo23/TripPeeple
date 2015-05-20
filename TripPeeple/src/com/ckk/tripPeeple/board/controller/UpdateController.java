@@ -50,4 +50,39 @@ public class UpdateController {
 		
 		return "board/updateOk";
 	}
+	
+	@RequestMapping(value="/myUpdateForm.do", method=RequestMethod.GET)
+	public String myUpdateForm(HttpServletRequest request) throws Exception {
+		int board_num=Integer.parseInt(request.getParameter("board_num"));
+		BoardDto board=boardService.updateRead(board_num);
+		//System.out.println(board);
+		
+		request.setAttribute("board",board);
+		
+		return "board/myUpdate";
+	}
+	
+	@RequestMapping(value="/myUpdate.do", method=RequestMethod.POST)	
+	public String myUpdateBoard(BoardDto boardDto, HttpSession session, HttpServletRequest request) throws Exception{
+		request.setCharacterEncoding("utf-8");
+		
+		boardDto.setMember_num((int)session.getAttribute("member_num"));
+		int check=boardService.updateBoard(boardDto);
+		// System.out.println(check);
+		try {
+			if(check>0){
+				request.setAttribute("check", check);
+				session.setAttribute("session", boardDto.getMember_num());
+				return "board/myUpdateOk";
+			}else{
+				request.setAttribute("check", check);
+				return "board/myUpdateOk";
+			}
+		} catch (Exception e) {
+			System.out.println("WriteController updateBoard Error");
+			e.printStackTrace();
+		}
+		
+		return "board/myUpdateOk";
+	}
 }

@@ -29,4 +29,16 @@ public class ListController {
 		session.setAttribute("session", session.getAttribute("member_num"));
 		return "board/list";
 	}
+	
+	@RequestMapping(value="/myListForm.do", method=RequestMethod.GET)
+	public String myListForm(HttpServletRequest request, HttpSession session) throws Exception {
+		
+		List<BoardDto> boardList=null;
+		boardList=boardService.getBoardList();
+		session.getAttribute("member_num");
+		
+		request.setAttribute("boardList", boardList);
+		session.setAttribute("session", session.getAttribute("member_num"));
+		return "board/myList";
+	}
 }

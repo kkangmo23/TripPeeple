@@ -20,22 +20,24 @@ public class DeleteController {
 		int board_num=Integer.parseInt(request.getParameter("board_num"));
 		
 		int check=boardService.deleteBoardList(board_num);
-		System.out.println(check);
+		// System.out.println(check);
 		
 		request.setAttribute("check", check);
 		
 		return "board/deleteOk";
 	}
 	
-//	@RequestMapping(value="/delete.do", method=RequestMethod.POST)	
-//	public String insertBoard(BoardDto boardDto, HttpSession session, HttpServletRequest request) throws Exception{
-//		int board_num=Integer.parseInt(request.getParameter("board_num"));
-//		
-//		int check=boardService.deleteBoardList(board_num);
-//		System.out.println(check);
-//		
-//		request.setAttribute("check", check);
-//		
-//		return "board/deleteOk";
-//	}
+	@RequestMapping(value="/myDelete.do", method=RequestMethod.GET)
+	public String myDeleteForm(HttpServletRequest request) throws Exception {
+		
+		int board_num=Integer.parseInt(request.getParameter("board_num"));
+		
+		int check=boardService.deleteBoardList(board_num);
+		// System.out.println(check);
+		
+		request.setAttribute("check", check);
+		
+		return "board/myDeleteOk";
+	}
+	
 }
