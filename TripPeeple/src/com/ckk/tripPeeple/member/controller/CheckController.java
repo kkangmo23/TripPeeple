@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.ckk.tripPeeple.member.MemberService;
 
 @Controller
-public class CheckEmailController {
+public class CheckController {
 	@Autowired
 	private MemberService memberService;
 	
@@ -30,6 +30,25 @@ public class CheckEmailController {
 		}else{
 			request.setAttribute("check", memberService.checkEmail(email));
 			return "member/checkEmail";
+		}
+	}
+	
+	@RequestMapping(value = "/checkIdForm.do", method = RequestMethod.GET)
+	public String checkIdForm(){
+		return "member/checkIdForm";
+	}
+	
+	@RequestMapping(value = "/checkId.do", method = RequestMethod.POST)
+	public String checkId(HttpServletRequest request) throws Exception{
+		
+		String member_id = request.getParameter("member_id");
+		if(memberService.checkId(member_id)){
+			request.setAttribute("member_id", member_id);
+			request.setAttribute("check", memberService.checkId(member_id));
+			return "member/checkId";
+		}else{
+			request.setAttribute("check", memberService.checkId(member_id));
+			return "member/checkId";
 		}
 	}
 	

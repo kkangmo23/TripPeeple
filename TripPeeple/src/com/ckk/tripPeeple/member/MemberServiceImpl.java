@@ -32,4 +32,14 @@ public class MemberServiceImpl implements MemberService {
 	public MemberDto getMemberData(String email) throws Exception {
 		return memberDao.getMemberData(email);
 	}
+
+	@Override
+	public boolean updateMember(MemberDto dto) throws Exception {
+		return memberDao.updateMember(dto)>0?true:false;
+	}
+
+	@Override
+	public boolean checkId(String member_id) throws Exception {
+		return (memberDao.checkId(member_id)!=null)?false:true;
+	}
 }

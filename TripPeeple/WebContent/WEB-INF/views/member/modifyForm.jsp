@@ -8,10 +8,21 @@
 <link rel="shortcut icon" href="./img/favicon.ico">
 <link rel="stylesheet" type="text/css" href="./css/basic.css" />
 <script type="text/javascript">
-	function checkEmail(){	
-	 		window.open("checkEmailForm.do", "", "width=350, height=200");
+	window.onload=function test(){
+			var test="${dto.like_country}";
+			var result=test.split(",");
+			var test2=document.getElementsByName("like_country");
+			
+			for (var i = 0; i < result.length; i++) {
+				for (var j = i; j < test2.length; j++) {
+					if(result[i]==test2[j].value){
+						test2[j].checked=true;
+						break;
+					}				
+				}
+			}
 		}
-	
+
 	function checkPassword(){
 		var password=document.getElementById("password").value;
 		var checkPwd=document.getElementById("checkPwd").value;
@@ -25,14 +36,11 @@
 		}
 	}
 	
-	function regist(){
-		var email=document.getElementById("email").value;
+	function modify(){
 		var password=document.getElementById("password").value;
 		var checkPwd=document.getElementById("checkPwd").value;
 		var id=document.getElementsByName("member_id")[0].value;
-		if(email=="" || email==null){
-			alert("이메일을 입력해주세요.");
-		}else if(password=="" || password==null){
+		if(password=="" || password==null){
 			alert("비밀번호를 입력해주세요.");
  			document.getElementById("password").value="";
  			document.getElementById("password").focus();
@@ -71,27 +79,33 @@
 <div id="content">
 	<section>
 		<div align="center">
-			<font size="2"><b>회원정보수정(*필수입력사항입니다.)</b></font>
+			<font size="2"><b>회원정보수정</b></font>
 		</div>
 		
 		<div align="center">
-		<form action="memberRegister.do" name="form" method="post">
+		<form action="updateMember.do" name="form" method="post">
+			<input type="hidden" value="${dto.member_num}" name="member_num">
 			<div>
-				<label>*이메일</label><input id="email" type="email" name="email" 
-				readonly="readonly" onclick="checkEmail()">
+				<label>이메일</label><input id="email" type="email" name="email" 
+				readonly="readonly" value="${dto.email}">
 			</div>
 			
 			<div>
-				<label>*비밀번호</label><input type="password" id="password" name="password">
+				<label>비밀번호변경</label><input type="password" id="password" 
+				name="password" onkeyup="checkPassword()" value="${dto.password}">
 			</div>
 			
 			<div>
-				<label>*비밀번호확인</label><input type="password" id="checkPwd" 
-				name="checkPwd" onkeyup="checkPassword()"><span id="span"></span>
+				<label>비밀번호확인</label><input type="password" id="checkPwd" 
+				name="checkPwd" onkeyup="checkPassword()" value="${dto.password}">
+			</div>
+			<div>
+				<span id="span"></span>
 			</div>
 			
 			<div>
-				<label>닉네임</label><input type="text" name="member_id">
+				<label>닉네임</label><input type="text" name="member_id" id="member_id"
+				value="${dto.member_id}">
 			</div>
 			
 			<div>

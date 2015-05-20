@@ -16,6 +16,11 @@ public class ModifyController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	@RequestMapping(value = "/modifyOk.do", method = RequestMethod.GET)
+	public String modifyOk(){
+		return "member/loginOk";
+	}
 
 	@RequestMapping(value = "/modifyForm.do", method = RequestMethod.GET)
 	public String modifyForm(HttpSession session, HttpServletRequest request){
@@ -30,5 +35,26 @@ public class ModifyController {
 		}
 		
 		return "member/modifyForm";
+	}
+	
+	@RequestMapping(value = "/updateMember.do", method = RequestMethod.POST)
+	public String updateMember(MemberDto dto, HttpSession session, HttpServletRequest request){
+		dto.getMember_num();
+		dto.getPassword();
+		dto.getMember_id();
+		dto.getLike_country();
+		
+		try {
+			if(memberService.updateMember(dto)){
+				session.setAttribute("member_id", dto.getMember_id());
+				return "member/modifyOk";
+			}else{
+				request.setAttribute("errorMsg", "회원정보 수정에 실패하였습니다.");
+				return "member/loginFail";
+			}
+		} catch (Exception e) {
+			request.setAttribute("errorMsg", "회원정보 수정에 실패하였습니다.");
+			return "member/loginFail";
+		}		
 	}
 }

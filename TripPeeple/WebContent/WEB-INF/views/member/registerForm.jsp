@@ -16,8 +16,15 @@
 </style>
 <script type="text/javascript">
 	function checkEmail(){	
-	 		window.open("checkEmailForm.do", "", "width=350, height=200");
-		}
+ 		window.open("checkEmailForm.do", "", "width=350, height=200");
+	}
+	function checkId(){
+		window.open("checkIdForm.do", "", "width=350, height=200");
+	}
+	
+	function erase(){
+		document.getElementById("member_id").value="";
+	}
 	
 	function checkPassword(){
 		var password=document.getElementById("password").value;
@@ -88,16 +95,22 @@
 		</div>
 		
 		<div>
-			<label>*비밀번호</label><input type="password" id="password" name="password">
+			<label>*비밀번호</label><input type="password" id="password" name="password"
+			onkeyup="checkPassword()">
 		</div>
 		
 		<div>
 			<label>*비밀번호확인</label><input type="password" id="checkPwd" 
-			name="checkPwd" onkeyup="checkPassword()"><span id="span"></span>
+			name="checkPwd" onkeyup="checkPassword()">
+		</div>
+		<div>	
+			<span id="span"></span>
 		</div>
 		
 		<div>
-			<label>닉네임</label><input type="text" name="member_id">
+			<label>닉네임</label><input type="text" name="member_id" 
+			readonly="readonly" onclick="checkId()" id="member_id">
+			<input type="button" value="지우기" onclick="erase()">
 		</div>
 		
 		<div>
