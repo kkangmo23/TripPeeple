@@ -176,7 +176,7 @@
 <!-- 		<h2 style="text-align: right; padding-right: 200px">Join Trip Peeple</h2> -->
 <!-- 		<hr> -->
 		
-		<form class="form-horizontal" name="form" method="post">
+		<form class="form-horizontal" action="memberRegister.do" name="form" method="post">
 		  <div class="form-group">
 		    <label for="email" class="col-sm-4 control-label">Email</label>
 		    <div class="col-sm-5">

@@ -142,10 +142,10 @@
 			<div class="pop-container">			
 				<form action="memberLogin.do" method="post">
 					<div class="input-login">
-						<input type="email" class="form-control" name="email" placeholder=" E-mail">
+						<input type="email" class="form-control" name="email" placeholder=" E-mail" required="required">
 					</div>
 					<div class="input-login">
-						<input type="password" class="form-control" name="password" placeholder=" Password">
+						<input type="password" class="form-control" name="password" placeholder=" Password" required="required">
 					</div>
 					<div class="btn-r">
 						<button type="submit" class="cbtn">Log in</button>

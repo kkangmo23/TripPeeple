@@ -19,7 +19,7 @@ public class ModifyController {
 	
 	@RequestMapping(value = "/modifyOk.do", method = RequestMethod.GET)
 	public String modifyOk(){
-		return "member/loginOk";
+		return "redirect:/index.do";
 	}
 
 	@RequestMapping(value = "/modifyForm.do", method = RequestMethod.GET)
@@ -47,14 +47,16 @@ public class ModifyController {
 		try {
 			if(memberService.updateMember(dto)){
 				session.setAttribute("member_id", dto.getMember_id());
-				return "member/modifyOk";
+				request.setAttribute("successMsg", "수정 성공.");
+				request.setAttribute("url", "./modifyOk.do");
+				return "member/successPage";
 			}else{
 				request.setAttribute("errorMsg", "회원정보 수정에 실패하였습니다.");
-				return "member/loginFail";
+				return "member/errorPage";
 			}
 		} catch (Exception e) {
 			request.setAttribute("errorMsg", "회원정보 수정에 실패하였습니다.");
-			return "member/loginFail";
+			return "member/errorPage";
 		}		
 	}
 }

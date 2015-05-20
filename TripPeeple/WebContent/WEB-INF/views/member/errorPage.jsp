@@ -5,9 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<script type="text/javascript">
+window.onload=function(){
+	alert("${errorMsg}");
+	location.href="./index.do"
+}
+</script>
 </head>
 <body>
-<h1>로그인 실패!</h1>
-${errorMsg}
+
 </body>
 </html>

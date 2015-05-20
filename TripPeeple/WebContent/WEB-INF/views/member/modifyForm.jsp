@@ -58,6 +58,10 @@
 			}
 		}
 
+	function checkId(){
+		window.open("checkIdForm.do", "", "width=350, height=200");
+	}
+	
 	function checkPassword(){
 		var password=document.getElementById("password").value;
 		var checkPwd=document.getElementById("checkPwd").value;
@@ -74,7 +78,7 @@
 	function modify(){
 		var password=document.getElementById("password").value;
 		var checkPwd=document.getElementById("checkPwd").value;
-		var id=document.getElementsByName("member_id")[0].value;
+		var id=document.getElementById("member_id").value;
 		if(password=="" || password==null){
 			alert("비밀번호를 입력해주세요.");
  			document.getElementById("password").value="";
@@ -84,7 +88,7 @@
  			document.getElementById("checkPwd").value="";
  			document.getElementById("checkPwd").focus();
  		}else if(id=="" || id==null){
- 			document.getElementsByName("member_id")[0].value=email;
+ 			document.getElementById("member_id").value=email;
  			document.forms["form"].submit();
  		}
  		else{
@@ -146,13 +150,13 @@
 		  <div class="form-group">
 		    <label for="password" class="col-sm-4 control-label">Password</label>
 		    <div class="col-sm-5">
-		      <input type="password" name="password" id="password" class="form-control" value="${dto.password}" placeholder="Password" onkeyup="checkPassword()">
+		      <input type="password" name="password" id="password" class="form-control" value="${dto.password}" placeholder="Password" required="required" onkeyup="checkPassword()">
 		    </div>
 		  </div>
 		  <div class="form-group">
 		    <label for="checkPwd" class="col-sm-4 control-label">Confirm Password</label>
 		    <div class="col-sm-5">
-		      <input type="password" name="checkPwd" id="checkPwd" class="form-control" value="${dto.password}" placeholder="Confirm Password" onkeyup="checkPassword()">
+		      <input type="password" name="checkPwd" id="checkPwd" class="form-control" value="${dto.password}" placeholder="Confirm Password" required="required" onkeyup="checkPassword()">
 		    </div>
 		  </div>
 		  	<div>	

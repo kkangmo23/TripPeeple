@@ -31,11 +31,11 @@ public class LoginController {
 				return "member/loginOk";
 			} else{
 				request.setAttribute("errorMsg", "비밀번호가 일치하지않습니다.");
-				return "member/loginFail";
+				return "member/errorPage";
 			}
 		} catch (Exception e) {
 			request.setAttribute("errorMsg", "아이디가 존재하지 않습니다.");
-			return "member/loginFail";
+			return "member/errorPage";
 		}
 
 	}

@@ -1,5 +1,7 @@
 package com.ckk.tripPeeple.member.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,16 +23,24 @@ public class RegistController {
 	}
 	
 	@RequestMapping(value = "/memberRegister.do", method = RequestMethod.POST)
-	public String insertMember(MemberDto dto) throws Exception{
+	public String insertMember(MemberDto dto, HttpServletRequest request){
 		dto.getEmail();
 		dto.getPassword();
 		dto.getMember_id();
 		dto.getLike_country();
 		
-		if(memberService.insertMember(dto)){
-			return "member/registerOk";
-		}else{
-			return "member/registerFail";
+		try {
+			if(memberService.insertMember(dto)){
+				request.setAttribute("successMsg", "가입되셨습니다.");
+				request.setAttribute("url", "./index.do");
+				return "member/successPage";
+			}else{
+				request.setAttribute("errorMsg", "회원가입에 실패하였습니다.");
+				return "member/errorPage";
+			}
+		} catch (Exception e) {
+			request.setAttribute("errorMsg", "회원가입에 실패하였습니다.");
+			return "member/errorPage";
 		}		
 	}
 	

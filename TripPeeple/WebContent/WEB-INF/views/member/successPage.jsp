@@ -6,13 +6,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-	window.onload=function(){
-		alert("정보수정완료");
-		location.href="./modifyOk.do"
-	}
+window.onload=function(){
+	alert("${successMsg}");
+	location.href="${url}";
+}
 </script>
 </head>
 <body>
-	
+
 </body>
 </html>
