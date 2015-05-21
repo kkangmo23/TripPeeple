@@ -91,7 +91,7 @@ $(function () {
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="#" name="menu-by-size" data-container="body" data-toggle="tooltip" title="My Page">
+						<a href="myListForm.do" name="menu-by-size" data-container="body" data-toggle="tooltip" title="My Page">
 							${member_id}님
 						</a>
 					</li>
