@@ -18,7 +18,7 @@ public class HomeController {
 		if(session.getAttribute("member_id")==null){
 			return "member/loginForm";
 		}else{
-			return "board/tripHome";
+			return "redirect:/listForm.do";
 		}
 		
 	}

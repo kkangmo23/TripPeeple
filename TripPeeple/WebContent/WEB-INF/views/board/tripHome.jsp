@@ -96,7 +96,7 @@ $(function () {
 						</a>
 					</li>
 					<li>
-						<a href="#" name="menu-by-size" data-container="body" data-toggle="tooltip" title="글쓰기">
+						<a href="writeForm.do" name="menu-by-size" data-container="body" data-toggle="tooltip" title="글쓰기">
 							<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>						
 						</a>
 					</li>
@@ -165,6 +165,8 @@ $(function () {
 			
 			<hr>
 			
+			<form action="" method="post" name="boardUD">
+			
 			<a href="#" data-container="body" data-toggle="tooltip" title="Like">
 				<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>						
 			</a>
@@ -174,7 +176,7 @@ $(function () {
 			
 			<!-- 글주인에게만 보이게 하기 -->
 			<c:if test="${board.member_num==member_num}">			
-				<form action="" method="post" name="boardUD">
+				
 					<input type="hidden" name="board_num" value="${board.board_num }">
 					<a href="#" data-container="body" data-toggle="tooltip" title="수정">
 						<span class="glyphicon glyphicon-edit" aria-hidden="true" onclick="boardUpdate()"></span>						
@@ -182,10 +184,9 @@ $(function () {
 					&nbsp;&nbsp;&nbsp;&nbsp;
 					<a href="#" data-container="body" data-toggle="tooltip" title="삭제">
 						<span class="glyphicon glyphicon-trash" aria-hidden="true" onclick="boardDelete()"></span>
-					</a>
-				</form>
+					</a>				
 			</c:if>	
-			
+			</form>
 		</div>
 		<br/>
 		<div class="board-reply">
