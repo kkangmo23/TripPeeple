@@ -16,7 +16,7 @@ public class UpdateController {
 	@Autowired
 	private BoardService boardService;
 	
-	@RequestMapping(value="/updateForm.do", method=RequestMethod.GET)
+	@RequestMapping(value="/updateForm.do", method=RequestMethod.POST)
 	public String updateForm(HttpServletRequest request) throws Exception {
 		int board_num=Integer.parseInt(request.getParameter("board_num"));
 		BoardDto board=boardService.updateRead(board_num);
@@ -51,7 +51,7 @@ public class UpdateController {
 		return "board/updateOk";
 	}
 	
-	@RequestMapping(value="/myUpdateForm.do", method=RequestMethod.GET)
+	@RequestMapping(value="/myUpdateForm.do", method=RequestMethod.POST)
 	public String myUpdateForm(HttpServletRequest request) throws Exception {
 		int board_num=Integer.parseInt(request.getParameter("board_num"));
 		BoardDto board=boardService.updateRead(board_num);

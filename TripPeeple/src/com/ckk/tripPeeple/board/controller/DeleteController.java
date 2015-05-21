@@ -14,7 +14,7 @@ public class DeleteController {
 	@Autowired
 	private BoardService boardService;
 	
-	@RequestMapping(value="/delete.do", method=RequestMethod.GET)
+	@RequestMapping(value="/delete.do", method=RequestMethod.POST)
 	public String deleteForm(HttpServletRequest request) throws Exception {
 		
 		int board_num=Integer.parseInt(request.getParameter("board_num"));
@@ -27,7 +27,7 @@ public class DeleteController {
 		return "board/deleteOk";
 	}
 	
-	@RequestMapping(value="/myDelete.do", method=RequestMethod.GET)
+	@RequestMapping(value="/myDelete.do", method=RequestMethod.POST)
 	public String myDeleteForm(HttpServletRequest request) throws Exception {
 		
 		int board_num=Integer.parseInt(request.getParameter("board_num"));

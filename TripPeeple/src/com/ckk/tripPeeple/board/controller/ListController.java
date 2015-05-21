@@ -23,22 +23,26 @@ public class ListController {
 		
 		List<BoardDto> boardList=null;
 		boardList=boardService.getBoardList();
-		session.getAttribute("member_num");
+//		session.getAttribute("member_num");
 		
 		request.setAttribute("boardList", boardList);
-		session.setAttribute("session", session.getAttribute("member_num"));
+//		session.setAttribute("session", session.getAttribute("member_num"));
 		return "board/list";
 	}
 	
 	@RequestMapping(value="/myListForm.do", method=RequestMethod.GET)
 	public String myListForm(HttpServletRequest request, HttpSession session) throws Exception {
+		int member=Integer.parseInt(request.getParameter("member_num"));
+//		System.out.println(member);
 		
 		List<BoardDto> boardList=null;
 		boardList=boardService.getBoardList();
-		session.getAttribute("member_num");
-		
+//		session.getAttribute("member_num");
+//		System.out.println(session.getAttribute("member_num"));
+
 		request.setAttribute("boardList", boardList);
-		session.setAttribute("session", session.getAttribute("member_num"));
+		request.setAttribute("member", member);
+//		session.setAttribute("session", session.getAttribute("member_num"));
 		return "board/myList";
 	}
 }
