@@ -91,7 +91,7 @@ $(function () {
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="myListForm.do" name="menu-by-size" data-container="body" data-toggle="tooltip" title="My Page">
+						<a href="myListForm.do?member_num=${sessionScope.member_num}" name="menu-by-size" data-container="body" data-toggle="tooltip" title="My Page">
 							${member_id}님
 						</a>
 					</li>
@@ -140,11 +140,11 @@ $(function () {
 						<div class="media">
 							<div class="media-left">
 							
-								<a href="myListForm.do"><img class="media-object" src="./img/img2.png" alt="프로필사진"></a>
+								<a href="myListForm.do?member_num=${board.member_num}"><img class="media-object" src="./img/img2.png" alt="프로필사진"></a>
 							</div>
 							<div class="media-body">
 							
-								<h4><a href="myListForm.do" >${board.member_num}</a></h4>
+								<h4><a href="myListForm.do?member_num=${board.member_num}" >${board.member_num}</a></h4>
 								
 								<h5><small><fmt:formatDate value="${board.modify_time}" pattern="yyyy-MM-dd hh:mm:ss"/></small></h5>
 							</div>
@@ -168,6 +168,7 @@ $(function () {
 					<hr>
 					
 					<form action="" method="post" name="boardUD">
+					<input type="hidden" name="board_num" value="${board.board_num }">
 					
 					<a href="#" data-container="body" data-toggle="tooltip" title="Like">
 						<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>						
@@ -177,16 +178,15 @@ $(function () {
 					&nbsp;&nbsp;&nbsp;
 					
 					<!-- 글주인에게만 보이게 하기 -->
-					<c:if test="${member_num==member}">			
+					<c:if test="${member_num==member}">
 						
-							<input type="hidden" name="board_num" value="${board.board_num }">
-							<a href="#" data-container="body" data-toggle="tooltip" title="수정">
-								<span class="glyphicon glyphicon-edit" aria-hidden="true" onclick="boardUpdate()"></span>						
-							</a>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<a href="#" data-container="body" data-toggle="tooltip" title="삭제">
-								<span class="glyphicon glyphicon-trash" aria-hidden="true" onclick="boardDelete()"></span>
-							</a>
+						<a href="#" data-container="body" data-toggle="tooltip" title="수정">
+							<span class="glyphicon glyphicon-edit" aria-hidden="true" onclick="boardUpdate()"></span>						
+						</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="#" data-container="body" data-toggle="tooltip" title="삭제">
+							<span class="glyphicon glyphicon-trash" aria-hidden="true" onclick="boardDelete()"></span>
+						</a>
 						
 					</c:if>
 					

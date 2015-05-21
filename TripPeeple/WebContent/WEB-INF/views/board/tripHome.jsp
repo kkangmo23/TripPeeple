@@ -71,7 +71,6 @@ $(function () {
 	}
 </script>
 
-
 </head>
 
 <body>
@@ -91,7 +90,7 @@ $(function () {
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="myListForm.do" name="menu-by-size" data-container="body" data-toggle="tooltip" title="My Page">
+						<a href="myListForm.do?member_num=${sessionScope.member_num}" name="menu-by-size" data-container="body" data-toggle="tooltip" title="My Page" >
 							${member_id}님
 						</a>
 					</li>
@@ -138,7 +137,7 @@ $(function () {
 			<div class="board-info1">
 				<div class="media">
 					<div class="media-left">
-						<a href="myListForm.do"><img class="media-object" src="./img/img2.png" alt="프로필사진"></a>
+						<a href="myListForm.do?member_num=${board.member_num}"><img class="media-object" src="./img/img2.png" alt="프로필사진"></a>
 					</div>
 					<div class="media-body">
 					<!-- 글번호 넘기기 -->
@@ -155,7 +154,7 @@ $(function () {
 			<img alt="" src="./img/img1.jpg" style="width: inherit;">
 		</div>		
 		<div class="board-info2">
-			<p>${board.content}${board.member_num}</p>
+			<p>${board.content}</p>
 		</div>		
 		<!-- /mid -->
 		<br/>
@@ -166,6 +165,7 @@ $(function () {
 			<hr>
 			
 			<form action="" method="post" name="boardUD">
+			<input type="hidden" name="board_num" value="${board.board_num }">
 			
 			<a href="#" data-container="body" data-toggle="tooltip" title="Like">
 				<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>						
@@ -175,16 +175,15 @@ $(function () {
 			&nbsp;&nbsp;
 			
 			<!-- 글주인에게만 보이게 하기 -->
-			<c:if test="${board.member_num==member_num}">			
-				
-					<input type="hidden" name="board_num" value="${board.board_num }">
-					<a href="#" data-container="body" data-toggle="tooltip" title="수정">
-						<span class="glyphicon glyphicon-edit" aria-hidden="true" onclick="boardUpdate()"></span>						
-					</a>
-					&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="#" data-container="body" data-toggle="tooltip" title="삭제">
-						<span class="glyphicon glyphicon-trash" aria-hidden="true" onclick="boardDelete()"></span>
-					</a>				
+			<c:if test="${board.member_num==member_num}">
+								
+				<a href="#" data-container="body" data-toggle="tooltip" title="수정">
+					<span class="glyphicon glyphicon-edit" aria-hidden="true" onclick="boardUpdate()"></span>						
+				</a>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="#" data-container="body" data-toggle="tooltip" title="삭제">
+					<span class="glyphicon glyphicon-trash" aria-hidden="true" onclick="boardDelete()"></span>
+				</a>				
 			</c:if>	
 			</form>
 		</div>
