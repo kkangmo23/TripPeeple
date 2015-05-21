@@ -18,7 +18,7 @@
 	<c:if test="${check==false}">
 		<script type="text/javascript">
 			alert("게시물이 등록 되지 않았습니다.");
-			location.href="/board/writeForm.do";
+			location.href="writeForm.do";
 		</script>
 	</c:if>
 </body>

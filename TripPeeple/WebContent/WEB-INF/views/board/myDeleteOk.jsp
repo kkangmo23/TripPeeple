@@ -19,7 +19,7 @@
 	<c:if test="${check==0}">
 		<script type="text/javascript">
 			alert("게시물이 삭제 되지 않았습니다.");
-			location.href="/board/myListForm.do";
+			location.href="myListForm.do";
 		</script>
 	</c:if>
 </body>

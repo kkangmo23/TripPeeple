@@ -18,7 +18,7 @@
 	<c:if test="${check==0}">
 		<script type="text/javascript">
 			alert("게시물이 수정되지 않았습니다.");
-			location.href="/board/updateForm.do";
+			location.href="updateForm.do";
 		</script>
 	</c:if>
 </body>
