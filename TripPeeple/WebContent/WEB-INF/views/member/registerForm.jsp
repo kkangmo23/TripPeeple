@@ -81,9 +81,9 @@
 		window.open("checkIdForm.do", "", "width=350, height=200");
 	}
 	
-	function erase(){
-		document.getElementById("member_id").value="";
-	}
+// 	function erase(){
+// 		document.getElementById("member_id").value="";
+// 	}
 	
 // 	function checkPassword(){
 // 		var password=document.getElementById("password").value;
