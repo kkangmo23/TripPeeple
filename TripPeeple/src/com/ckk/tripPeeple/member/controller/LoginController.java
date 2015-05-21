@@ -28,7 +28,7 @@ public class LoginController {
 				session.setAttribute("member_num", memberData.getMember_num());
 				session.setAttribute("member_id", memberData.getMember_id());
 				session.setAttribute("email", memberData.getEmail());
-				return "member/tripHome";
+				return "board/tripHome";
 			} else{
 				request.setAttribute("errorMsg", "비밀번호가 일치하지않습니다.");
 				return "member/errorPage";

@@ -27,7 +27,7 @@ public class ListController {
 		
 		request.setAttribute("boardList", boardList);
 //		session.setAttribute("session", session.getAttribute("member_num"));
-		return "board/list";
+		return "board/tripHome";
 	}
 	
 	@RequestMapping(value="/myListForm.do", method=RequestMethod.GET)
