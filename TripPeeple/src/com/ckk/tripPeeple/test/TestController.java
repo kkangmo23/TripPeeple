@@ -9,6 +9,6 @@ public class TestController {
 
 	@RequestMapping(value = "/test.do", method = RequestMethod.GET)
 	public String viewTest() {
-		return "test/bHome03";
+		return "test/testHome";
 	}
 }
