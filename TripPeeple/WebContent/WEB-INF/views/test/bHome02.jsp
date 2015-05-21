@@ -56,29 +56,20 @@
 </script>
 
 <script type="text/javascript">
-	window.onload = function () {
-		var width = window.innerWidth;
-	   	var menus = document.getElementsByName("menu-by-size");
-		if (width < 768) {
-	    	menus[0].innerHTML = "로그인";
-	    	menus[1].innerHTML = "회원가입";
-		} else {
-			menus[0].innerHTML = "<span class='glyphicon glyphicon-log-in' aria-hidden='true'></span>";
-			menus[1].innerHTML = "<span class='glyphicon glyphicon-plus' aria-hidden='true'></span>";
-		}
+window.onload = setMenu;
+window.onresize = setMenu;	
+function setMenu() {
+	var width = window.innerWidth;
+   	var menus = document.getElementsByName("menu-by-size");
+	if (width < 768) {
+    	menus[0].innerHTML = "로그인";
+    	menus[1].innerHTML = "회원가입";
+	} else {
+		menus[0].innerHTML = "<span class='glyphicon glyphicon-log-in' aria-hidden='true'></span>";
+		menus[1].innerHTML = "<span class='glyphicon glyphicon-plus' aria-hidden='true'></span>";
 	}
+}
 
-	window.onresize = function () {
-		var width = window.innerWidth;
-	   	var menus = document.getElementsByName("menu-by-size");
-		if (width < 768) {
-	    	menus[0].innerHTML = "로그인";
-	    	menus[1].innerHTML = "회원가입";
-		} else {
-			menus[0].innerHTML = "<span class='glyphicon glyphicon-log-in' aria-hidden='true'></span>";
-			menus[1].innerHTML = "<span class='glyphicon glyphicon-plus' aria-hidden='true'></span>";
-		}
-	}
 </script>
 
 </head>

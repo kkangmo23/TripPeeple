@@ -27,25 +27,9 @@ $(function () {
 </script>
 
 <script type="text/javascript">
-	window.onload = function () {
-		var width = window.innerWidth;
-	   	var menus = document.getElementsByName("menu-by-size");
-		if (width < 768) {
-			menus[0].innerHTML = "My Page";
-			menus[1].innerHTML = "글쓰기";
-	    	menus[2].innerHTML = "팔로우관리";
-			menus[3].innerHTML = "회원정보수정";
-	    	menus[4].innerHTML = "로그아웃";
-		} else {
-			menus[0].innerHTML = "${member_id}님";
-			menus[1].innerHTML = "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>";
-			menus[2].innerHTML = "<span class='glyphicon glyphicon-user' aria-hidden='true'></span>";
-			menus[3].innerHTML = "<span class='glyphicon glyphicon-cog' aria-hidden='true'></span>";
-			menus[4].innerHTML = "<span class='glyphicon glyphicon-log-out' aria-hidden='true'></span>";
-		}
-	}
-
-	window.onresize = function () {
+	window.onload = setMenu;
+	window.onresize = setMenu;	
+	function setMenu() {
 		var width = window.innerWidth;
 	   	var menus = document.getElementsByName("menu-by-size");
 		if (width < 768) {
