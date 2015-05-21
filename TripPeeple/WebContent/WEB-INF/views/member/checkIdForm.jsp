@@ -4,7 +4,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Nickname Check</title>
+
+<link rel="icon" href="./img/favicon.ico">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- Custom styles for this template -->
+<link href="./css/cover.css" rel="stylesheet">
+
 <script type="text/javascript">
 	function confirmChk(){
 		var member_id=document.getElementById("member_id").value;
@@ -13,20 +26,23 @@
 </script>
 </head>
 <body>
-	<form action="checkId.do" method="post">
-<table>
-	<tr>
-		<td>닉네임</td>
-		<td><input type="text" name="member_id" required="required"></td>
-	</tr>
-	<tr>
-		<td colspan="2" align="center">
-		<input type="submit" value="중복확인">
-		<input type="button" value="취소" onclick="self.close()">
-		</td>
-	</tr>
-</table>
-</form>
-<div></div>
+
+<div class="check-content">
+	<h4><small>Nick Name을 입력해주세요</small></h4>
+	<form class="form-horizontal" action="checkId.do" method="post">
+		<div class="form-group">			
+			<div class="col-sm-5">
+				<input type="text" name="member_id" id="member_id" class="form-control" required="required" placeholder="Nick Name" >
+			</div>
+		</div>
+		
+		<hr>
+		 
+		<button type="submit" class="btn btn-default" >중복확인</button>
+		<button type="button" class="btn btn-default" onclick="self.close()">취소</button>
+		
+	</form>
+</div>
+
 </body>
 </html>

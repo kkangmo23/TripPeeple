@@ -54,6 +54,19 @@ footer {
 	overflow: hidden;
 }
 
+.check-content {
+	width: 80%;
+	padding: 5%;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: hidden;
+}
+
+.check-content hr{
+	border-top: 1px solid #D5D5D5;
+}
+
 .form-control[readonly] {
   cursor: text;
   background-color: inherit;
