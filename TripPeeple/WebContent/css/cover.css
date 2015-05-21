@@ -54,6 +54,12 @@ footer {
 	overflow: hidden;
 }
 
+.form-control[readonly] {
+  cursor: text;
+  background-color: inherit;
+  opacity: 1;
+}
+
 
 /* 	layer popup */
 .layer {

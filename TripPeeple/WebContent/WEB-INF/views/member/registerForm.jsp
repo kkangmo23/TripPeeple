@@ -9,7 +9,7 @@
 
 <link rel="icon" href="./img/favicon.ico">
 
-<title>Cover Template for Bootstrap</title>
+<title>TripPeeple</title>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -57,7 +57,9 @@
 </script>
 
 <script type="text/javascript">
-	window.onresize = function () {
+	window.onload = setMenu;
+	window.onresize = setMenu;	
+	function setMenu() {
 		var width = window.innerWidth;
 	   	var menus = document.getElementsByName("menu-by-size");
 		if (width < 768) {
@@ -68,6 +70,7 @@
 			menus[1].innerHTML = "<span class='glyphicon glyphicon-plus' aria-hidden='true'></span>";
 		}
 	}
+
 </script>
 
 <script type="text/javascript">
@@ -140,6 +143,7 @@
 </head>
 
 <body>
+<!-- header -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -169,7 +173,11 @@
 			<!--/.navbar-collapse -->
 		</div>
 	</nav>
+<!-- //header -->
 
+
+
+<!-- content -->
 	<div id="content">
 		<div class="form-content">
 		
@@ -180,7 +188,7 @@
 		  <div class="form-group">
 		    <label for="email" class="col-sm-4 control-label">Email</label>
 		    <div class="col-sm-5">
-		      <input type="email" name="email" id="email" class="form-control" placeholder="Email" onclick="checkEmail()">
+		      <input type="email" name="email" id="email" class="form-control" placeholder="Email"  readonly="readonly"  onmousedown="checkEmail()">
 		    </div>
 		  </div>
 		  <div class="form-group">
@@ -202,18 +210,20 @@
 		  <div class="form-group">
 		    <label for="member_id" class="col-sm-4 control-label">Nick Name</label>
 		    <div class="col-sm-5">
-		    	<input type="text" name="member_id" id="member_id" class="form-control" placeholder="Nick Name" onclick="checkId()">
+		    	<input type="text" name="member_id" id="member_id" class="form-control" placeholder="Nick Name" readonly="readonly"  onmousedown="checkId()">
 <!-- 		    	<button type="button" class="btn btn-default" onclick="erase()">지우기</button> -->
 		    </div>
 		  </div>
 		  
-		  <div>
+		 <div>
 				<label>선호국가</label>
 				<input type="checkbox" name="like_country" value="한국"/> 한국 &nbsp;
 				<input type="checkbox" name="like_country" value="중국"/> 중국 &nbsp;	
 				<input type="checkbox" name="like_country" value="미국"/> 미국 &nbsp;	
 				<input type="checkbox" name="like_country" value="일본"/> 일본 &nbsp;	
 			</div>		
+		  
+		  
 		  <hr>
 		 
 		      <button type="button" class="btn btn-default" onclick="regist()">회원가입</button>
@@ -223,14 +233,14 @@
 
 		</div>
 	</div>
+<!-- //content -->
 
-	<div class="container">		
 
+<!-- footer -->	
 	<footer>
 		<p>&copy; CopyRight @ km</p>
 	</footer>
-	</div>
-	<!-- /container -->
+<!-- //footer -->
 
 	<!--layer //-->
 	<div class="layer">
