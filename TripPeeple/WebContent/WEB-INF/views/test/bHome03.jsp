@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,18 +27,44 @@ $(function () {
 </script>
 
 <script type="text/javascript">
+	window.onload = function () {
+		var width = window.innerWidth;
+	   	var menus = document.getElementsByName("menu-by-size");
+		if (width < 768) {
+			menus[0].innerHTML = "My Page";
+			menus[1].innerHTML = "글쓰기";
+	    	menus[2].innerHTML = "팔로우관리";
+			menus[3].innerHTML = "회원정보수정";
+	    	menus[4].innerHTML = "로그아웃";
+		} else {
+			menus[0].innerHTML = "${member_id}님";
+			menus[1].innerHTML = "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>";
+			menus[2].innerHTML = "<span class='glyphicon glyphicon-user' aria-hidden='true'></span>";
+			menus[3].innerHTML = "<span class='glyphicon glyphicon-cog' aria-hidden='true'></span>";
+			menus[4].innerHTML = "<span class='glyphicon glyphicon-log-out' aria-hidden='true'></span>";
+		}
+	}
+
 	window.onresize = function () {
 		var width = window.innerWidth;
 	   	var menus = document.getElementsByName("menu-by-size");
 		if (width < 768) {
-	    	menus[0].innerHTML = "회원정보수정";
-	    	menus[1].innerHTML = "로그아웃";
+			menus[0].innerHTML = "My Page";
+			menus[1].innerHTML = "글쓰기";
+	    	menus[2].innerHTML = "팔로우관리";
+			menus[3].innerHTML = "회원정보수정";
+	    	menus[4].innerHTML = "로그아웃";
 		} else {
-			menus[0].innerHTML = "<span class='glyphicon glyphicon-cog' aria-hidden='true'></span>";
-			menus[1].innerHTML = "<span class='glyphicon glyphicon-log-out' aria-hidden='true'></span>";
+			menus[0].innerHTML = "${member_id}님";
+			menus[1].innerHTML = "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>";
+			menus[2].innerHTML = "<span class='glyphicon glyphicon-user' aria-hidden='true'></span>";
+			menus[3].innerHTML = "<span class='glyphicon glyphicon-cog' aria-hidden='true'></span>";
+			menus[4].innerHTML = "<span class='glyphicon glyphicon-log-out' aria-hidden='true'></span>";
 		}
 	}
+	
 </script>
+
 
 </head>
 
@@ -55,17 +80,32 @@ $(function () {
 					<span class="icon-bar"></span> <span class="icon-bar"></span> 
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Project Name</a>
+				<a class="navbar-brand" href="index.do">Trip Peeple</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="#" name="menu-by-size" data-container="body" data-toggle="tooltip" title="회원정보수정">
+						<a href="#" name="menu-by-size" data-container="body" data-toggle="tooltip" title="My Page">
+							${member_id}님
+						</a>
+					</li>
+					<li>
+						<a href="#" name="menu-by-size" data-container="body" data-toggle="tooltip" title="글쓰기">
+							<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>						
+						</a>
+					</li>
+					<li>
+						<a href="#" name="menu-by-size" data-container="body" data-toggle="tooltip" title="팔로우관리">
+							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>						
+						</a>
+					</li>
+					<li>
+						<a href="modifyForm.do" name="menu-by-size" data-container="body" data-toggle="tooltip" title="회원정보수정">
 							<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>						
 						</a>
 					</li>
 					<li>
-						<a href="./bHome02.jsp" name="menu-by-size" data-container="body" data-toggle="tooltip" title="로그아웃">
+						<a href="logout.do" name="menu-by-size" data-container="body" data-toggle="tooltip" title="로그아웃">
 							<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>						
 						</a>					
 					</li>					

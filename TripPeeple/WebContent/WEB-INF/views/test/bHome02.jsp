@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,6 +56,18 @@
 </script>
 
 <script type="text/javascript">
+	window.onload = function () {
+		var width = window.innerWidth;
+	   	var menus = document.getElementsByName("menu-by-size");
+		if (width < 768) {
+	    	menus[0].innerHTML = "로그인";
+	    	menus[1].innerHTML = "회원가입";
+		} else {
+			menus[0].innerHTML = "<span class='glyphicon glyphicon-log-in' aria-hidden='true'></span>";
+			menus[1].innerHTML = "<span class='glyphicon glyphicon-plus' aria-hidden='true'></span>";
+		}
+	}
+
 	window.onresize = function () {
 		var width = window.innerWidth;
 	   	var menus = document.getElementsByName("menu-by-size");
@@ -83,7 +94,7 @@
 					<span class="sr-only">Toggle navigation</span> <span
 						class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Project Name</a>				
+				<a class="navbar-brand" href="index.do">Trip Peeple</a>				
 			</div>
 			
 			<div id="navbar" class="navbar-collapse collapse">
@@ -94,7 +105,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="#" name="menu-by-size" data-container="body" data-toggle="tooltip" title="회원가입">
+						<a href="registerForm.do"" name="menu-by-size" data-container="body" data-toggle="tooltip" title="회원가입">
 							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>						
 						</a>
 					</li>
