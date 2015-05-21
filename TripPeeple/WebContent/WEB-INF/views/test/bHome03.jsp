@@ -8,7 +8,7 @@
 
 <link rel="icon" href="./img/favicon.ico">
 
-<title>Cover Template for Bootstrap</title>
+<title>TripPeeple</title>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -71,7 +71,7 @@ $(function () {
 <body>
 <!-- header -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
+		<div class="container" >
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -122,16 +122,12 @@ $(function () {
 
 <!-- content -->
 	<div id="content">
-		<div class="container">
-			<div class="board-content">
-				<p>안녕하세옄ㅋㅋ</p>
-			</div>
-		</div>	
-	
-		<div class="container">
-			<div class="board-content">
-				<p>반갑습니닼ㅋㅋㅋ</p>
-			</div>
+		<div class="board-content">
+			<p>안녕하세옄ㅋㅋ</p>
+		</div>
+
+		<div class="board-content">
+			<p>반갑습니닼ㅋㅋㅋ</p>
 		</div>
 	</div>
 	
@@ -139,11 +135,11 @@ $(function () {
 
 
 <!-- footer -->
-	<div class="container">
-		<footer>
-			<p>&copy; Company 2014</p>
-		</footer>
-	</div>
+	
+	<footer>
+		<p>&copy; Company 2014</p>
+	</footer>
+	
 <!-- //footer -->
 	
 

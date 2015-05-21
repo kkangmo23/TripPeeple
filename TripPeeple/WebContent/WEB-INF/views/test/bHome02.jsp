@@ -8,7 +8,7 @@
 
 <link rel="icon" href="./img/favicon.ico">
 
-<title>Cover Template for Bootstrap</title>
+<title>TripPeeple</title>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -138,12 +138,11 @@
 <!-- //content -->
 
 
-<!-- footer -->
-	<div class="container">
-		<footer>
-			<p>&copy; Company 2014</p>
-		</footer>
-	</div>
+<!-- footer -->	
+	<footer>
+		<p>&copy; Company 2014</p>
+	</footer>
+	
 <!-- //footer -->
 
 	<!--layer //-->
