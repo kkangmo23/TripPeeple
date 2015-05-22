@@ -124,7 +124,7 @@ $(function () {
 				<div class="form-group">
 					<label for="content" class="col-sm-3 control-label">글 내용</label>
 					<div class="col-sm-7">
-						<textarea class="form-control" rows="14" name="content" placeholder="내용을 입력해주세요">${board.content}</textarea>
+						<textarea class="form-control" rows="14" name="content" placeholder="내용을 입력해주세요">${board.content}${board.board_num}</textarea>
 					</div>
 				</div>
 				<div class="form-group">

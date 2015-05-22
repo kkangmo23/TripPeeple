@@ -167,8 +167,8 @@ $(function () {
 					
 					<hr>
 					
-					<form action="" method="post" name="boardUD">
-					<input type="hidden" name="board_num" value="${board.board_num }">
+				<form action="" method="post" name="boardUD">
+					
 					
 					<a href="#" data-container="body" data-toggle="tooltip" title="Like">
 						<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>						
@@ -179,6 +179,7 @@ $(function () {
 					
 					<!-- 글주인에게만 보이게 하기 -->
 					<c:if test="${member_num==member}">
+						<input type="hidden" name="board_num" value="${board.board_num}">
 						
 						<a href="#" data-container="body" data-toggle="tooltip" title="수정">
 							<span class="glyphicon glyphicon-edit" aria-hidden="true" onclick="boardUpdate()"></span>						
