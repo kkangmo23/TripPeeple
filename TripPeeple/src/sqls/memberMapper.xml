@@ -1,25 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
-<sqlMap namespace="follow">
-<typeAlias alias="MDto" type="com.ckk.tripPeeple.follow.MemberDto"/>
+<sqlMap namespace="member">
+<typeAlias alias="MDto" type="com.ckk.tripPeeple.member.MemberDto"/>
 	<resultMap class="MDto" id="MBDto">                       
 		<result property="member_num" column="MEMBER_NUM"/>
+		<result property="email" column="EMAIL"/>
+		<result property="password" column="PASSWORD"/>
 		<result property="member_id" column="MEMBER_ID"/>
+		<result property="like_country" column="LIKE_COUNTRY"/>
 	</resultMap>
 	
 	<sql id="column">
-		MEMBER_NUM, MEMBER_ID
+		MEMBER_NUM, EMAIL, PASSWORD, MEMBER_ID, LIKE_COUNTRY
 	</sql>
 
-<select id="getFollowing" parameterClass="java.lang.Integer" resultMap="MBDto">
+<select id="selectAll" parameterClass="java.lang.String" resultMap="MBDto">
 	SELECT 
 	<include refid="column"/>
 	FROM MEMBER
-	WHERE MEMBER_NUM 
-	IN (SELECT FOLLWING_NUM 
-		FROM MEMBER 
-		JOIN FOLLOW ON(MEMBER_NUM=FOLLWER_NUM)
-		WHERE MEMBER_NUM=#member_num#)
+	WHERE EMAIL = #email#
 </select>
+
+<select id="checkEmail" parameterClass="java.lang.String" resultClass="java.lang.String">
+	SELECT EMAIL
+	FROM MEMBER
+	WHERE EMAIL = #email#
+</select>
+
+<insert id="insertMember" parameterClass="MDto">
+	<selectKey resultClass="java.lang.Integer" keyProperty="member_num">
+		SELECT MEMBER_NUM_SEQ.NEXTVAL AS MEMBER_NUM FROM DUAL
+	</selectKey>
+
+	INSERT INTO MEMBER(MEMBER_NUM, EMAIL, PASSWORD, MEMBER_ID, LIKE_COUNTRY) 
+	VALUES(#member_num#,#email#,#password#,#member_id#,#like_country#)
+</insert>
+
+<select id="checkId" parameterClass="java.lang.String" resultClass="java.lang.String">
+	SELECT MEMBER_ID
+	FROM MEMBER
+	WHERE MEMBER_ID = #member_id#
+</select>
+
+<update id="updateMember" parameterClass="MDto">
+	UPDATE MEMBER 
+	SET 
+	PASSWORD=#password#,
+	MEMBER_ID=#member_id#,
+	LIKE_COUNTRY=#like_country#
+	WHERE MEMBER_NUM=#member_num# 
+</update>
 
 </sqlMap>

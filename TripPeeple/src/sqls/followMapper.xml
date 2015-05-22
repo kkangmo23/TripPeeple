@@ -1,3 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
-<sqlMap></sqlMap>
+<sqlMap namespace="follow">
+<typeAlias alias="FDto" type="com.ckk.tripPeeple.follow.FollowDto"/>
+	<resultMap class="FDto" id="FBDto">                       
+		<result property="member_num" column="MEMBER_NUM"/>
+		<result property="member_id" column="MEMBER_ID"/>
+	</resultMap>
+	
+	<sql id="column">
+		MEMBER_NUM, MEMBER_ID
+	</sql>
+
+<select id="getFollowing" parameterClass="java.lang.Integer" resultMap="FBDto">
+	SELECT 
+	<include refid="column"/>
+	FROM MEMBER
+	WHERE MEMBER_NUM 
+	IN (SELECT FOLLWING_NUM 
+		FROM MEMBER 
+		JOIN FOLLOW ON(MEMBER_NUM=FOLLWER_NUM)
+		WHERE MEMBER_NUM=#member_num#)
+</select>
+
+</sqlMap>
