@@ -7,7 +7,6 @@ public class FollowDto implements Serializable{
 	private static final long serialVersionUID = 2849268774157327847L;
 
 	private int member_num;
-	private String email;
 	private String member_id;
 	
 	
@@ -16,12 +15,6 @@ public class FollowDto implements Serializable{
 	}
 	public void setMember_num(int member_num) {
 		this.member_num = member_num;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
 	}
 	public String getMember_id() {
 		return member_id;

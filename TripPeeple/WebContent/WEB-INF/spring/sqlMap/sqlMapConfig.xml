@@ -10,5 +10,6 @@
 
 	<sqlMap resource="/sqls/memberMapper.xml"/>
 	<sqlMap resource="/sqls/boardMapper.xml"/>
-	<sqlMap resource="/sqls/replyMapper.xml"/>
+	<sqlMap resource="/sqls/followMapper.xml"/>
+<!-- 	<sqlMap resource="/sqls/replyMapper.xml"/> -->
 </sqlMapConfig>

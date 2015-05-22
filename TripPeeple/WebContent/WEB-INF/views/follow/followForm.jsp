@@ -107,7 +107,7 @@ $(function () {
 <!-- content -->
 	<div id="content">
 		<h1>팔로우 관리 화면</h1>
-
+		<p>${followingLists}</p>
 	</div>
 	
 <!-- //content -->
