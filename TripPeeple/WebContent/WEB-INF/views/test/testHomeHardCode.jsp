@@ -229,7 +229,7 @@ $(function () {
 			<!-- //top -->
 			<!-- mid -->
 			<div class="board-video">
-				<video src="./video/exid.mp4" controls="controls" style="width: inherit;"></video>				
+				<video src="/rep/exid.mp4" controls="controls" style="width: inherit;"></video>				
 			</div>		
 			<div class="board-info2">
 				<p>올ㅋ</p>
