@@ -1,0 +1,20 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?> -->
+<!-- <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" > -->
+<!-- <sqlMap namespace="reply"> -->
+
+<!-- <typeAlias alias="RDto" type="com.ckk.tripPeeple.reply.ReplyDto"/> -->
+<!-- 	<resultMap class="RDto" id="mapRDto">                        -->
+<!-- 		<result property="reply_num" column="REPLY_NUM"/> -->
+<!-- 		<result property="board_num" column="BOARD_NUM"/> -->
+<!-- 		<result property="replyer_num" column="REPLYER_NUM"/> -->
+<!-- 		<result property="r_content" column="R_CONTENT"/> -->
+<!-- 		<result property="create_time" column="CREATE_TIME"/> -->
+<!-- 		<result property="modify_time" column="MODIFY_TIME"/> -->
+<!-- 	</resultMap> -->
+	
+<!-- 	<sql id="column"> -->
+<!-- 		REPLY_NUM, BOARD_NUM, REPLYER_NUM, R_CONTENT, CREATE_TIME, MODIFY_TIME -->
+<!-- 	</sql> -->
+
+
+<!-- </sqlMap> -->
