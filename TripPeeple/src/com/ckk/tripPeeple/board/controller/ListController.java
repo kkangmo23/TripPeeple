@@ -33,7 +33,7 @@ public class ListController {
 	@RequestMapping(value="/myListForm.do", method=RequestMethod.GET)
 	public String myListForm(HttpServletRequest request, HttpSession session) throws Exception {
 		int member=Integer.parseInt(request.getParameter("member_num"));
-//		System.out.println(member);
+		System.out.println(member);
 		
 		List<BoardDto> boardList=null;
 		boardList=boardService.getBoardList();

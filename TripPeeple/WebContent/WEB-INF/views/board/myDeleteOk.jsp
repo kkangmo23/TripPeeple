@@ -12,14 +12,14 @@
 	<c:if test="${check>0}">
 			<script type="text/javascript">
 				alert("게시물이 삭제 되었습니다.");
-				location.href="myListForm.do";
+				location.href="myListForm.do?member_num=${member_num}";
 			</script>
 	</c:if>
 		
 	<c:if test="${check==0}">
 		<script type="text/javascript">
 			alert("게시물이 삭제 되지 않았습니다.");
-			location.href="myListForm.do";
+			location.href="myListForm.do?member_num=${member_num}";
 		</script>
 	</c:if>
 </body>

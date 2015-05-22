@@ -52,19 +52,29 @@ $(function () {
 </script>
 
 <script type="text/javascript">
-	function boardUpdate() {
-		var form = document.forms["boardUD"];
-		form.action = "myUpdateForm.do";
-		form.method = "post";
-		form.submit();
+	function boardUpdate(board_num) {
+		// alert(board_num);
+		
+		var boardUD = document.getElementById("boardUD");	
+		boardUD.action="myUpdateForm.do";
+		boardUD.method="post";
+		
+		var input=document.getElementById("board_num");
+		input.value=board_num;
+		boardUD.submit(); 
+		
 	}
 	
-	function boardDelete() {
+	function boardDelete(board_num) {
 		if (confirm("정말 삭제하시겠습니까??") == true){    //확인
-			var form = document.forms["boardUD"];
-			form.action = "myDelete.do";
-			form.method = "post";
-			form.submit();
+			var boardUD = document.getElementById("boardUD");	
+			boardUD.action="myDelete.do";
+			boardUD.method="post";
+			
+			var input=document.getElementById("board_num");
+			input.value=board_num;
+			boardUD.submit(); 
+			
 		}else{   //취소
 		    return;
 		}
@@ -167,8 +177,8 @@ $(function () {
 					
 					<hr>
 					
-				<form action="" method="post" name="boardUD">
-					
+				<form id="boardUD" name="boardUD">
+					<input id="board_num" type="hidden" name="board_num" value="${board.board_num}">
 					
 					<a href="#" data-container="body" data-toggle="tooltip" title="Like">
 						<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>						
@@ -179,18 +189,15 @@ $(function () {
 					
 					<!-- 글주인에게만 보이게 하기 -->
 					<c:if test="${member_num==member}">
-						<input type="hidden" name="board_num" value="${board.board_num}">
 						
 						<a href="#" data-container="body" data-toggle="tooltip" title="수정">
-							<span class="glyphicon glyphicon-edit" aria-hidden="true" onclick="boardUpdate()"></span>						
+							<span class="glyphicon glyphicon-edit" aria-hidden="true" onclick="boardUpdate(${board.board_num})"></span>						
 						</a>
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="#" data-container="body" data-toggle="tooltip" title="삭제">
-							<span class="glyphicon glyphicon-trash" aria-hidden="true" onclick="boardDelete()"></span>
+							<span class="glyphicon glyphicon-trash" aria-hidden="true" onclick="boardDelete(${board.board_num})"></span>
 						</a>
-						
 					</c:if>
-					
 				</form>
 				</div>
 				<br/>

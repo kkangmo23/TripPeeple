@@ -52,19 +52,32 @@ $(function () {
 </script>
 
 <script type="text/javascript">
-	function boardUpdate() {
-		var form = document.forms["boardUD"];
-		form.action = "updateForm.do";
-		form.method = "post";
-		form.submit();
+	function boardUpdate(board_num) {
+// 		var form = document.forms["updateForm"]; 		
+// 		form.action = "updateForm.do";
+// 		form.method = "post";
+// 		form.submit(); 
+	
+// 		alert("board_num:" + board_num);
+		
+		var boardUD = document.getElementById("boardUD");	
+		boardUD.action="updateForm.do";
+		boardUD.method="post";
+		
+		var input=document.getElementById("board_num");
+		input.value=board_num;
+		boardUD.submit(); 
 	}
 	
-	function boardDelete() {
+	function boardDelete(board_num) {
 		if (confirm("정말 삭제하시겠습니까??") == true){    //확인
-			var form = document.forms["boardUD"];
-			form.action = "delete.do";
-			form.method = "post";
-			form.submit();
+			var boardUD = document.getElementById("boardUD");	
+			boardUD.action="delete.do";
+			boardUD.method="post";
+			
+			var input=document.getElementById("board_num");
+			input.value=board_num;
+			boardUD.submit(); 
 		}else{   //취소
 		    return;
 		}
@@ -160,32 +173,32 @@ $(function () {
 		<br/>
 		<!-- bot -->
 		<div class="board-info3">
-			<h5><small>${board.city_num } 에서</small></h5>
+			<h5><small>${board.city_num} 에서</small></h5>
 			
 			<hr>
 			
-			<form action="" method="post" name="boardUD">
-			<input type="hidden" name="board_num" value="${board.board_num }">
-			
-			<a href="#" data-container="body" data-toggle="tooltip" title="Like">
-				<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>						
-			</a>
-			&nbsp;
-			${board.likes }
-			&nbsp;&nbsp;
+			<form id="boardUD" name="boardUD">
+				<input id="board_num" type="hidden" name="board_num" value="${board.board_num}">
+				
+				<a href="#" data-container="body" data-toggle="tooltip" title="Like">
+					<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>						
+				</a>
+				&nbsp;
+				${board.likes }
+				&nbsp;&nbsp;
 			
 			<!-- 글주인에게만 보이게 하기 -->
-			<c:if test="${board.member_num==member_num}">
-								
-				<a href="#" data-container="body" data-toggle="tooltip" title="수정">
-					<span class="glyphicon glyphicon-edit" aria-hidden="true" onclick="boardUpdate()"></span>						
-				</a>
-				&nbsp;&nbsp;&nbsp;&nbsp;
-				<a href="#" data-container="body" data-toggle="tooltip" title="삭제">
-					<span class="glyphicon glyphicon-trash" aria-hidden="true" onclick="boardDelete()"></span>
-				</a>				
-			</c:if>	
-			</form>
+				<c:if test="${board.member_num==member_num}">				
+					<a href="#" data-container="body" data-toggle="tooltip" title="수정">
+						<!--  <span class="glyphicon glyphicon-edit" aria-hidden="true" onclick="boardUpdate(${board.board_num})"></span>	-->	 
+						 <span class="glyphicon glyphicon-edit" aria-hidden="true" onclick="boardUpdate(${board.board_num})"></span>				
+					</a>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="#" data-container="body" data-toggle="tooltip" title="삭제">
+						<span class="glyphicon glyphicon-trash" aria-hidden="true" onclick="boardDelete(${board.board_num})"></span>
+					</a>				
+				</c:if>	
+			</form>	
 		</div>
 		<br/>
 		<div class="board-reply">
@@ -198,14 +211,13 @@ $(function () {
 			
 			<!-- 기존 데이터 -->
 			<c:forEach var="reply" items="${replyList}">
-			<div class="replyDiv" id="${reply.num}">
-				<span>${reply.num}</span>
-				<span>${reply.line_reply}</span>
-				<span>
-					<a href="javascript:upSelectToServer('${reply.num}','${root}')">Modify&nbsp;&nbsp;</a><a href="javascript:deleteToServer('${reply.num}','${root}')">Delete</a>
-				</span>
-			</div>
-			
+				<div class="replyDiv" id="${reply.num}">
+					<span>${reply.num}</span>
+					<span>${reply.line_reply}</span>
+					<span>
+						<a href="javascript:upSelectToServer('${reply.num}','${root}')">Modify&nbsp;&nbsp;</a><a href="javascript:deleteToServer('${reply.num}','${root}')">Delete</a>
+					</span>
+				</div>
 			</c:forEach>
 		</div>
 		<!-- /bot -->
