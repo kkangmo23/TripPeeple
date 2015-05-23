@@ -12,25 +12,19 @@
 	</sql>
 
 <select id="getFollowing" parameterClass="java.lang.Integer" resultMap="FBDto">
-	SELECT 
-	<include refid="column"/>
-	FROM MEMBER
-	WHERE MEMBER_NUM 
-	IN (SELECT FOLLWING_NUM 
-		FROM MEMBER 
-		JOIN FOLLOW ON(MEMBER_NUM=FOLLWER_NUM)
-		WHERE MEMBER_NUM=#member_num#)
+SELECT <include refid="column"/>
+FROM MEMBER
+WHERE MEMBER_NUM IN (SELECT FOLLWING_NUM 
+FROM FOLLOW
+WHERE FOLLWER_NUM=#member_num#)
 </select>
 
 <select id="getFollower" parameterClass="java.lang.Integer" resultMap="FBDto">
-	SELECT 
-	<include refid="column"/>
-	FROM MEMBER
-	WHERE MEMBER_NUM 
-	IN (SELECT FOLLWER_NUM 
-		FROM MEMBER 
-		JOIN FOLLOW ON(MEMBER_NUM=FOLLWING_NUM)
-		WHERE MEMBER_NUM=#member_num#)
+SELECT <include refid="column"/>
+FROM MEMBER
+WHERE MEMBER_NUM IN (SELECT FOLLWER_NUM 
+FROM FOLLOW
+WHERE FOLLWING_NUM=#member_num#)
 </select>
 
 <delete id="deleteFollowing" parameterClass="java.lang.Integer">

@@ -113,7 +113,8 @@ $(function () {
 
 <!-- content -->
 	<div id="content">
-		<h1>팔로윙 리스트</h1>
+		<h1>내가 팔로워 하는 사람들</h1>
+		<form action="followDelete.do" method="post">
 		<table border="1">
 		<col width="200px"><col width="300px"><col width="50px">
 		<tr><th>멤버 넘버(히든처리)</th><th>팔로윙 아이디</th><th>삭제</th></tr>
@@ -129,20 +130,19 @@ $(function () {
 						<td><c:out value="${following.member_num}"/></td>
 						<td><c:out value="${following.member_id}"/></td>
 						<td>
-							<form action="followDelete.do" method="post">
-								<input type="hidden" name="num" value="${following.member_num}">
-								<input type="submit" value="삭제">
-							</form>
+							<input type="hidden" name="num" value="${following.member_num}">
+							<input type="submit" value="삭제">
 						</td>
 					</tr>
 				</c:forEach>
 				</c:otherwise>
 			</c:choose>
 		</table>
-		<h1>팔로워 리스트</h1>
+		</form>
+		<h1>나를 팔로워하는 사람들</h1>
 		<table border="1">
-		<col width="200px"><col width="300px">
-		<tr><th>멤버 넘버(히든처리)</th><th>팔로워 아이디</th></tr>
+		<col width="200px"><col width="300px"><col width="50px">
+		<tr><th>멤버 넘버(히든처리)</th><th>팔로워 아이디</th><th>삭제</th></tr>
 		<c:choose>
 			<c:when test="${empty followerLists}">
 				<tr>
@@ -154,6 +154,7 @@ $(function () {
 					<tr>
 						<td><c:out value="${follower.member_num}"/></td>
 						<td><c:out value="${follower.member_id}"/></td>
+						<td></td>
 					</tr>
 				</c:forEach>
 			</c:otherwise>
