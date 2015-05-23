@@ -29,7 +29,6 @@ $(function () {
 </script>
 
 <script type="text/javascript" src="./js/replyWrite.js"></script>
-<script type="text/javascript" src="../../replyWrite.js"></script>
 <!-- <script type="text/javascript" src="replyDelete.js"></script> -->
 <!-- <script type="text/javascript" src="replyUpdate.js"></script> -->
 

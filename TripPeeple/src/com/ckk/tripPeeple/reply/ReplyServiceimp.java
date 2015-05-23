@@ -1,5 +1,7 @@
 package com.ckk.tripPeeple.reply;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +17,11 @@ public class ReplyServiceimp implements ReplyService{
 			isc=true;
 		}
 		return isc;
+	}
+
+	@Override
+	public List<ReplyDto> getReplyList(int board_num) throws Exception {
+		System.out.println("passed");
+		return replyDao.getReplyList(board_num);
 	}
 }

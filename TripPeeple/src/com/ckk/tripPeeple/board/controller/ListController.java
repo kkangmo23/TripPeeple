@@ -27,7 +27,11 @@ public class ListController {
 		
 		request.setAttribute("boardList", boardList);
 //		session.setAttribute("session", session.getAttribute("member_num"));
-		return "board/tripHome";
+		
+//		int board_num=Integer.parseInt(request.getParameter("board_num"));
+//		System.out.println("board_num");
+		
+		return "redirect:/replyWrite.do";
 	}
 	
 	@RequestMapping(value="/myListForm.do", method=RequestMethod.GET)
