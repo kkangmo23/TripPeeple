@@ -9,7 +9,7 @@ public class TestController {
 
 	@RequestMapping(value = "/fileTest.do", method = RequestMethod.GET)
 	public String fileTest() {
-		return "test/fileTest";
+		return "test/fileTest2";
 	}
 	
 	@RequestMapping(value = "/test.do", method = RequestMethod.GET)

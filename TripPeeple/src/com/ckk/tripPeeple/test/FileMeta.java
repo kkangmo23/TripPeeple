@@ -7,7 +7,6 @@ public class FileMeta {
  
     private String fileName;
     private String fileSize;
-    private String fileType; 
     private byte[] bytes;
 
 	public String getFileName() {
@@ -24,14 +23,6 @@ public class FileMeta {
 
 	public void setFileSize(String fileSize) {
 		this.fileSize = fileSize;
-	}
-
-	public String getFileType() {
-		return fileType;
-	}
-
-	public void setFileType(String fileType) {
-		this.fileType = fileType;
 	}
 
 	public byte[] getBytes() {
