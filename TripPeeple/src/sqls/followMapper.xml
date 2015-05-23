@@ -25,8 +25,8 @@ WHERE FOLLWER_NUM=#member_num#)
 SELECT MEMBER_NUM, MEMBER_ID, CASE 
                               WHEN MEMBER_NUM IN (SELECT FOLLWING_NUM
                                                   FROM FOLLOW
-                                                  WHERE FOLLWER_NUM=#member_num#) THEN 'TRUE'
-                              ELSE 'FALSE'
+                                                  WHERE FOLLWER_NUM=#member_num#) THEN 'doDelete'
+                              ELSE 'doFollow'
                               END AS FOLLOW_CHECK
 FROM MEMBER
 WHERE MEMBER_NUM IN (SELECT FOLLWER_NUM 

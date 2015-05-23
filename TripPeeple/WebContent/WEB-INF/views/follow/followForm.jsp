@@ -154,7 +154,15 @@ $(function () {
 					<tr>
 						<td><c:out value="${follower.member_num}"/></td>
 						<td><c:out value="${follower.member_id}"/></td>
-						<td><c:out value="${follower.follow_check}"/></td>
+						<c:choose>
+							<c:when test="${follower.follow_check eq 'doDelete'}">
+								<td>삭제들어갈듯</td>	
+							</c:when>
+							<c:otherwise>
+								<td>팔로워하기들어갈듯</td>
+							</c:otherwise>
+						</c:choose>
+						
 					</tr>
 				</c:forEach>
 			</c:otherwise>
