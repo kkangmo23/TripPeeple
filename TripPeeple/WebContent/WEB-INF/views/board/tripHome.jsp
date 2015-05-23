@@ -28,6 +28,11 @@ $(function () {
 	})
 </script>
 
+<script type="text/javascript" src="./js/replyWrite.js"></script>
+<script type="text/javascript" src="../../replyWrite.js"></script>
+<!-- <script type="text/javascript" src="replyDelete.js"></script> -->
+<!-- <script type="text/javascript" src="replyUpdate.js"></script> -->
+
 <script type="text/javascript">
 	window.onload = setMenu;
 	window.onresize = setMenu;	
@@ -203,8 +208,8 @@ $(function () {
 		<br/>
 		<div class="board-reply">
 			<div>
-				<input id="writeReply" type="text" name="write" size="45"/>
-				<input type="button" value="Reply" onclick="writeToServer('${root}','${boardNumber}')"/>
+				<input id="writeReply" type="text" name="writeReply" size="45"/>
+				<input type="button" value="Reply" onclick="writeToServer('${board.board_num}')"/>
 			</div>
 			<!-- 새로운 데이터 -->
 			<div id="newReply"></div>

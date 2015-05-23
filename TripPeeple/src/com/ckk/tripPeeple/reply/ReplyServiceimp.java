@@ -1,5 +1,19 @@
 package com.ckk.tripPeeple.reply;
 
-public class ReplyServiceimp {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
+public class ReplyServiceimp implements ReplyService{
+	@Autowired
+	private ReplyDao replyDao;
+	
+	@Override
+	public boolean insertReply(ReplyDto replyDto) throws Exception {
+		boolean isc=false;
+		if(replyDao.insertBoard(replyDto)!=0){
+			isc=true;
+		}
+		return isc;
+	}
 }

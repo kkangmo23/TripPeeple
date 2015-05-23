@@ -1,20 +1,29 @@
-<!-- <?xml version="1.0" encoding="UTF-8"?> -->
-<!-- <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" > -->
-<!-- <sqlMap namespace="reply"> -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="reply">
 
-<!-- <typeAlias alias="RDto" type="com.ckk.tripPeeple.reply.ReplyDto"/> -->
-<!-- 	<resultMap class="RDto" id="mapRDto">                        -->
-<!-- 		<result property="reply_num" column="REPLY_NUM"/> -->
-<!-- 		<result property="board_num" column="BOARD_NUM"/> -->
-<!-- 		<result property="replyer_num" column="REPLYER_NUM"/> -->
-<!-- 		<result property="r_content" column="R_CONTENT"/> -->
-<!-- 		<result property="create_time" column="CREATE_TIME"/> -->
-<!-- 		<result property="modify_time" column="MODIFY_TIME"/> -->
-<!-- 	</resultMap> -->
+<typeAlias alias="RDto" type="com.ckk.tripPeeple.reply.ReplyDto"/>
+	<resultMap class="RDto" id="mapRDto">                       
+		<result property="reply_num" column="REPLY_NUM"/>
+		<result property="board_num" column="BOARD_NUM"/>
+		<result property="replyer_num" column="REPLYER_NUM"/>
+		<result property="r_content" column="R_CONTENT"/>
+		<result property="create_time" column="CREATE_TIME"/>
+		<result property="modify_time" column="MODIFY_TIME"/>
+	</resultMap>
 	
-<!-- 	<sql id="column"> -->
-<!-- 		REPLY_NUM, BOARD_NUM, REPLYER_NUM, R_CONTENT, CREATE_TIME, MODIFY_TIME -->
-<!-- 	</sql> -->
+	<sql id="column">
+		REPLY_NUM, BOARD_NUM, REPLYER_NUM, R_CONTENT, CREATE_TIME, MODIFY_TIME
+	</sql>
+	
+	<insert id="replyInsert" parameterClass="RDto">
+		<selectKey resultClass="java.lang.Integer" keyProperty="reply_num">
+			SELECT REPLY_NUM_SEQ.NEXTVAL AS REPLY_NUM FROM DUAL
+		</selectKey>
+			INSERT INTO REPLY (REPLY_NUM, BOARD_NUM, REPLYER_NUM, 
+			R_CONTENT, CREATE_TIME, MODIFY_TIME) 
+			VALUES(#reply_num#, #board_num#, #replyer_num#, 
+			#r_content#, SYSDATE, SYSDATE)
+	</insert>
 
-
-<!-- </sqlMap> -->
+</sqlMap>
