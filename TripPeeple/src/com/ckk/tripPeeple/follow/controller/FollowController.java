@@ -29,7 +29,6 @@ public class FollowController {
 			request.setAttribute("followingLists", followingLists);
 			
 			List<FollowDto> followerLists = followService.getFollower(member_num);
-			System.out.println("=========================================="+followerLists);
 			request.setAttribute("followerLists", followerLists);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

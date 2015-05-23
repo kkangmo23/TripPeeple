@@ -154,7 +154,7 @@ $(function () {
 					<tr>
 						<td><c:out value="${follower.member_num}"/></td>
 						<td><c:out value="${follower.member_id}"/></td>
-						<td></td>
+						<td><c:out value="${follower.follow_check}"/></td>
 					</tr>
 				</c:forEach>
 			</c:otherwise>

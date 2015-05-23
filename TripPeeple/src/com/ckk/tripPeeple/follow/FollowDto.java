@@ -8,8 +8,15 @@ public class FollowDto implements Serializable{
 
 	private int member_num;
 	private String member_id;
+	private String follow_check;
 	
 	
+	public String getFollow_check() {
+		return follow_check;
+	}
+	public void setFollow_check(String follow_check) {
+		this.follow_check = follow_check;
+	}
 	public int getMember_num() {
 		return member_num;
 	}

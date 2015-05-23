@@ -2,16 +2,12 @@
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
 <sqlMap namespace="follow">
 <typeAlias alias="FDto" type="com.ckk.tripPeeple.follow.FollowDto"/>
-	<resultMap class="FDto" id="FBDto">                       
-		<result property="member_num" column="MEMBER_NUM"/>
-		<result property="member_id" column="MEMBER_ID"/>
-	</resultMap>
 	
 	<sql id="column">
 		MEMBER_NUM, MEMBER_ID
 	</sql>
 
-<select id="getFollowing" parameterClass="java.lang.Integer" resultMap="FBDto">
+<select id="getFollowing" parameterClass="java.lang.Integer" resultClass="FDto">
 SELECT <include refid="column"/>
 FROM MEMBER
 WHERE MEMBER_NUM IN (SELECT FOLLWING_NUM 
@@ -19,12 +15,24 @@ FROM FOLLOW
 WHERE FOLLWER_NUM=#member_num#)
 </select>
 
-<select id="getFollower" parameterClass="java.lang.Integer" resultMap="FBDto">
-SELECT <include refid="column"/>
+<select id="getFollower" parameterClass="java.lang.Integer" resultClass="FDto">
+<!-- SELECT <include refid="column"/> -->
+<!-- FROM MEMBER -->
+<!-- WHERE MEMBER_NUM IN (SELECT FOLLWER_NUM  -->
+<!-- FROM FOLLOW -->
+<!-- WHERE FOLLWING_NUM=#member_num#) -->
+
+SELECT MEMBER_NUM, MEMBER_ID, CASE 
+                              WHEN MEMBER_NUM IN (SELECT FOLLWING_NUM
+                                                  FROM FOLLOW
+                                                  WHERE FOLLWER_NUM=#member_num#) THEN 'TRUE'
+                              ELSE 'FALSE'
+                              END AS FOLLOW_CHECK
 FROM MEMBER
 WHERE MEMBER_NUM IN (SELECT FOLLWER_NUM 
 FROM FOLLOW
 WHERE FOLLWING_NUM=#member_num#)
+
 </select>
 
 <delete id="deleteFollowing" parameterClass="java.lang.Integer">
