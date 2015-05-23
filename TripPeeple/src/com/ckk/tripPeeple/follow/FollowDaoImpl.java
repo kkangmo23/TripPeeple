@@ -19,4 +19,15 @@ public class FollowDaoImpl implements FollowDao {
 		return lists;
 	}
 
+	@Override
+	public List<FollowDto> getFollower(int member_num) throws Exception {
+		List<FollowDto> lists = (List<FollowDto>)sqlMapClient.queryForList("follow.getFollower",member_num);
+		return lists;
+	}
+
+	@Override
+	public int deleteFollowing(int following_num) throws Exception {
+		return sqlMapClient.delete("follow.deleteFollowing", following_num);
+	}
+
 }

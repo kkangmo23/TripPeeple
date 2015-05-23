@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 
 <link rel="icon" href="./img/favicon.ico">
 
@@ -45,6 +47,11 @@ $(function () {
 			menus[3].innerHTML = "<span class='glyphicon glyphicon-cog' aria-hidden='true'></span>";
 			menus[4].innerHTML = "<span class='glyphicon glyphicon-log-out' aria-hidden='true'></span>";
 		}
+	}
+	
+	function test(num){
+		alert(num);
+		return true;
 	}
 	
 </script>
@@ -106,8 +113,52 @@ $(function () {
 
 <!-- content -->
 	<div id="content">
-		<h1>팔로우 관리 화면</h1>
-		<p>${followingLists}</p>
+		<h1>팔로윙 리스트</h1>
+		<table border="1">
+		<col width="200px"><col width="300px"><col width="50px">
+		<tr><th>멤버 넘버(히든처리)</th><th>팔로윙 아이디</th><th>삭제</th></tr>
+			<c:choose>
+				<c:when test="${empty followingLists}">
+					 <tr>
+					 	<td colspan="3">팔로윙이 없습니다.</td>
+					 </tr>
+				</c:when>
+				<c:otherwise>
+				<c:forEach var="following" items="${followingLists}">
+					<tr>
+						<td><c:out value="${following.member_num}"/></td>
+						<td><c:out value="${following.member_id}"/></td>
+						<td>
+							<form action="followDelete.do" method="post">
+								<input type="hidden" name="num" value="${following.member_num}">
+								<input type="submit" value="삭제">
+							</form>
+						</td>
+					</tr>
+				</c:forEach>
+				</c:otherwise>
+			</c:choose>
+		</table>
+		<h1>팔로워 리스트</h1>
+		<table border="1">
+		<col width="200px"><col width="300px">
+		<tr><th>멤버 넘버(히든처리)</th><th>팔로워 아이디</th></tr>
+		<c:choose>
+			<c:when test="${empty followerLists}">
+				<tr>
+					 <td colspan="3">팔로워가 없습니다.</td>
+				</tr>
+			</c:when>
+			<c:otherwise>
+				<c:forEach var="follower" items="${followerLists}">
+					<tr>
+						<td><c:out value="${follower.member_num}"/></td>
+						<td><c:out value="${follower.member_id}"/></td>
+					</tr>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
+		</table>
 	</div>
 	
 <!-- //content -->

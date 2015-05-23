@@ -25,14 +25,29 @@ public class FollowController {
 		int member_num=(int) session.getAttribute("member_num");
 		
 		try {
-			List<FollowDto> lists = followService.getFollowing(member_num);
-			System.out.println(lists);
-			request.setAttribute("followingLists", lists);
+			List<FollowDto> followingLists = followService.getFollowing(member_num);
+			request.setAttribute("followingLists", followingLists);
+			
+			List<FollowDto> followerLists = followService.getFollower(member_num);
+			request.setAttribute("followerLists", followerLists);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return "follow/followForm";
+	}
+	
+	@RequestMapping(value = "/followDelete.do", method = RequestMethod.POST)
+	public String deleteFollowing(HttpServletRequest request){
+		int following_num = Integer.parseInt(request.getParameter("num"));
+		try {
+			followService.deleteFollowing(following_num);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "redirect:/followForm.do";
 	}
 	
 }

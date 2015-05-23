@@ -17,4 +17,15 @@ public class FollowServiceImpl implements FollowService {
 		return lists;
 	}
 
+	@Override
+	public List<FollowDto> getFollower(int member_num) throws Exception {
+		List<FollowDto> lists = followDao.getFollower(member_num);
+		return lists;
+	}
+
+	@Override
+	public int deleteFollowing(int following_num) throws Exception {
+		return followDao.deleteFollowing(following_num);
+	}
+
 }
