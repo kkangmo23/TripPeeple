@@ -114,7 +114,7 @@ $(function () {
 			<div class="board-info1">
 				<div class="media">
 					<div class="media-left">
-						<a href="#"><img class="media-object" src="./img/img2.png" alt="프로필사진"></a>
+						<a href="#"><img class="media-object" src="/repo/profile/img2.png" alt="프로필사진"></a>
 					</div>
 					<div class="media-body">
 						<h4><a href="#" >Nick Name</a></h4>
@@ -125,7 +125,7 @@ $(function () {
 		<!-- //top -->
 		<!-- mid -->
 		<div class="board-video">
-			<img alt="" src="./img/img1.jpg" style="width: inherit;">
+			<video src="/repo/video/exid.mp4" controls="controls" style="width: inherit;"></video>
 		</div>		
 		<div class="board-info2">
 			<p>안녕하세옄ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</p>			
@@ -210,56 +210,7 @@ $(function () {
 			</div>
 			<!-- /bot -->			
 		</div>
-		
-		
-		
-		
-		<div class="board-content">
-			<div class="board-info1">
-				<div class="media">
-					<div class="media-left">
-						<a href="#"><img class="media-object" src="./img/img2.png" alt="프로필사진"></a>
-					</div>
-					<div class="media-body">
-						<h4><a href="#" >ㅋㅋㅋㅋ</a></h4>
-						<h5><small>2015-05-15 20:10:51</small></h5>
-					</div>
-				</div>			
-			</div>
-			<!-- //top -->
-			<!-- mid -->
-			<div class="board-video">
-				<video src="/rep/exid.mp4" controls="controls" style="width: inherit;"></video>				
-			</div>		
-			<div class="board-info2">
-				<p>올ㅋ</p>
-			</div>		
-			<!-- /mid -->
-			<hr>
-			<!-- bot -->
-			<div class="board-info3">
-				<a href="#" data-container="body" data-toggle="tooltip" title="Like">
-					<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>						
-				</a>
-				&nbsp;&nbsp;&nbsp;&nbsp;
-				<a href="#" data-container="body" data-toggle="tooltip" title="수정">
-					<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>						
-				</a>
-				&nbsp;&nbsp;&nbsp;&nbsp;
-				<a href="#" data-container="body" data-toggle="tooltip" title="삭제">
-					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-				</a>			
-			</div>
-			<br/>
-			<div class="board-reply">
-				<h5><small>댓글</small></h5>
-				<h5><small>댓글</small></h5>
-				<h5><small>댓글</small></h5>
-				<h5><small>댓글</small></h5>
-			</div>
-			<!-- /bot -->			
-		</div>
-		
+			
 		
 	</div>
 	
