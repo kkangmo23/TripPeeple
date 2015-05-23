@@ -23,15 +23,21 @@ public class ListController {
 		
 		List<BoardDto> boardList=null;
 		boardList=boardService.getBoardList();
-//		session.getAttribute("member_num");
+		
+		
+		/*BoardDto boardDto=boardList.get(0);
+		int board_num=boardDto.getBoard_num();
+		System.out.println(board_num);
+		request.setAttribute("board_num", board_num);  댓글 부분*/
 		
 		request.setAttribute("boardList", boardList);
-//		session.setAttribute("session", session.getAttribute("member_num"));
+		
 		
 //		int board_num=Integer.parseInt(request.getParameter("board_num"));
 //		System.out.println("board_num");
 		
-		return "redirect:/replyWrite.do";
+		// return "redirect:/replyWrite.do";
+		return "board/tripHome";
 	}
 	
 	@RequestMapping(value="/myListForm.do", method=RequestMethod.GET)

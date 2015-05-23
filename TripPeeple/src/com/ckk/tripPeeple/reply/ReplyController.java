@@ -12,18 +12,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.ckk.tripPeeple.board.BoardDto;
+
 @Controller
 public class ReplyController {
 	@Autowired
 	private ReplyService replyService;
 	
-	@RequestMapping(value="/replyWrite.do", method=RequestMethod.POST)
+	@RequestMapping(value="/replyWrite.do", method=RequestMethod.GET)
 	public String replyWrite(ReplyDto replyDto, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
-		
 		int board_num=Integer.parseInt(request.getParameter("boardNumber"));
 		String r_content=request.getParameter("r_content");
 		
-		// System.out.println(board_num+","+r_content);
+		System.out.println(board_num+","+r_content);
 		
 		replyDto.setMember_num((int)session.getAttribute("member_num"));
 		replyDto.setBoard_num(board_num);
