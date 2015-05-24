@@ -207,7 +207,7 @@ $(function () {
 			<div class="form-group">
 				<label for="exampleInputFile" class="col-sm-3 control-label" style="text-align: right; margin-top: 20px;">파일 업로드</label>
 				<div class="col-sm-7" style="text-align: left;">
-					<span class="btn btn-success fileinput-button" >
+					<span class="btn btn-default fileinput-button" >
 			        <i class="glyphicon glyphicon-plus"></i>
 			        <span>Add files...</span>
 			        <!-- The file input field used as target for the file upload widget -->
@@ -258,6 +258,7 @@ $(function () {
 				<input type="hidden" name="file_path" id="file_path">
 				<input type="hidden" name="file_size" id="file_size">
 				<input type="hidden" name="file_type" id="file_type">
+				
 				<button type="submit" class="btn btn-default">게시하기</button>
 				<button type="button" class="btn btn-default" onclick="window.history.back(-1)">취소</button>
 
