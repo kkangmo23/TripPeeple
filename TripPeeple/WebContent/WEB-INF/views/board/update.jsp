@@ -203,7 +203,7 @@ $(function () {
 		<div class="form-content">
 		
 		<div class="form-group">
-				<label for="fileupload" class="col-sm-3 control-label" style="text-align: right; margin-top: 20px;">파일 업로드</label>
+				<label for="fileupload" class="col-sm-3 control-label" style="text-align: right; margin-top: 20px;">파일</label>
 				<div class="col-sm-7" style="text-align: left;">
 					<span class="btn btn-default fileinput-button" >
 			        <i class="glyphicon glyphicon-plus"></i>
@@ -216,8 +216,14 @@ $(function () {
 				    
 				    <!-- The container for the uploaded files -->
 				    <div id="files" class="files">
-				    
+				    	<c:if test="${board.file_type eq 'video'}">
+							<video src="/repo/content_file/${board.file_name }" style="width: 90%;" controls="controls"></video>
+						</c:if>
+						<c:if test="${board.file_type eq 'image'}">
+							<img alt="" src="/repo/content_file/${board.file_name }" style="width: 200px;">
+						</c:if>
 				    </div>
+				    <br/>
 				    
 				    <!-- The global progress bar -->
 				    <div id="progress" class="progress">
