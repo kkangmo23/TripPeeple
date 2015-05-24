@@ -21,7 +21,7 @@ public class FileController {
 
 		FileMeta fileMeta = null;
 
-		String path = "C:/TripPeeple_repo/video/";
+		String path = "C:/TripPeeple_repo/content_file/";
 
 		MultipartFile mpf = request.getFile("files");
 
@@ -29,7 +29,9 @@ public class FileController {
 
 		fileMeta = new FileMeta();
 		fileMeta.setFileName(mpf.getOriginalFilename());
-		fileMeta.setFileSize(mpf.getSize() / 1024 + " Kb");
+		fileMeta.setFileSize(String.valueOf(mpf.getSize()));
+		fileMeta.setFileType(mpf.getContentType());
+		fileMeta.setFilePath(path);
 		
 		FileOutputStream fos = null;
 		BufferedOutputStream bos = null;
