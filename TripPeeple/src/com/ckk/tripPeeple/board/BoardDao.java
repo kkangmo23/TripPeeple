@@ -8,8 +8,6 @@ public interface BoardDao {
 
 	public List<BoardDto> getBoardList() throws Exception;
 	
-//	public BoardDto read(int boardNumber);
-	
 	public BoardDto updateRead(int boardNumber) throws Exception;
 
 	public int deleteBoardList(int board_num)throws Exception;

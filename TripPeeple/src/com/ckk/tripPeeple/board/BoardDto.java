@@ -15,6 +15,11 @@ public class BoardDto {
 	private Date modify_time;
 	private int likes;
 	
+	private String city_name;
+	private String member_id;
+	private String country_name;
+	private String continent_name;
+	
 	public int getBoard_num() {
 		return board_num;
 	}
@@ -81,6 +86,28 @@ public class BoardDto {
 	public void setLikes(int likes) {
 		this.likes = likes;
 	}
-	
-	
+	public String getCity_name() {
+		return city_name;
+	}
+	public void setCity_name(String city_name) {
+		this.city_name = city_name;
+	}
+	public String getMember_id() {
+		return member_id;
+	}
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
+	}
+	public String getCountry_name() {
+		return country_name;
+	}
+	public void setCountry_name(String country_name) {
+		this.country_name = country_name;
+	}
+	public String getContinent_name() {
+		return continent_name;
+	}
+	public void setContinent_name(String continent_name) {
+		this.continent_name = continent_name;
+	}
 }

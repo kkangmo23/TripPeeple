@@ -3,19 +3,6 @@
 <sqlMap namespace="board">
 
 <typeAlias alias="BDto" type="com.ckk.tripPeeple.board.BoardDto"/>
-	<resultMap class="BDto" id="mapBDto">                       
-		<result property="board_num" column="BOARD_NUM"/>
-		<result property="member_num" column="MEMBER_NUM"/>
-		<result property="city_num" column="CITY_NUM"/>
-		<result property="file_name" column="FILE_NAME"/>
-		<result property="file_path" column="FILE_PATH"/>
-		<result property="file_size" column="FILE_SIZE"/>
-		<result property="file_type" column="FILE_TYPE"/>
-		<result property="content" column="CONTENT"/>
-		<result property="create_time" column="CREATE_TIME"/>
-		<result property="modify_time" column="MODIFY_TIME"/>
-		<result property="likes" column="LIKES"/>
-	</resultMap>
 	
 	<sql id="column">
 		BOARD_NUM, MEMBER_NUM, CITY_NUM, FILE_NAME, FILE_PATH, FILE_SIZE, FILE_TYPE, CONTENT, CREATE_TIME, MODIFY_TIME, LIKES
@@ -30,15 +17,25 @@
  	VALUES(#board_num#, #member_num#, #city_num#, #content#, SYSDATE, SYSDATE, #likes#)
 </insert>
  
-<select id="getBoardList" resultMap="mapBDto">
-	SELECT <include refid="column"/> FROM BOARD	ORDER BY MODIFY_TIME DESC
+<select id="getBoardList" resultClass="BDto">
+
+	SELECT BOARD_NUM, B.MEMBER_NUM AS MEMBER_NUM, B.CITY_NUM AS CITY_NUM,
+	FILE_NAME, FILE_PATH, FILE_SIZE, FILE_TYPE, CONTENT, CREATE_TIME, MODIFY_TIME,
+	LIKES, M.MEMBER_ID AS MEMBER_ID, CI.CITY_NAME AS CITY_NAME,
+	CO.COUNTRY_NAME AS COUNTRY_NAME, CON.CONTINENT_NAME AS CONTINENT_NAME
+	FROM BOARD B   
+	JOIN MEMBER M ON B.MEMBER_NUM = M.MEMBER_NUM
+	JOIN CITY CI ON CI.CITY_NUM = B.CITY_NUM
+	JOIN COUNTRY CO ON CI.COUNTRY_NUM = CO.COUNTRY_NUM
+	JOIN CONTINENT CON ON CO.CONTINENT_NUM = CON.CONTINENT_NUM
+	ORDER BY MODIFY_TIME DESC
 </select>
 
 <delete id="deleteBoardList" parameterClass="java.lang.Integer">
 	DELETE FROM BOARD WHERE BOARD_NUM=#board_num#
 </delete>
 
-<select id="boardUpdateRead" parameterClass="java.lang.Integer" resultMap="mapBDto">
+<select id="boardUpdateRead" parameterClass="java.lang.Integer" resultClass="BDto">
 	SELECT <include refid="column"/> FROM BOARD WHERE BOARD_NUM=#board_num#
 </select>
 
