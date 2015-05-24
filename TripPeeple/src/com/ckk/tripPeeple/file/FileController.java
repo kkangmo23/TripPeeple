@@ -18,31 +18,30 @@ public class FileController {
 
 	@RequestMapping(value = "/upload.do", method = RequestMethod.POST)
 	public @ResponseBody FileMeta upload(MultipartHttpServletRequest request, HttpSession session) throws Exception{
-
-		String member_num = String.valueOf(session.getAttribute("member_num"));
-		long currTime = System.currentTimeMillis();
-		String customFileName = member_num + "_" + currTime;
-		
-		System.out.println(customFileName);
 		
 		FileMeta fileMeta = null;
 
 		String path = "C:/TripPeeple_repo/content_file/";
 
 		MultipartFile mpf = request.getFile("files");
-
-		System.out.println(mpf.getOriginalFilename() + " uploaded! ");
-
+		
+		String member_num = String.valueOf(session.getAttribute("member_num"));
+		long currTime = System.currentTimeMillis();		
+		String tail = (mpf.getOriginalFilename()).substring((mpf.getOriginalFilename()).lastIndexOf("."));
+		String customFileName = member_num + "_" + currTime + tail;
+		
+		String customFileType = (mpf.getContentType()).substring(0, (mpf.getContentType()).indexOf("/"));
+		
 		fileMeta = new FileMeta();
 		fileMeta.setFileName(customFileName);
 		fileMeta.setFileSize(String.valueOf(mpf.getSize()));
-		fileMeta.setFileType(mpf.getContentType());
+		fileMeta.setFileType(customFileType);
 		fileMeta.setFilePath(path);
 		
 		FileOutputStream fos = null;
 		BufferedOutputStream bos = null;
 		
-		File file = new File(path + mpf.getOriginalFilename());
+		File file = new File(path + customFileName);
 		byte[] by = mpf.getBytes();
 		fos = new FileOutputStream(file);
 		bos = new BufferedOutputStream(fos);

@@ -40,7 +40,9 @@
 </select>
 
 <update id="boardUpdateBoard" parameterClass="BDto">
-	UPDATE BOARD SET CITY_NUM=#city_num#, CONTENT=#content#, MODIFY_TIME=SYSDATE WHERE BOARD_NUM=#board_num# 
+	UPDATE BOARD 
+	SET CITY_NUM=#city_num#, CONTENT=#content#, MODIFY_TIME=SYSDATE, FILE_NAME = #file_name#, FILE_PATH = #file_path#, FILE_SIZE = #file_size#, FILE_TYPE = #file_type# 
+	WHERE BOARD_NUM=#board_num# 
 </update>
 
 </sqlMap>

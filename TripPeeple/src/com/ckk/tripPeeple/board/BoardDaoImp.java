@@ -50,12 +50,6 @@ public class BoardDaoImp implements BoardDao{
 
 	@Override
 	public int updateBoard(BoardDto boardDto) throws Exception {
-		// System.out.println("updateBoard boardimp");
-		System.out.println(boardDto.getBoard_num());
-		System.out.println(boardDto.getCity_num());
-		System.out.println(boardDto.getContent());
-		System.out.println(boardDto.getCreate_time());
-		System.out.println(boardDto.getModify_time());
 		int check=sqlMapClient.update("board.boardUpdateBoard", boardDto);
 		return check;
 	}

@@ -19,7 +19,6 @@ public class UpdateController {
 	@RequestMapping(value="/updateForm.do", method=RequestMethod.POST)
 	public String updateForm(HttpServletRequest request) throws Exception {
 		int board_num=Integer.parseInt(request.getParameter("board_num"));
-		System.out.println("aa"+ board_num);
 		
 		BoardDto board=boardService.updateRead(board_num);
 		//System.out.println(board);

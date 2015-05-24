@@ -168,7 +168,12 @@ $(function () {
 		
 		<!-- mid -->
 		<div class="board-video">
-			<img alt="" src="./img/img1.jpg" style="width: inherit;">
+		<c:if test="${board.file_type eq 'video'}">
+			<video src="/repo/content_file/${board.file_name }" style="width: inherit;" controls="controls"></video>
+		</c:if>
+		<c:if test="${board.file_type eq 'image'}">
+			<img alt="" src="/repo/content_file/${board.file_name }" style="width: inherit;">
+		</c:if>
 		</div>		
 		<div class="board-info2">
 			<p>${board.content}</p>

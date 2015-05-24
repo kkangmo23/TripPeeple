@@ -205,7 +205,7 @@ $(function () {
 		
 		
 			<div class="form-group">
-				<label for="exampleInputFile" class="col-sm-3 control-label" style="text-align: right; margin-top: 20px;">파일 업로드</label>
+				<label for="fileupload" class="col-sm-3 control-label" style="text-align: right; margin-top: 20px;">파일 업로드</label>
 				<div class="col-sm-7" style="text-align: left;">
 					<span class="btn btn-default fileinput-button" >
 			        <i class="glyphicon glyphicon-plus"></i>
