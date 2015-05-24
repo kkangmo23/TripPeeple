@@ -111,7 +111,7 @@ $(function () {
 
 <!-- content -->
 	<div id="content">
-		<h1>내가 팔로워 하는 사람들</h1>
+		<h1>내가 팔로우 하는 사람들</h1>
 		
 		<table border="1">
 		<col width="200px"><col width="300px"><col width="50px">
@@ -139,7 +139,7 @@ $(function () {
 			</c:choose>
 		</table>
 
-		<h1>나를 팔로워하는 사람들</h1>
+		<h1>나를 팔로우하는 사람들</h1>
 		<table border="1">
 		<col width="200px"><col width="300px"><col width="50px">
 		<tr><th>멤버 넘버(히든처리)</th><th>팔로워 아이디</th><th>삭제</th></tr>
