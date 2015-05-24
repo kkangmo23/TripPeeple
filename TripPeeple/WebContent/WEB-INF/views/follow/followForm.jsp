@@ -48,12 +48,9 @@ $(function () {
 			menus[4].innerHTML = "<span class='glyphicon glyphicon-log-out' aria-hidden='true'></span>";
 		}
 	}
-	
-	function test(num){
-		alert(num);
-		return true;
-	}
-	
+	 function test(num){
+		 alert(num);
+	 }
 </script>
 
 
@@ -64,6 +61,7 @@ $(function () {
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container" >
 			<div class="navbar-header">
+			
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
 					aria-controls="navbar">
@@ -114,7 +112,7 @@ $(function () {
 <!-- content -->
 	<div id="content">
 		<h1>내가 팔로워 하는 사람들</h1>
-		<form action="followDelete.do" method="post">
+		
 		<table border="1">
 		<col width="200px"><col width="300px"><col width="50px">
 		<tr><th>멤버 넘버(히든처리)</th><th>팔로윙 아이디</th><th>삭제</th></tr>
@@ -130,15 +128,17 @@ $(function () {
 						<td><c:out value="${following.member_num}"/></td>
 						<td><c:out value="${following.member_id}"/></td>
 						<td>
-							<input type="hidden" name="num" value="${following.member_num}">
-							<input type="submit" value="삭제">
+							<form action="followDelete.do" method="post">
+								<input type="hidden" name="num" value="${following.member_num}">
+								<input type="submit" value="삭제">
+							</form>
 						</td>
 					</tr>
 				</c:forEach>
 				</c:otherwise>
 			</c:choose>
 		</table>
-		</form>
+
 		<h1>나를 팔로워하는 사람들</h1>
 		<table border="1">
 		<col width="200px"><col width="300px"><col width="50px">
@@ -156,10 +156,20 @@ $(function () {
 						<td><c:out value="${follower.member_id}"/></td>
 						<c:choose>
 							<c:when test="${follower.follow_check eq 'doDelete'}">
-								<td>삭제들어갈듯</td>	
+								<td>
+									<form action="followDelete.do" method="post">
+										<input type="hidden" name="num" value="${follower.member_num}">
+										<input type="submit" value="삭제">
+									</form>
+								</td>	
 							</c:when>
 							<c:otherwise>
-								<td>팔로워하기들어갈듯</td>
+								<td>
+									<form action="followInsert.do" method="post">
+										<input type="hidden" name="num" value="${follower.member_num}">
+										<input type="submit" value="팔로우하기">
+									</form>
+								</td>	
 							</c:otherwise>
 						</c:choose>
 						
