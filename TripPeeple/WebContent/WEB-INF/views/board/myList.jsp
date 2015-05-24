@@ -154,7 +154,7 @@ $(function () {
 							</div>
 							<div class="media-body">
 							
-								<h4><a href="myListForm.do?member_num=${board.member_num}" >${board.member_num}</a></h4>
+								<h4><a href="myListForm.do?member_num=${board.member_num}" >${board.member_id}</a></h4>
 								
 								<h5><small><fmt:formatDate value="${board.modify_time}" pattern="yyyy-MM-dd hh:mm:ss"/></small></h5>
 							</div>
@@ -173,7 +173,7 @@ $(function () {
 				<br/>
 				<!-- bot -->
 				<div class="board-info3">
-					<h5><small>${board.city_num }에서</small></h5>
+					<h5><small>${board.city_name }, ${board.country_name}, ${board.continent_name} 에서</small></h5>
 					
 					<hr>
 					
