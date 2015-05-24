@@ -13,8 +13,8 @@
 		SELECT BOARD_NUM_SEQ.NEXTVAL AS BOARD_NUM FROM DUAL
 	</selectKey>
 	
-	INSERT INTO BOARD(BOARD_NUM, MEMBER_NUM, CITY_NUM, CONTENT, CREATE_TIME, MODIFY_TIME, LIKES)
- 	VALUES(#board_num#, #member_num#, #city_num#, #content#, SYSDATE, SYSDATE, #likes#)
+	INSERT INTO BOARD(BOARD_NUM, MEMBER_NUM, CITY_NUM, CONTENT, CREATE_TIME, MODIFY_TIME, LIKES, FILE_NAME, FILE_PATH, FILE_SIZE, FILE_TYPE)
+ 	VALUES(#board_num#, #member_num#, #city_num#, #content#, SYSDATE, SYSDATE, #likes#, #file_name#, #file_path#, #file_size#, #file_type#)
 </insert>
  
 <select id="getBoardList" resultClass="BDto">
