@@ -4,7 +4,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,8 +17,14 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 public class FileController {
 
 	@RequestMapping(value = "/upload.do", method = RequestMethod.POST)
-	public @ResponseBody FileMeta upload(MultipartHttpServletRequest request, HttpServletResponse response) throws Exception{
+	public @ResponseBody FileMeta upload(MultipartHttpServletRequest request, HttpSession session) throws Exception{
 
+		String member_num = String.valueOf(session.getAttribute("member_num"));
+		long currTime = System.currentTimeMillis();
+		String customFileName = member_num + "_" + currTime;
+		
+		System.out.println(customFileName);
+		
 		FileMeta fileMeta = null;
 
 		String path = "C:/TripPeeple_repo/content_file/";
@@ -28,7 +34,7 @@ public class FileController {
 		System.out.println(mpf.getOriginalFilename() + " uploaded! ");
 
 		fileMeta = new FileMeta();
-		fileMeta.setFileName(mpf.getOriginalFilename());
+		fileMeta.setFileName(customFileName);
 		fileMeta.setFileSize(String.valueOf(mpf.getSize()));
 		fileMeta.setFileType(mpf.getContentType());
 		fileMeta.setFilePath(path);

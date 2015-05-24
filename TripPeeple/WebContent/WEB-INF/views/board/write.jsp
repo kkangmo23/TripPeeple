@@ -106,7 +106,7 @@ $(function () {
             progress + '%'
         );
     }).on('fileuploaddone', function (e, data) {
-    	$("#upLoadDone").html("<h3><small>Upload Done!</small></h3>");
+    	$("#upLoadDone").html("<p class='text-success'><b>Upload Done!</b></p>");
     	$("#file_name").val(data.result.fileName);
     	$("#file_size").val(data.result.fileSize);
     	$("#file_type").val(data.result.fileType);
@@ -209,7 +209,7 @@ $(function () {
 				<div class="col-sm-7" style="text-align: left;">
 					<span class="btn btn-default fileinput-button" >
 			        <i class="glyphicon glyphicon-plus"></i>
-			        <span>Add files...</span>
+			        <span>Add files..</span>
 			        <!-- The file input field used as target for the file upload widget -->
 			        <input id="fileupload" type="file" name="files">
 				    </span>
