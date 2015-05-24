@@ -111,77 +111,124 @@ $(function () {
 
 <!-- content -->
 	<div id="content">
-		<h1>내가 팔로우 하는 사람들</h1>
-		
-		<table border="1">
-		<col width="200px"><col width="300px"><col width="50px">
-		<tr><th>멤버 넘버(히든처리)</th><th>팔로윙 아이디</th><th>삭제</th></tr>
-			<c:choose>
-				<c:when test="${empty followingLists}">
-					 <tr>
-					 	<td colspan="3">팔로윙이 없습니다.</td>
-					 </tr>
-				</c:when>
-				<c:otherwise>
-				<c:forEach var="following" items="${followingLists}">
-					<tr>
-						<td><c:out value="${following.member_num}"/></td>
-						<td><c:out value="${following.member_id}"/></td>
-						<td>
-							<form action="followDelete.do" method="post">
-								<input type="hidden" name="num" value="${following.member_num}">
-								<input type="submit" value="삭제">
-							</form>
-						</td>
-					</tr>
-				</c:forEach>
-				</c:otherwise>
-			</c:choose>
-		</table>
 
-		<h1>나를 팔로우하는 사람들</h1>
-		<table border="1">
-		<col width="200px"><col width="300px"><col width="50px">
-		<tr><th>멤버 넘버(히든처리)</th><th>팔로워 아이디</th><th>삭제</th></tr>
-		<c:choose>
-			<c:when test="${empty followerLists}">
-				<tr>
-					 <td colspan="3">팔로워가 없습니다.</td>
-				</tr>
-			</c:when>
-			<c:otherwise>
-				<c:forEach var="follower" items="${followerLists}">
-					<tr>
-						<td><c:out value="${follower.member_num}"/></td>
-						<td><c:out value="${follower.member_id}"/></td>
+		<div class="follow-content">
+
+			<div role="tabpanel">
+
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs" role="tablist">
+					<li role="presentation" class="active"><a href="#following" aria-controls="following" role="tab" data-toggle="tab">내가 팔로우</a></li>
+					<li role="presentation"><a href="#follower" aria-controls="follower" role="tab" data-toggle="tab">나를 팔로우</a></li>
+
+				</ul>
+
+				<!-- Tab panes -->
+				<div class="tab-content">
+				
+				
+				<div role="tabpanel" class="tab-pane fade in active" id="following">
+					<c:choose>
+						<c:when test="${empty followingLists}">
+							 <tr>
+							 	<td colspan="3">팔로윙이 없습니다.</td>
+							 </tr>
+						</c:when>
+					<c:otherwise>					
+
+						<div class="row">
+						
+							<c:forEach var="following" items="${followingLists}">
+								<form action="followDelete.do" method="post">
+									<input type="hidden" name="num" value="${following.member_num}">
+									<div class="col-md-6">
+										<div class="follow-box">
+											<span>
+												<img alt="" src="/repo/profile/profile.jpg" style="width: 20%; ">
+											</span>
+											<span style="padding-left: 10px">
+												${following.member_id}
+											</span>
+											<span style="float: right; margin-top: 10px;">										
+												<button type="submit" class="btn btn-danger">팔로우 끊기</button>										
+											</span>
+										</div>
+									</div> 	
+								</form>
+							</c:forEach>							
+  											
+						</div>
+						
+						</c:otherwise>
+					</c:choose>
+
+					</div>
+
+
+
+
+					<div role="tabpanel" class="tab-pane fade" id="follower">
+
 						<c:choose>
-							<c:when test="${follower.follow_check eq 'doDelete'}">
-								<td>
-									<form action="followDelete.do" method="post">
-										<input type="hidden" name="num" value="${follower.member_num}">
-										<input type="submit" value="삭제">
-									</form>
-								</td>	
+							<c:when test="${empty followerLists}">
+								<tr>
+									<td colspan="3">팔로워가 없습니다.</td>
+								</tr>
 							</c:when>
 							<c:otherwise>
-								<td>
-									<form action="followInsert.do" method="post">
+
+								<div class="row">
+
+									<c:forEach var="follower" items="${followerLists}">
+										<c:choose>
+										<c:when test="${follower.follow_check eq 'doDelete'}">
+										<form action="followDelete.do" method="post">
 										<input type="hidden" name="num" value="${follower.member_num}">
-										<input type="submit" value="팔로우하기">
-									</form>
-								</td>	
+																										
+										<div class="col-md-6">
+											<div class="follow-box">
+												<span> <img alt="" src="/repo/profile/profile.jpg"
+													style="width: 20%;">
+												</span>
+												<span style="padding-left: 10px">${follower.member_id} </span>
+												<span style="float: right; margin-top: 10px;">
+													<button type="submit" class="btn btn-danger">팔로우 끊기</button>
+												</span>
+											</div>
+										</div>
+										</form>
+										</c:when>
+
+										<c:otherwise>
+										<form action="followInsert.do" method="post">
+										<input type="hidden" name="num" value="${follower.member_num}"> 
+										<div class="col-md-6">
+											<div class="follow-box">
+												<span> <img alt="" src="/repo/profile/profile.jpg"
+													style="width: 20%;">
+												</span>
+												<span style="padding-left: 10px">${follower.member_id} </span>
+												<span style="float: right; margin-top: 10px;">
+													<button type="submit" class="btn btn-success">팔로우 하기</button>
+												</span>
+											</div>
+										</div>
+										</form>
+
+										</c:otherwise>
+										</c:choose>											
+									</c:forEach>
+								</div>
 							</c:otherwise>
 						</c:choose>
-						
-					</tr>
-				</c:forEach>
-			</c:otherwise>
-		</c:choose>
-		</table>
-	</div>
-	
-<!-- //content -->
 
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //content -->
 
 <!-- footer -->
 	
