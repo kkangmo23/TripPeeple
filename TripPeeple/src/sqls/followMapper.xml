@@ -16,12 +16,6 @@ WHERE FOLLWER_NUM=#member_num#)
 </select>
 
 <select id="getFollower" parameterClass="java.lang.Integer" resultClass="FDto">
-<!-- SELECT <include refid="column"/> -->
-<!-- FROM MEMBER -->
-<!-- WHERE MEMBER_NUM IN (SELECT FOLLWER_NUM  -->
-<!-- FROM FOLLOW -->
-<!-- WHERE FOLLWING_NUM=#member_num#) -->
-
 SELECT MEMBER_NUM, MEMBER_ID, CASE 
                               WHEN MEMBER_NUM IN (SELECT FOLLWING_NUM
                                                   FROM FOLLOW
@@ -39,5 +33,10 @@ WHERE FOLLWING_NUM=#member_num#)
 	DELETE FROM FOLLOW
 	WHERE FOLLWING_NUM = #follwing_num#
 </delete>
+
+<insert id="insertFollowing" parameterClass="java.util.Map">
+	INSERT INTO FOLLOW
+	VALUES(#member_num#,#follower_num#)
+</insert>
 
 </sqlMap>

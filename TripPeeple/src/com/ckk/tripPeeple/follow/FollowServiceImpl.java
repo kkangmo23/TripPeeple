@@ -28,4 +28,9 @@ public class FollowServiceImpl implements FollowService {
 		return followDao.deleteFollowing(following_num);
 	}
 
+	@Override
+	public void insertFollowing(int follower_num,int member_num) throws Exception {
+		followDao.insertFollowing(follower_num,member_num);
+	}
+
 }

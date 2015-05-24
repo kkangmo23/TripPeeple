@@ -40,8 +40,23 @@ public class FollowController {
 	@RequestMapping(value = "/followDelete.do", method = RequestMethod.POST)
 	public String deleteFollowing(HttpServletRequest request){
 		int following_num = Integer.parseInt(request.getParameter("num"));
+		
 		try {
 			followService.deleteFollowing(following_num);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "redirect:/followForm.do";
+	}
+	
+	@RequestMapping(value = "/followInsert.do", method = RequestMethod.POST)
+	public String insertFollowing(HttpSession session, HttpServletRequest request){
+		int follower_num = Integer.parseInt(request.getParameter("num"));
+		int	member_num = (int) session.getAttribute("member_num");
+		try {
+			followService.insertFollowing(follower_num,member_num);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
