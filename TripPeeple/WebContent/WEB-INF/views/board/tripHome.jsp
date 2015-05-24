@@ -117,7 +117,7 @@ $(function () {
 						</a>
 					</li>
 					<li>
-						<a href="#" name="menu-by-size" data-container="body" data-toggle="tooltip" title="팔로우관리">
+						<a href="followForm.do" name="menu-by-size" data-container="body" data-toggle="tooltip" title="팔로우관리">
 							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>						
 						</a>
 					</li>
