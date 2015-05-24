@@ -1,4 +1,4 @@
-package com.ckk.tripPeeple.test;
+package com.ckk.tripPeeple.file;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @Controller
-public class FileController3 {
+public class FileController {
 
 	@RequestMapping(value = "/upload.do", method = RequestMethod.POST)
 	public @ResponseBody FileMeta upload(MultipartHttpServletRequest request, HttpServletResponse response) throws Exception{

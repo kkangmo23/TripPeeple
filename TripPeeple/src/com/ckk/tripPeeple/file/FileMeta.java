@@ -1,4 +1,4 @@
-package com.ckk.tripPeeple.test;
+package com.ckk.tripPeeple.file;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
