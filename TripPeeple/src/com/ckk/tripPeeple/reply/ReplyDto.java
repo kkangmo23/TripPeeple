@@ -6,6 +6,7 @@ public class ReplyDto {
 	private int reply_num;
 	private int board_num;
 	private int member_num;
+	private String member_id;
 	private String r_content;
 	private Date create_time;
 	private Date modify_time;
@@ -46,5 +47,11 @@ public class ReplyDto {
 	}
 	public void setModify_time(Date modify_time) {
 		this.modify_time = modify_time;
+	}
+	public String getMember_id() {
+		return member_id;
+	}
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
 	}
 }

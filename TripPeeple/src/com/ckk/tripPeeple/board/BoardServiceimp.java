@@ -1,14 +1,19 @@
 package com.ckk.tripPeeple.board;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ckk.tripPeeple.reply.ReplyDao;
+
 @Service
 public class BoardServiceimp implements BoardService{
 	@Autowired
 	private BoardDao boardDao;
+	@Autowired
+	private ReplyDao replyDao;
 	
 	@Override
 	public boolean insertBoard(BoardDto boardDto) throws Exception {
@@ -21,8 +26,13 @@ public class BoardServiceimp implements BoardService{
 
 	@Override
 	public List<BoardDto> getBoardList() throws Exception {
-		// System.out.println("passed");
-		return boardDao.getBoardList();
+		List<BoardDto> boardList = new ArrayList<BoardDto>();
+		boardList = boardDao.getBoardList();
+		for (int i = 0; i < boardList.size(); i++) {
+			boardList.get(i).setReplyList(
+					replyDao.getReplyList(boardList.get(i).getBoard_num()));
+		}
+		return boardList;
 	}
 
 	@Override

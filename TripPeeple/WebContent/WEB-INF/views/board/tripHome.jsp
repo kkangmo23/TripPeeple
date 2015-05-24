@@ -218,11 +218,11 @@ $(function () {
 			</div>
 			<div class="replyDiv-wrap" >
 			<c:forEach var="reply" items="${board.replyList}">
-				<div class="replyDiv" data-replyId="${reply.num}">
-					<span>${reply.num}</span>
-					<span>${reply.line_reply}</span>
-					<span>
-						<button style="margin-left:60px;">Modify</button><button>Delete</button>
+				<div class="replyDiv" data-replyNum="${reply.reply_num}">
+					<span>${reply.member_id}&nbsp;&nbsp;</span>
+					<span class="reply_content">${reply.r_content}</span>
+					<span class="reply_btns">
+						<button class="modifyBtn" style="margin-left:60px;">Modify</button><button class="deleteBtn">Delete</button>
 					</span>
 				</div>
 			</c:forEach>

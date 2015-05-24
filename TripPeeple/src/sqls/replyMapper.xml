@@ -20,8 +20,9 @@
 	</insert>
 
 	<select id="getReplyList" resultClass="RDto"  parameterClass="java.lang.Integer" >
-	SELECT <include refid="column"/> FROM REPLY	
-	WHERE BOARD_NUM=#board_num#
+	SELECT R.REPLY_NUM,  R.BOARD_NUM,  R.MEMBER_NUM,  R.R_CONTENT,  R.CREATE_TIME,  R.MODIFY_TIME, M.MEMBER_ID FROM REPLY R	
+	INNER JOIN MEMBER M ON M.MEMBER_NUM = R.MEMBER_NUM
+	WHERE  R.BOARD_NUM=#board_num#
 	ORDER BY MODIFY_TIME DESC
 	</select>
 
