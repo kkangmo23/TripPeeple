@@ -1,6 +1,10 @@
 package com.ckk.tripPeeple.board;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import com.ckk.tripPeeple.reply.ReplyDto;
 
 public class BoardDto {
 	private int board_num;
@@ -20,6 +24,14 @@ public class BoardDto {
 	private String country_name;
 	private String continent_name;
 	
+	private List<ReplyDto> replyList = new ArrayList<ReplyDto>();
+	
+	public List<ReplyDto> getReplyList() {
+		return replyList;
+	}
+	public void setReplyList(List<ReplyDto> replyList) {
+		this.replyList = replyList;
+	}
 	public int getBoard_num() {
 		return board_num;
 	}

@@ -53,6 +53,15 @@ public class BoardDaoImp implements BoardDao{
 		int check=sqlMapClient.update("board.boardUpdateBoard", boardDto);
 		return check;
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<BoardDto> getSearchList(String search) throws Exception {
+		// System.out.println("다오진입");
+		List<BoardDto> searchList=(List<BoardDto>) sqlMapClient.queryForList("board.getSearchList", search);
+		// System.out.println(searchList);
+		return searchList;
+	}
 }
 
 

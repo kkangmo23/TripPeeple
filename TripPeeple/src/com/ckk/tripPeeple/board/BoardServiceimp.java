@@ -42,4 +42,10 @@ public class BoardServiceimp implements BoardService{
 		// System.out.println("updateBoard serviceimp");
 		return boardDao.updateBoard(boardDto);
 	}
+
+	@Override
+	public List<BoardDto> getSearchList(String search) throws Exception {
+		System.out.println("searchBoard serviceimp");
+		return boardDao.getSearchList(search);
+	}
 }

@@ -3,14 +3,7 @@
 <sqlMap namespace="reply">
 
 <typeAlias alias="RDto" type="com.ckk.tripPeeple.reply.ReplyDto"/>
-	<resultMap class="RDto" id="mapRDto">                       
-		<result property="reply_num" column="REPLY_NUM"/>
-		<result property="board_num" column="BOARD_NUM"/>
-		<result property="member_num" column="MEMBER_NUM"/>
-		<result property="r_content" column="R_CONTENT"/>
-		<result property="create_time" column="CREATE_TIME"/>
-		<result property="modify_time" column="MODIFY_TIME"/>
-	</resultMap>
+	
 	
 	<sql id="column">
 		REPLY_NUM, BOARD_NUM, MEMBER_NUM, R_CONTENT, CREATE_TIME, MODIFY_TIME
@@ -25,9 +18,11 @@
 			VALUES(#reply_num#, #board_num#, #member_num#, 
 			#r_content#, SYSDATE, SYSDATE)
 	</insert>
-	
-	<select id="getReplyList" resultMap="mapRDto">
-	SELECT <include refid="column"/> FROM REPLY	ORDER BY MODIFY_TIME DESC
+
+	<select id="getReplyList" resultClass="RDto"  parameterClass="java.lang.Integer" >
+	SELECT <include refid="column"/> FROM REPLY	
+	WHERE BOARD_NUM=#board_num#
+	ORDER BY MODIFY_TIME DESC
 	</select>
 
 </sqlMap>

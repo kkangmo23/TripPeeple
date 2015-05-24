@@ -13,4 +13,6 @@ public interface BoardDao {
 	public int deleteBoardList(int board_num)throws Exception;
 
 	public int updateBoard(BoardDto boardDto) throws Exception;
+
+	public List<BoardDto> getSearchList(String search) throws Exception;
 }

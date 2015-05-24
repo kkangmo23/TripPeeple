@@ -22,9 +22,7 @@ public class ReplyDaoImp implements ReplyDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<ReplyDto> getReplyList(int Board_num) throws Exception {
-		List<ReplyDto> replyDto=(List<ReplyDto>) sqlMapClient.queryForList("board.getReplyList");
-		// System.out.println("a");
-		
+		List<ReplyDto> replyDto=(List<ReplyDto>) sqlMapClient.queryForList("reply.getReplyList", Board_num);
 		return replyDto;
 	}
 

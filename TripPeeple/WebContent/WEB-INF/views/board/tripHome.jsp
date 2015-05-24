@@ -28,7 +28,7 @@ $(function () {
 	})
 </script>
 
-<script type="text/javascript" src="./js/replyWrite.js"></script>
+
 <!-- <script type="text/javascript" src="replyDelete.js"></script> -->
 <!-- <script type="text/javascript" src="replyUpdate.js"></script> -->
 
@@ -56,6 +56,7 @@ $(function () {
 </script>
 
 <script type="text/javascript">
+
 	function boardUpdate(board_num) {
 // 		var form = document.forms["updateForm"]; 		
 // 		form.action = "updateForm.do";
@@ -63,7 +64,6 @@ $(function () {
 // 		form.submit(); 
 	
 // 		alert("board_num:" + board_num);
-		
 		var boardUD = document.getElementById("boardUD");	
 		boardUD.action="updateForm.do";
 		boardUD.method="post";
@@ -132,8 +132,8 @@ $(function () {
 						</a>					
 					</li>					
 				</ul>
-				<form class="navbar-form navbar-right">
-					<input type="text" class="form-control" placeholder="Search...">
+				<form id="searchForm" class="navbar-form navbar-right">
+					<input type="text" class="form-control" placeholder="Search..." name="search">
 				</form>					
 			</div>
 			<!--/.navbar-collapse -->
@@ -210,24 +210,23 @@ $(function () {
 			</form>	
 		</div>
 		<br/>
-		<div class="board-reply">
+		
+		<div class="board-reply" data-num="${board.board_num}">
 			<div>
-				<input id="writeReply" type="text" name="writeReply" size="45"/>
-				<input type="button" value="Reply" onclick="writeToServer('${board.board_num}')"/>
+				<input  id="writeReply" class="writeReply" type="text" size="45"/>
+				<input type="button"  value="Reply"  class="replyBtn"/>
 			</div>
-			<!-- 새로운 데이터 -->
-			<div id="newReply"></div>
-			
-			<!-- 기존 데이터 -->
-			<c:forEach var="reply" items="${replyList}">
-				<div class="replyDiv" id="${reply.num}">
+			<div class="replyDiv-wrap" >
+			<c:forEach var="reply" items="${board.replyList}">
+				<div class="replyDiv" data-replyId="${reply.num}">
 					<span>${reply.num}</span>
 					<span>${reply.line_reply}</span>
 					<span>
-						<a href="javascript:upSelectToServer('${reply.num}','${root}')">Modify&nbsp;&nbsp;</a><a href="javascript:deleteToServer('${reply.num}','${root}')">Delete</a>
+						<button style="margin-left:60px;">Modify</button><button>Delete</button>
 					</span>
 				</div>
 			</c:forEach>
+			</div>
 		</div>
 		<!-- /bot -->
 		</div>
@@ -248,7 +247,8 @@ $(function () {
 	
 <!-- //footer -->
 	
-
+<script type="text/javascript" src=".js/search.js"></script>
+<script type="text/javascript" src="./js/replyWrite.js"></script>
 	
 	
 </body>

@@ -1,55 +1,54 @@
 /**
  * 
  */
-function writeToServer(boardNumber){
-	alert(boardNumber);
-	
-	var writeReply=$("#writeReply").val();
-	var sendData="boardNumber="+boardNumber+"&r_content="+writeReply;
-	
+
+$('.replyBtn').on('click', writeToServer);
+
+console.log($('.replyBtn'));
+
+function writeToServer(e){
+	var target = $(e.target), replaySection =target.parents('.board-reply'); 
+	boardNum = replaySection.data('num'),
+	text = replaySection.find('.writeReply').val();
+	var replyWrap = replaySection.find('.replyDiv-wrap');
+	var sendData="boardNumber="+boardNum+"&r_content="+text;
+
+	console.log(sendData);
 	$.ajax({
 		url:"replyWrite.do",
 		type:"post",
-		
 		data:sendData,
 		contentType:"application/x-www-form-urlencoded;charset=utf-8",
-		
 		dataType:"text",
 		success:function(data){
-			var result=data.split(",");
-			var num=result[0].trim();
-			var reply=result[1].trim();
-			alert(num+","+reply);
-			$("#writeReply").val("");
-			
-//			$("#listAllDiv > div:eq(0)").prepend("<span class='cssBunho'></span>");
-//			$("#listAllDiv > div:eq(0)").prepend("<span class='cssReply'></span>");
-//			$("#listAllDiv > div:eq(0)").prepend("<span class='cssUpDel'></span>");
-//			$("span:eq(2)").prepend("<a></a>");
-//			$("span:eq(2)").prepend("<a></a>");
-			
-			$("#listAllDiv > div:eq(0)").css("display", "block");
-			$("#listAllDiv > div:eq(0)").attr("id", num);
-			
-			$("#listAllDiv span:eq(0)").text(num);
-			$("#listAllDiv span:eq(1)").text(reply);
-			
-			$("#listAllDiv a:eq(0)").text("Modify");
-			$("#listAllDiv a:eq(0)").attr("href", "javascript:upSelectToServer("+num+",\'"+root+"\')");
-			
-			$("#listAllDiv a:eq(1)").text("Delete");
-			$("#listAllDiv a:eq(1)").attr("href", "javascript:deleteToServer("+num+",\'"+root+"\')");
-			
-//			$("#listAllDiv > div:eq(0)").clone().attr("class", "clone");
-//			$(".clone").text(num);
-//			$("#listAllDiv").prepend(".clone");
-			
+			var replyList = JSON.parse(data);
+			console.log(data);
+			console.log(JSON.parse(data));
+			replyWrap.html(getReplyList(replyList));
 
-
+			replaySection.find('.writeReply').val('');
+		
 			
 		},
 		error:function(xhr, status, error){
 			alert(xhr+","+status+","+error);
 		}
 	});
+	
+	function getReplyList(replyList){
+		var length = replyList.length, result='';
+		for(var i=0; i<length; i++){
+			result += makeReplyDiv(replyList[i])
+		}
+		console.log(result);
+		return result;
+	}
+	
+	function makeReplyDiv(reply) {
+		var text = '<div class="replyDiv" data-replyId="'+reply.reply_num+'">';
+		text += '<span>'+reply.member_num+'</span>';
+		text += '<span>'+reply.r_content+'</span>';
+		text += '<span>'+ '<button style="margin-left:60px;">Modify</button><button>Delete</button></span></div>';
+		return text;	
+	}
 }

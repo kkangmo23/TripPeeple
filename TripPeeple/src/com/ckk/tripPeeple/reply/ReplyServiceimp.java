@@ -21,7 +21,7 @@ public class ReplyServiceimp implements ReplyService{
 
 	@Override
 	public List<ReplyDto> getReplyList(int board_num) throws Exception {
-		System.out.println("passed");
+		System.out.println(board_num);
 		return replyDao.getReplyList(board_num);
 	}
 }
