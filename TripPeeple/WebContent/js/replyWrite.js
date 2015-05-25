@@ -22,9 +22,11 @@ function triggerEditReply(e){
 }
 
 function writeReply(e){
-	var target = $(e.target), replaySection =target.parents('.board-reply'); 
+	var target = $(e.target)
+	var replaySection =target.parents('.board-reply'); 
 	boardNum = replaySection.data('num'),
 	text = replaySection.find('.writeReply').val();
+//	date = replaySection.
 	var replyWrap = replaySection.find('.replyDiv-wrap');
 	var sendData="boardNumber="+boardNum+"&r_content="+text;
 	$.ajax({
