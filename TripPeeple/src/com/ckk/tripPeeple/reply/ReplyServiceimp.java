@@ -24,4 +24,21 @@ public class ReplyServiceimp implements ReplyService{
 		System.out.println(board_num);
 		return replyDao.getReplyList(board_num);
 	}
+
+	@Override
+	public boolean updateReply(ReplyDto replyDto) throws Exception {
+		boolean isc=false;
+		if(replyDao.updateReply(replyDto)!=0){
+			isc=true;
+		}
+		return isc;
+	}
+	@Override
+	public boolean deleteReply(ReplyDto replyDto) throws Exception {
+		boolean isc=false;
+		if(replyDao.deleteReply(replyDto)!=0){
+			isc=true;
+		}
+		return isc;
+	}
 }

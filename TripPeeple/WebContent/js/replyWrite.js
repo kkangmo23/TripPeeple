@@ -3,12 +3,23 @@
  */
 
 $(".board-reply").on('click', '.replyBtn', writeReply);
-$(".board-reply").on('click', '.modifyBtn', editReply);
+$(".board-reply").on('click', '.modifyBtn', clickModifyBtn);
+$(".board-reply").on('keydown', '.writeReply', triggerWriteReply);
 $(".board-reply").on('click', '.deleteBtn', deleteReply);
 $(".board-reply").on('click', '.edit_ok', modifyReply);
 $(".board-reply").on('click', '.edit_cancel', cancelReply);
+$(".board-reply").on('keydown', '.edit_text', triggerEditReply);
 
-console.log($('.replyBtn'));
+function triggerWriteReply(e){
+	if(e.which===13){
+		writeReply(e);
+	}
+}
+function triggerEditReply(e){
+	if(e.which===13){
+		modifyReply(e);
+	}
+}
 
 function writeReply(e){
 	var target = $(e.target), replaySection =target.parents('.board-reply'); 
@@ -16,8 +27,6 @@ function writeReply(e){
 	text = replaySection.find('.writeReply').val();
 	var replyWrap = replaySection.find('.replyDiv-wrap');
 	var sendData="boardNumber="+boardNum+"&r_content="+text;
-
-	console.log(sendData);
 	$.ajax({
 		url:"replyWrite.do",
 		type:"post",
@@ -43,35 +52,35 @@ function getReplyList(replyList){
 	for(var i=0; i<length; i++){
 		result += makeReplyDiv(replyList[i])
 	}
-	console.log(result);
 	return result;
 }
 
 function makeReplyDiv(reply) {
-	var text = '<div class="replyDiv" data-replyNum="'+reply.reply_num+'">';
-	text += '<span>'+reply.member_id+'&nbsp;&nbsp;</span>';
-	text += '<span class="reply_content">'+reply.r_content+'</span>';
-	text += '<span>'+ '<button class="modifyBtn" style="margin-left:60px;">Modify</button><button class="deleteBtn">Delete</button></span></div>';
+	var text = '<div class="replyDiv" data-replynum="' + reply.reply_num + '">';
+	text += '<span>' + reply.member_id + '&nbsp;&nbsp;</span>';
+	text += '<span class="reply_content">' + reply.r_content + '</span>';
+	if (parseInt(window.config.memberNum, 10) === reply.member_num) {
+		text += '<span class="reply_btns">'
+				+ '<button class="modifyBtn" style="margin-left:60px;">Modify</button><button class="deleteBtn">Delete</button></span></div>';
+	}
 	return text;	
 }
-function editReply(e){
+function clickModifyBtn(e){
 	var target = $(e.target), replayDiv =target.parents('.replyDiv'); 
 	var prevText = replayDiv.find('.reply_content').html();
-	replayDiv.find('.reply_content').after('<span class="reply_edit"><input type="text" value="'+prevText+'"/><button class="edit_ok">OK</button><button class="edit_cancel">x</button></span>');
+	replayDiv.find('.reply_content').after('<span class="reply_edit"><input class="edit_text" type="text" value="'+prevText+'"/><button class="edit_ok">OK</button><button class="edit_cancel">x</button></span>');
 	replayDiv.find('.reply_btns').hide();
-	replayDiv.find('.reply_content').hide();
-	
-	var replyNum = replayDiv.data('replyNum');
-	
+	replayDiv.find('.reply_content').hide();	
 }
 
 function modifyReply(e){
 	var target = $(e.target), replayDiv =target.parents('.replyDiv'); 
-	replaySection =target.parents('.board-reply'),  replyWrap = replaySection.find('.replyDiv-wrap');
-	var replyNum = replayDiv.data('replyNum');
+	var replaySection =target.parents('.board-reply');
 	var replyWrap = replaySection.find('.replyDiv-wrap');
-	var sendData="replyNumber="+replyNum;
-
+	var boardNum = replaySection.data('num');
+	var replyNum = replayDiv.data('replynum');
+	var editText = replayDiv.find('.reply_edit input').val();
+	var sendData="replyNumber="+replyNum+"&r_content="+editText+"&boardNumber="+boardNum;
 	$.ajax({
 		url:"modifyReply.do",
 		type:"post",
@@ -89,7 +98,30 @@ function modifyReply(e){
 }
 function cancelReply(e){
 	var target = $(e.target), replayDiv =target.parents('.replyDiv'); 
+	var replaySection =target.parents('.board-reply');
 	replayDiv.find('.reply_content').show();
 	replayDiv.find('.reply_btns').show();
 	replayDiv.find('.reply_edit').remove();
+}
+function deleteReply(e){
+	var target = $(e.target), replayDiv =target.parents('.replyDiv'); 
+	var replaySection =target.parents('.board-reply');
+	var replyWrap = replaySection.find('.replyDiv-wrap');
+	var replyNum = replayDiv.data('replynum');
+	var boardNum = replaySection.data('num');
+	var sendData="replyNumber="+replyNum+"&boardNumber="+boardNum;
+	$.ajax({
+		url:"deleteReply.do",
+		type:"post",
+		data:sendData,
+		contentType:"application/x-www-form-urlencoded;charset=utf-8",
+		dataType:"text",
+		success:function(data){
+			var replyList = JSON.parse(decodeURIComponent(data));
+			replyWrap.html(getReplyList(replyList));
+		},
+		error:function(xhr, status, error){
+			alert(xhr+","+status+","+error);
+		}
+	});
 }

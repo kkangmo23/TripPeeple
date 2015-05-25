@@ -26,4 +26,16 @@ public class ReplyDaoImp implements ReplyDao {
 		return replyDto;
 	}
 
+	@Override
+	public int updateReply(ReplyDto replyDto) throws Exception {
+		int seq=(int) sqlMapClient.update("reply.replyUpdate", replyDto);
+		return seq;
+	}
+
+	@Override
+	public int deleteReply(ReplyDto replyDto) throws Exception {
+		int seq=(int) sqlMapClient.delete("reply.replyDelete", replyDto);
+		return seq;
+	}
+
 }

@@ -52,7 +52,10 @@ $(function () {
 			menus[4].innerHTML = "<span class='glyphicon glyphicon-log-out' aria-hidden='true'></span>";
 		}
 	}
-	
+	var Config = {
+			memberNum : "${member_num}"
+	}
+	window.config = Config;
 </script>
 
 <script type="text/javascript">
@@ -218,12 +221,16 @@ $(function () {
 			</div>
 			<div class="replyDiv-wrap" >
 			<c:forEach var="reply" items="${board.replyList}">
-				<div class="replyDiv" data-replyNum="${reply.reply_num}">
+				<div class="replyDiv" data-replynum="${reply.reply_num}">
 					<span>${reply.member_id}&nbsp;&nbsp;</span>
 					<span class="reply_content">${reply.r_content}</span>
+					<span><small><fmt:formatDate value="${reply.modify_time}" pattern="yyyy-MM-dd hh:mm:ss"/></small></span>
+					
+					<c:if test="${reply.member_num==member_num}">
 					<span class="reply_btns">
 						<button class="modifyBtn" style="margin-left:60px;">Modify</button><button class="deleteBtn">Delete</button>
 					</span>
+					</c:if>
 				</div>
 			</c:forEach>
 			</div>
@@ -247,7 +254,7 @@ $(function () {
 	
 <!-- //footer -->
 	
-<script type="text/javascript" src=".js/search.js"></script>
+<script type="text/javascript" src="./js/search.js"></script>
 <script type="text/javascript" src="./js/replyWrite.js"></script>
 	
 	

@@ -206,12 +206,26 @@ $(function () {
 				</form>
 				</div>
 				<br/>
-				<div class="board-reply">
-					<h5><small>댓글</small></h5>
-					<h5><small>댓글</small></h5>
-					<h5><small>댓글</small></h5>
-					<h5><small>댓글</small></h5>
-				</div>
+					<div class="board-reply" data-num="${board.board_num}">
+						<div>
+							<input  id="writeReply" class="writeReply" type="text" size="45"/>
+							<input type="button"  value="Reply"  class="replyBtn"/>
+						</div>
+						<div class="replyDiv-wrap" >
+						<c:forEach var="reply" items="${board.replyList}">
+							<div class="replyDiv" data-replynum="${reply.reply_num}">
+								<span>${reply.member_id}&nbsp;&nbsp;</span>
+								<span class="reply_content">${reply.r_content}</span>
+								<span><small><fmt:formatDate value="${reply.modify_time}" pattern="yyyy-MM-dd hh:mm:ss"/></small></span>
+								<c:if test="${reply.member_num==member_num}">
+								<span class="reply_btns">
+									<button class="modifyBtn" style="margin-left:60px;">Modify</button><button class="deleteBtn">Delete</button>
+								</span>
+								</c:if>
+							</div>
+						</c:forEach>
+						</div>
+					</div>
 				<!-- /bot -->
 				</div>
 			</c:if>
@@ -230,7 +244,8 @@ $(function () {
 	</footer>
 	
 <!-- //footer -->
-	
+	<script type="text/javascript" src="./js/search.js"></script>
+<script type="text/javascript" src="./js/replyWrite.js"></script>
 
 	
 	

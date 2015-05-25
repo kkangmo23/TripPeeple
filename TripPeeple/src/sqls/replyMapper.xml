@@ -18,12 +18,24 @@
 			VALUES(#reply_num#, #board_num#, #member_num#, 
 			#r_content#, SYSDATE, SYSDATE)
 	</insert>
+	
+	<update id="replyUpdate" parameterClass="RDto">
+		UPDATE REPLY 
+		SET R_CONTENT=#r_content#, MODIFY_TIME=SYSDATE
+		WHERE REPLY_NUM=#reply_num#
+	</update>
+	
+	<delete id="replyDelete" parameterClass="RDto">
+		DELETE FROM REPLY 
+		WHERE REPLY_NUM=#reply_num#
+	</delete>
+
 
 	<select id="getReplyList" resultClass="RDto"  parameterClass="java.lang.Integer" >
 	SELECT R.REPLY_NUM,  R.BOARD_NUM,  R.MEMBER_NUM,  R.R_CONTENT,  R.CREATE_TIME,  R.MODIFY_TIME, M.MEMBER_ID FROM REPLY R	
 	INNER JOIN MEMBER M ON M.MEMBER_NUM = R.MEMBER_NUM
 	WHERE  R.BOARD_NUM=#board_num#
-	ORDER BY MODIFY_TIME DESC
+	ORDER BY CREATE_TIME DESC
 	</select>
 
 </sqlMap>
