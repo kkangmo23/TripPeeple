@@ -1,7 +1,5 @@
 package com.ckk.tripPeeple.member;
 
-import java.sql.SQLException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

@@ -26,6 +26,14 @@
 $(function () {
 	  $('[data-toggle="tooltip"]').tooltip({'placement': 'bottom'})
 	})
+
+	/* ajax Test*/
+	$(function(){
+		$("#followDelete").submit(function(){
+			alert("${following.member_num}");
+		});
+	});
+
 </script>
 
 <script type="text/javascript">
@@ -48,9 +56,6 @@ $(function () {
 			menus[4].innerHTML = "<span class='glyphicon glyphicon-log-out' aria-hidden='true'></span>";
 		}
 	}
-	 function test(num){
-		 alert(num);
-	 }
 </script>
 
 
@@ -139,7 +144,7 @@ $(function () {
 						<div class="row">
 						
 							<c:forEach var="following" items="${followingLists}">
-								<form action="followDelete.do" method="post">
+								<form id="followDelete" action="followDelete.do" method="post">
 									<input type="hidden" name="num" value="${following.member_num}">
 									<div class="col-md-6">
 										<div class="follow-box">
