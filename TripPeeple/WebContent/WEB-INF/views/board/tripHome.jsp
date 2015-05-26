@@ -224,7 +224,7 @@ $(function () {
 				<div class="replyDiv" data-replynum="${reply.reply_num}">
 					<span>${reply.member_id}&nbsp;&nbsp;</span>
 					<span class="reply_content">${reply.r_content}</span>
-					<span><small><fmt:formatDate value="${reply.modify_time}" pattern="yyyy-MM-dd hh:mm:ss"/></small></span>
+					<span class="reply_date"><small><fmt:formatDate value="${reply.modify_time}" pattern="yyyy-MM-dd hh:mm:ss"/></small></span>
 					
 					<c:if test="${reply.member_num==member_num}">
 					<span class="reply_btns">

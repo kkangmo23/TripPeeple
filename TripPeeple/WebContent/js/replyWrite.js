@@ -26,7 +26,6 @@ function writeReply(e){
 	var replaySection =target.parents('.board-reply'); 
 	boardNum = replaySection.data('num'),
 	text = replaySection.find('.writeReply').val();
-//	date = replaySection.
 	var replyWrap = replaySection.find('.replyDiv-wrap');
 	var sendData="boardNumber="+boardNum+"&r_content="+text;
 	$.ajax({
@@ -50,7 +49,8 @@ function writeReply(e){
 }
 
 function getReplyList(replyList){
-	var length = replyList.length, result='';
+	var length = replyList.length;
+	var result='';
 	for(var i=0; i<length; i++){
 		result += makeReplyDiv(replyList[i])
 	}
@@ -61,6 +61,7 @@ function makeReplyDiv(reply) {
 	var text = '<div class="replyDiv" data-replynum="' + reply.reply_num + '">';
 	text += '<span>' + reply.member_id + '&nbsp;&nbsp;</span>';
 	text += '<span class="reply_content">' + reply.r_content + '</span>';
+	text += '<span class="reply_date"><small>'+reply.modify_time + '</small></span>';
 	if (parseInt(window.config.memberNum, 10) === reply.member_num) {
 		text += '<span class="reply_btns">'
 				+ '<button class="modifyBtn" style="margin-left:60px;">Modify</button><button class="deleteBtn">Delete</button></span></div>';
@@ -72,7 +73,7 @@ function clickModifyBtn(e){
 	var prevText = replayDiv.find('.reply_content').html();
 	replayDiv.find('.reply_content').after('<span class="reply_edit"><input class="edit_text" type="text" value="'+prevText+'"/><button class="edit_ok">OK</button><button class="edit_cancel">x</button></span>');
 	replayDiv.find('.reply_btns').hide();
-	replayDiv.find('.reply_content').hide();	
+	replayDiv.find('.reply_content').hide();
 }
 
 function modifyReply(e){
