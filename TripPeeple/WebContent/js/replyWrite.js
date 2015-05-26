@@ -58,12 +58,30 @@ function getReplyList(replyList){
 }
 
 function makeReplyDiv(reply) {
-	var time = reply.modify_time;
-	alert(time);
+	var d = new Date(reply.modify_time);
+	var time = d.toLocaleString();
+	var year = time.substring(0, 4);
+	
+	var month = time.substring(6, 7);
+	if(month<10){
+		month="0"+month;
+	}
+	
+	var day = time.substring(9, 11);
+	var hour = time.substring(16, 17);
+	if(hour<10){
+		hour="0"+hour;
+	}
+	
+	var minute = time.substring(18, 20);
+	var second = time.substring(21, 23);	
+
+	console.log(time);
+	
 	var text = '<div class="replyDiv" data-replynum="' + reply.reply_num + '">';
-	text += '<span>' + reply.member_id + '&nbsp;&nbsp;</span>';
-	text += '<span class="reply_content">' + reply.r_content + '</span>';
-	text += '<span class="reply_date"><small>'+reply.modify_time + '</small></span>';
+	text += '<span>' + reply.member_id + '&nbsp;&nbsp;&nbsp;</span>';
+	text += '<span class="reply_content">' + reply.r_content + '&nbsp;</span>';
+	text += '<span class="reply_date"><small>'+year+'-'+month+'-'+day+' '+hour+':'+minute+':'+second + '</small></span>';
 	if (parseInt(window.config.memberNum, 10) === reply.member_num) {
 		text += '<span class="reply_btns">'
 				+ '<button class="modifyBtn" style="margin-left:60px;">Modify</button><button class="deleteBtn">Delete</button></span></div>';
