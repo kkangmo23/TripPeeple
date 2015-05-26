@@ -244,7 +244,7 @@ $(function () {
 				<div class="form-group">
 					<label for="city_num" class="col-sm-3 control-label">도시</label>
 					<div class="col-sm-5" style="text-align: left;">
-						<select name="city_num" data-placeholder="Choose a City..." class="chosen-select" tabindex="2" style="width: 90%; ">
+						<select name="city_num" data-placeholder="어디를 여행하셨나요?" class="chosen-select" tabindex="2" style="width: 90%; ">
 				          	<jsp:include page="city_data.html" />
 				        </select>
 					</div>
