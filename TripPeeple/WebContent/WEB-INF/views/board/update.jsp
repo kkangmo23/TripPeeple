@@ -14,7 +14,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
+<script src="js/chosen.jquery.js" type="text/javascript"></script>
+
 <script src="./js/jquery.ui.widget.js"></script>
+
+<link rel="stylesheet" href="css/chosen.css">
 
 <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
 <link rel="stylesheet" href="css/jquery.fileupload.css">
@@ -47,8 +51,12 @@
 
 <script type="text/javascript">
 $(function () {
-	  $('[data-toggle="tooltip"]').tooltip({'placement': 'bottom'})
-	})
+	$("select option[value=${ board.city_num }]").attr("selected", true);	
+	
+	$('[data-toggle="tooltip"]').tooltip({'placement': 'bottom'});
+	$(".chosen-select").chosen();		
+		
+});
 </script>
 
 <script>
@@ -244,8 +252,10 @@ $(function () {
 <%-- 				<input type="hidden" name="likes" value="${board.likes}"/> --%>
 				<div class="form-group">
 					<label for="city_num" class="col-sm-3 control-label">도시</label>
-					<div class="col-sm-5">
-						<input type="text" name="city_num" id="city_num" value="${board.city_num}" class="form-control" placeholder="어느 도시를 여행하셨나요?">
+					<div class="col-sm-5" style="text-align: left;">
+						<select name="city_num" data-placeholder="Choose a City..." class="chosen-select" tabindex="2" style="width: 90%; ">
+				          	<jsp:include page="city_data.html" />
+				        </select>
 					</div>
 				</div>
 				<div class="form-group">
@@ -258,11 +268,11 @@ $(function () {
 
 				<hr>
 				
-				<input type="hidden" name="file_name" id="file_name">
-				<input type="hidden" name="file_path" id="file_path">
-				<input type="hidden" name="file_size" id="file_size">
-				<input type="hidden" name="file_type" id="file_type">
-
+				<input type="hidden" name="file_name" id="file_name" value="${board.file_name }">
+				<input type="hidden" name="file_path" id="file_path" value="${board.file_path }">
+				<input type="hidden" name="file_size" id="file_size" value="${board.file_size }">
+				<input type="hidden" name="file_type" id="file_type" value="${board.file_type }">				
+				
 				<button type="submit" class="btn btn-default">수정하기</button>
 				<button type="button" class="btn btn-default" onclick="window.history.back(-1)">취소</button>
 

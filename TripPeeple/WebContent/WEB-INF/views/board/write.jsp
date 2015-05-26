@@ -15,7 +15,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
+<script src="js/chosen.jquery.js" type="text/javascript"></script>
+
 <script src="./js/jquery.ui.widget.js"></script>
+
+<link rel="stylesheet" href="css/chosen.css">
 
 <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
 <link rel="stylesheet" href="css/jquery.fileupload.css">
@@ -48,12 +52,13 @@
 
 <script type="text/javascript">
 $(function () {
-	  $('[data-toggle="tooltip"]').tooltip({'placement': 'bottom'})
-	})
+	  $('[data-toggle="tooltip"]').tooltip({'placement': 'bottom'});
+	  $(".chosen-select").chosen();
+	});
 </script>
 
 <script>
-$(function () {
+$(function () {	
     'use strict';
     var url = "upload.do";
     var uploadButton = $('<button/>').addClass('btn btn-primary').prop('disabled', true).text('Processing...').on('click', function () {
@@ -238,9 +243,10 @@ $(function () {
 				<c:set var="member_num" value="${member_num}" scope="session" />
 				<div class="form-group">
 					<label for="city_num" class="col-sm-3 control-label">도시</label>
-					<div class="col-sm-5">
-						<input type="text" name="city_num" id="city_num"
-							class="form-control" placeholder="어느 도시를 여행하셨나요?">
+					<div class="col-sm-5" style="text-align: left;">
+						<select name="city_num" data-placeholder="Choose a City..." class="chosen-select" tabindex="2" style="width: 90%; ">
+				          	<jsp:include page="city_data.html" />
+				        </select>
 					</div>
 				</div>
 				<div class="form-group">
