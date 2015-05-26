@@ -217,8 +217,8 @@ $(function () {
 		<div class="board-reply" data-num="${board.board_num}">
 				
 			<div>
-				<input class="writeReply" type="text" />				
-				<button class="replyBtn" type="button">Reply</button>				
+				<input name="writeReply" type="text" />				
+				<button name="replyBtn" type="button">Reply</button>				
 			</div>
 			
 			<div class="replyDiv-wrap" >

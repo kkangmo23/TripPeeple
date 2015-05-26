@@ -2,9 +2,9 @@
  * 
  */
 
-$(".board-reply").on('click', '.replyBtn', writeReply);
+$(".board-reply").on('click', 'button[name="replyBtn"]', writeReply);
 $(".board-reply").on('click', '.modifyBtn', clickModifyBtn);
-$(".board-reply").on('keydown', '.writeReply', triggerWriteReply);
+$(".board-reply").on('keydown', 'input[name="writeReply"]', triggerWriteReply);
 $(".board-reply").on('click', '.deleteBtn', deleteReply);
 $(".board-reply").on('click', '.edit_ok', modifyReply);
 $(".board-reply").on('click', '.edit_cancel', cancelReply);
@@ -25,7 +25,7 @@ function writeReply(e){
 	var target = $(e.target)
 	var replaySection =target.parents('.board-reply'); 
 	boardNum = replaySection.data('num'),
-	text = replaySection.find('.writeReply').val();
+	text = replaySection.find('input[name="writeReply"]').val();
 	var replyWrap = replaySection.find('.replyDiv-wrap');
 	var sendData="boardNumber="+boardNum+"&r_content="+text;
 	$.ajax({
@@ -38,7 +38,7 @@ function writeReply(e){
 			var replyList = JSON.parse(decodeURIComponent(data));
 			replyWrap.html(getReplyList(replyList));
 
-			replaySection.find('.writeReply').val('');
+			replaySection.find('input[name="writeReply"]').val('');
 		
 			
 		},
@@ -58,6 +58,8 @@ function getReplyList(replyList){
 }
 
 function makeReplyDiv(reply) {
+	var time = reply.modify_time;
+	alert(time);
 	var text = '<div class="replyDiv" data-replynum="' + reply.reply_num + '">';
 	text += '<span>' + reply.member_id + '&nbsp;&nbsp;</span>';
 	text += '<span class="reply_content">' + reply.r_content + '</span>';
