@@ -15,4 +15,6 @@ public interface BoardDao {
 	public int updateBoard(BoardDto boardDto) throws Exception;
 
 	public List<BoardDto> getSearchList(String search) throws Exception;
+
+	public int updateLike(int board_num) throws Exception;
 }

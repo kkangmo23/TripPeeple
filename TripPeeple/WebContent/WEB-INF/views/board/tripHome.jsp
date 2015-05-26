@@ -59,6 +59,7 @@ $(function () {
 </script>
 
 <script type="text/javascript">
+	
 
 	function boardUpdate(board_num) {
 // 		var form = document.forms["updateForm"]; 		
@@ -67,6 +68,7 @@ $(function () {
 // 		form.submit(); 
 	
 // 		alert("board_num:" + board_num);
+
 		var boardUD = document.getElementById("boardUD");	
 		boardUD.action="updateForm.do";
 		boardUD.method="post";
@@ -193,10 +195,10 @@ $(function () {
 				<input id="board_num" type="hidden" name="board_num" value="${board.board_num}">
 				
 				<a href="#" data-container="body" data-toggle="tooltip" title="Like">
-					<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>						
+					<span class="glyphicon glyphicon-heart" aria-hidden="true" onclick="boardLike(${board.board_num},${board.likes})"></span>						
 				</a>
 				&nbsp;
-				${board.likes }
+				<span class="boardLike">${board.likes }</span>
 				&nbsp;&nbsp;
 			
 			<!-- 글주인에게만 보이게 하기 -->
@@ -259,6 +261,7 @@ $(function () {
 	
 <script type="text/javascript" src="./js/search.js"></script>
 <script type="text/javascript" src="./js/replyWrite.js"></script>
+<script type="text/javascript" src="./js/like.js"></script>
 	
 	
 </body>

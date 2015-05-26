@@ -14,4 +14,6 @@ public interface BoardService {
 	public int updateBoard(BoardDto boardDto) throws Exception;
 
 	public List<BoardDto> getSearchList(String search) throws Exception;
+
+	public boolean updateLike(int board_num) throws Exception;
 }

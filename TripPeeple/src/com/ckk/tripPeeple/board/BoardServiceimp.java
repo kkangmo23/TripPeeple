@@ -55,7 +55,16 @@ public class BoardServiceimp implements BoardService{
 
 	@Override
 	public List<BoardDto> getSearchList(String search) throws Exception {
-		System.out.println("searchBoard serviceimp");
+		// System.out.println("searchBoard serviceimp");
 		return boardDao.getSearchList(search);
+	}
+
+	@Override
+	public boolean updateLike(int board_num) throws Exception {
+		boolean isc=false;
+		if(boardDao.updateLike(board_num)!=0){
+			isc=true;
+		}
+		return isc;
 	}
 }

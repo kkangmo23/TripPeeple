@@ -62,6 +62,13 @@ public class BoardDaoImp implements BoardDao{
 		// System.out.println(searchList);
 		return searchList;
 	}
+
+	@Override
+	public int updateLike(int board_num) throws Exception {
+		int check=sqlMapClient.update("board.boardUpdateLike", board_num);
+		System.out.println(check);
+		return check;
+	}
 }
 
 
