@@ -24,8 +24,8 @@
 
 <script type="text/javascript">
 $(function () {
-	  $('[data-toggle="tooltip"]').tooltip({'placement': 'bottom'})
-	})
+  $('[data-toggle="tooltip"]').tooltip({'placement': 'bottom'});
+});
 </script>
 
 
@@ -215,10 +215,12 @@ $(function () {
 		<br/>
 		
 		<div class="board-reply" data-num="${board.board_num}">
+				
 			<div>
-				<input  id="writeReply" class="writeReply" type="text" size="45"/>
-				<input type="button"  value="Reply"  class="replyBtn"/>
+				<input class="writeReply" type="text" />				
+				<button class="replyBtn" type="button">Reply</button>				
 			</div>
+			
 			<div class="replyDiv-wrap" >
 			<c:forEach var="reply" items="${board.replyList}">
 				<div class="replyDiv" data-replynum="${reply.reply_num}">
@@ -228,7 +230,8 @@ $(function () {
 					
 					<c:if test="${reply.member_num==member_num}">
 					<span class="reply_btns">
-						<button class="modifyBtn" style="margin-left:60px;">Modify</button><button class="deleteBtn">Delete</button>
+						<button class="modifyBtn" style="margin-left:60px;">Modify</button>
+						<button class="deleteBtn">Delete</button>
 					</span>
 					</c:if>
 				</div>
