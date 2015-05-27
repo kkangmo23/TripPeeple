@@ -23,11 +23,11 @@
 
 	<div class="check-content">
 		<c:if test="${check == false }">
-			<h4><small>이미 사용중인 닉네임 입니다</small></h4>
+			<h4><small>이미 사용중인 ID 입니다</small></h4>
 			<form class="form-horizontal" action="checkId.do" method="post">
 				<div class="form-group">					
 					<div class="col-sm-5">
-						<input type="text" name="member_id" id="member_id"class="form-control" required="required" placeholder="Nick Name">
+						<input type="text" name="member_id" id="member_id"class="form-control" required="required" placeholder="ID">
 					</div>
 				</div>
 				<hr>
@@ -37,7 +37,7 @@
 		</c:if>
 		
 		<c:if test="${check== true}">
-			<h4><small>사용 가능한 닉네임 입니다</small></h4>
+			<h4><small>사용 가능한 ID 입니다</small></h4>
 			<script type="text/javascript">	
 				opener.document.getElementById("member_id").value="${member_id}";
 			</script>

@@ -27,12 +27,6 @@ $(function () {
 	  $('[data-toggle="tooltip"]').tooltip({'placement': 'bottom'})
 	})
 
-	/* ajax Test*/
-	$(function(){
-		$("#followDelete").submit(function(){
-			alert("${following.member_num}");
-		});
-	});
 
 </script>
 

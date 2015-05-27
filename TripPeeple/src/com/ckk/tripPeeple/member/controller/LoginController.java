@@ -34,7 +34,7 @@ public class LoginController {
 				return "member/errorPage";
 			}
 		} catch (Exception e) {
-			request.setAttribute("errorMsg", "아이디가 존재하지 않습니다.");
+			request.setAttribute("errorMsg", "존재하지 않는 E-mail입니다.");
 			return "member/errorPage";
 		}
 

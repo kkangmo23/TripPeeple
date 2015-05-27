@@ -208,20 +208,20 @@
 		  </div>		  
 			
 		  <div class="form-group">
-		    <label for="member_id" class="col-sm-4 control-label">Nick Name</label>
+		    <label for="member_id" class="col-sm-4 control-label">ID</label>
 		    <div class="col-sm-5">
-		    	<input type="text" name="member_id" id="member_id" class="form-control" placeholder="Nick Name" readonly="readonly"  onmousedown="checkId()">
+		    	<input type="text" name="member_id" id="member_id" class="form-control" placeholder="ID" readonly="readonly"  onmousedown="checkId()">
 <!-- 		    	<button type="button" class="btn btn-default" onclick="erase()">지우기</button> -->
 		    </div>
 		  </div>
 		  
-		 <div>
-				<label>선호국가</label>
-				<input type="checkbox" name="like_country" value="한국"/> 한국 &nbsp;
-				<input type="checkbox" name="like_country" value="중국"/> 중국 &nbsp;	
-				<input type="checkbox" name="like_country" value="미국"/> 미국 &nbsp;	
-				<input type="checkbox" name="like_country" value="일본"/> 일본 &nbsp;	
-			</div>		
+<!-- 		 <div> -->
+<!-- 				<label>선호국가</label> -->
+<!-- 				<input type="checkbox" name="like_country" value="한국"/> 한국 &nbsp; -->
+<!-- 				<input type="checkbox" name="like_country" value="중국"/> 중국 &nbsp;	 -->
+<!-- 				<input type="checkbox" name="like_country" value="미국"/> 미국 &nbsp;	 -->
+<!-- 				<input type="checkbox" name="like_country" value="일본"/> 일본 &nbsp;	 -->
+<!-- 			</div>		 -->
 		  
 		  
 		  <hr>

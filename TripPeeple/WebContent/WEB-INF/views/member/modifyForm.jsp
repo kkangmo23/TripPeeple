@@ -223,20 +223,20 @@
 		  </div>		  	
 			
 		  <div class="form-group">
-		    <label for="member_id" class="col-sm-4 control-label">Nick Name</label>
+		    <label for="member_id" class="col-sm-4 control-label">ID</label>
 		    <div class="col-sm-5">
-		    	<input type="text" name="member_id" id="member_id" class="form-control" value="${dto.member_id}" readonly="readonly" placeholder="Nick Name" onclick="checkId()">
+		    	<input type="text" name="member_id" id="member_id" class="form-control" value="${dto.member_id}" readonly="readonly" placeholder="ID" onclick="checkId()">
 <!-- 		    	<button type="button" class="btn btn-default" onclick="erase()">지우기</button> -->
 		    </div>
 		  </div>
 		  
-		  <div>
-				<label>선호국가</label>
-				<input type="checkbox" name="like_country" value="한국"/> 한국 &nbsp;
-				<input type="checkbox" name="like_country" value="중국"/> 중국 &nbsp;	
-				<input type="checkbox" name="like_country" value="미국"/> 미국 &nbsp;	
-				<input type="checkbox" name="like_country" value="일본"/> 일본 &nbsp;	
-			</div>		
+<!-- 		  <div> -->
+<!-- 				<label>선호국가</label> -->
+<!-- 				<input type="checkbox" name="like_country" value="한국"/> 한국 &nbsp; -->
+<!-- 				<input type="checkbox" name="like_country" value="중국"/> 중국 &nbsp;	 -->
+<!-- 				<input type="checkbox" name="like_country" value="미국"/> 미국 &nbsp;	 -->
+<!-- 				<input type="checkbox" name="like_country" value="일본"/> 일본 &nbsp;	 -->
+<!-- 			</div>		 -->
 		  <hr>
 		 
 		      <button type="button" class="btn btn-default" onclick="modify()">회원정보수정</button>

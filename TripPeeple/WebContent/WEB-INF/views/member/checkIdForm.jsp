@@ -28,11 +28,11 @@
 <body>
 
 <div class="check-content">
-	<h4><small>Nick Name을 입력해주세요</small></h4>
+	<h4><small>ID를 입력해주세요</small></h4>
 	<form class="form-horizontal" action="checkId.do" method="post">
 		<div class="form-group">			
 			<div class="col-sm-5">
-				<input type="text" name="member_id" id="member_id" class="form-control" required="required" placeholder="Nick Name" >
+				<input type="text" name="member_id" id="member_id" class="form-control" required="required" placeholder="ID" >
 			</div>
 		</div>
 		
