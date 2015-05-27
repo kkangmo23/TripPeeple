@@ -121,6 +121,34 @@ a:HOVER {
 	padding-right: 7%;
 }
 
+.replyDiv {
+	padding-top: 3px;
+}
+
+.reply_member{
+	margin-right: 10px;
+	font-weight: bold;
+}
+
+.reply_content{
+	margin: 0 20px;
+}
+
+.reply_date{
+	margin: 0 20px;
+	font-size: 10pt;
+	color: #848484;
+}
+
+.replyDiv a {
+	font-size: 10pt;
+	color: #7777ff;
+}
+
+.replyDiv a:HOVER {
+	color: #400080;
+}
+
 .board-video {
 	width: 100%;
 	padding: 15px 0px;

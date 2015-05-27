@@ -79,19 +79,19 @@ function makeReplyDiv(reply) {
 	console.log(time);
 	
 	var text = '<div class="replyDiv" data-replynum="' + reply.reply_num + '">';
-	text += '<span>' + reply.member_id + '&nbsp;&nbsp;&nbsp;</span>';
-	text += '<span class="reply_content">' + reply.r_content + '&nbsp;</span>';
+	text += '<span class="reply_member">' + reply.member_id + '</span>';
+	text += '<span class="reply_content">' + reply.r_content + '</span>';
 	text += '<span class="reply_date"><small>'+year+'-'+month+'-'+day+' '+hour+':'+minute+':'+second + '</small></span>';
 	if (parseInt(window.config.memberNum, 10) === reply.member_num) {
 		text += '<span class="reply_btns">'
-				+ '<button class="modifyBtn" style="margin-left:60px;">Modify</button><button class="deleteBtn">Delete</button></span></div>';
+				+ '<a href="#"  class="modifyBtn" >수정</a>&nbsp;/&nbsp;<a href="#"  class="deleteBtn">삭제</a></span></div>';
 	}
 	return text;	
 }
 function clickModifyBtn(e){
 	var target = $(e.target), replayDiv =target.parents('.replyDiv'); 
 	var prevText = replayDiv.find('.reply_content').html();
-	replayDiv.find('.reply_content').after('<span class="reply_edit"><input class="edit_text" type="text" value="'+prevText+'"/><button class="edit_ok">OK</button><button class="edit_cancel">x</button></span>');
+	replayDiv.find('.reply_content').after('<span class="reply_edit"><input class="edit_text" type="text" value="'+prevText+'"/>&nbsp;&nbsp;<a href="#" class="edit_ok">수정</a>&nbsp;/&nbsp;<a href="#" class="edit_cancel">취소</a></span>');
 	replayDiv.find('.reply_btns').hide();
 	replayDiv.find('.reply_content').hide();
 }

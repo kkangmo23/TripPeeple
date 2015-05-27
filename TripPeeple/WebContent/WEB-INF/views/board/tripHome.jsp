@@ -217,23 +217,27 @@ $(function () {
 		<br/>
 		
 		<div class="board-reply" data-num="${board.board_num}">
-				
-			<div>
-				<input name="writeReply" type="text" />				
-				<button name="replyBtn" type="button">Reply</button>				
-			</div>
+		
+			<div class="input-group">
+		      <input type="text" name="writeReply" class="form-control" placeholder="Comment...">
+		      <span class="input-group-btn">
+		        <button class="btn btn-default" name="replyBtn" type="button">Reply</button>
+		      </span>
+		    </div>
+		    <br/>
 			
 			<div class="replyDiv-wrap" >
 			<c:forEach var="reply" items="${board.replyList}">
 				<div class="replyDiv" data-replynum="${reply.reply_num}">
-					<span>${reply.member_id}&nbsp;&nbsp;</span>
+					<span class="reply_member">${reply.member_id}</span>
 					<span class="reply_content">${reply.r_content}</span>
 					<span class="reply_date"><small><fmt:formatDate value="${reply.modify_time}" pattern="yyyy-MM-dd hh:mm:ss"/></small></span>
 					
 					<c:if test="${reply.member_num==member_num}">
-					<span class="reply_btns">
-						<button class="modifyBtn" style="margin-left:60px;">Modify</button>
-						<button class="deleteBtn">Delete</button>
+					<span class="reply_btns" >
+						<a href="#"  class="modifyBtn" >수정</a>
+						&nbsp;/&nbsp;
+						<a href="#"  class="deleteBtn">삭제</a>						
 					</span>
 					</c:if>
 				</div>
