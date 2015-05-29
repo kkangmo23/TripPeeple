@@ -45,6 +45,10 @@ function fInsert(num){
 	});
 }
 
+function reload(){
+	location.href="followForm.do";
+}
+
 </script>
 
 <script type="text/javascript">
@@ -134,7 +138,7 @@ function fInsert(num){
 
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs" role="tablist">
-					<li role="presentation" class="active"><a href="#following" aria-controls="following" role="tab" data-toggle="tab">내가 팔로우</a></li>
+					<li role="presentation" class="active" onclick="reload()"><a href="#" aria-controls="following" role="tab" data-toggle="tab">내가 팔로우</a></li>
 					<li role="presentation"><a href="#follower" aria-controls="follower" role="tab" data-toggle="tab">나를 팔로우</a></li>
 
 				</ul>
