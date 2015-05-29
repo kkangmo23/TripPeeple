@@ -71,6 +71,10 @@ a:HOVER {
 	overflow: hidden;
 }
 
+.follow-content button{	
+	width: 80px;
+}
+
 .follow-box {	
 	padding: 20px 10px;
 	text-align: justify;

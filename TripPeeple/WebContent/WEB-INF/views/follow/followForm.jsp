@@ -25,8 +25,25 @@
 <script type="text/javascript">
 $(function () {
 	  $('[data-toggle="tooltip"]').tooltip({'placement': 'bottom'})
-	})
+	});
 
+function fInsert(num){
+	var fNum=num;
+ 	var $asd = $("input[name='fnum']:input[value='"+fNum+"']").parent().find("button");
+	$.ajax({
+		url:"followInsert.do",	//요청할 페이지 주소
+		data: "num="+fNum,
+		method:"post",
+		async:true,
+		success:function(obj){
+			$($asd).removeClass("btn btn-success").addClass("btn btn-info")
+			.text(" friend ").attr("disabled",true);
+		},
+		error:function(){
+			alert("데이터 받기 실패");
+		}
+	});
+}
 
 </script>
 
@@ -142,14 +159,14 @@ $(function () {
 									<input type="hidden" name="num" value="${following.member_num}">
 									<div class="col-md-6">
 										<div class="follow-box">
-											<span>
-												<img alt="" src="/repo/profile/profile.jpg" style="width: 20%; ">
-											</span>
+<!-- 											<span> -->
+<!-- 												<img alt="" src="/repo/profile/profile.jpg" style="width: 20%; "> -->
+<!-- 											</span> -->
 											<span style="padding-left: 10px">
 												${following.member_id}
 											</span>
 											<span style="float: right; margin-top: 10px;">										
-												<button type="submit" class="btn btn-danger">팔로우 끊기</button>										
+												<button type="submit" class="btn btn-danger">unfollow</button>										
 											</span>
 										</div>
 									</div> 	
@@ -181,38 +198,39 @@ $(function () {
 									<c:forEach var="follower" items="${followerLists}">
 										<c:choose>
 										<c:when test="${follower.follow_check eq 'doDelete'}">
-										<form action="followDelete.do" method="post">
-										<input type="hidden" name="num" value="${follower.member_num}">
+<!-- 										<form action="followDelete.do" method="post"> -->
+<%-- 										<input type="hidden" name="num" value="${follower.member_num}"> --%>
 																										
 										<div class="col-md-6">
 											<div class="follow-box">
-												<span> <img alt="" src="/repo/profile/profile.jpg"
-													style="width: 20%;">
-												</span>
+<!-- 												<span> <img alt="" src="/repo/profile/profile.jpg" -->
+<!-- 													style="width: 20%;"> -->
+<!-- 												</span> -->
 												<span style="padding-left: 10px">${follower.member_id} </span>
 												<span style="float: right; margin-top: 10px;">
-													<button type="submit" class="btn btn-danger">팔로우 끊기</button>
+													<button class="btn btn-info" disabled="disabled">friend</button>
 												</span>
 											</div>
 										</div>
-										</form>
+<!-- 										</form> -->
 										</c:when>
 
 										<c:otherwise>
-										<form action="followInsert.do" method="post">
-										<input type="hidden" name="num" value="${follower.member_num}"> 
+<!-- 										<form action="followInsert.do" method="post"> -->
 										<div class="col-md-6">
 											<div class="follow-box">
-												<span> <img alt="" src="/repo/profile/profile.jpg"
-													style="width: 20%;">
-												</span>
+												<input type="hidden" name="fnum" value="${follower.member_num}"> 
+<!-- 												<span> <img alt="" src="/repo/profile/profile.jpg" -->
+<!-- 													style="width: 20%;"> -->
+<!-- 												</span> -->
 												<span style="padding-left: 10px">${follower.member_id} </span>
 												<span style="float: right; margin-top: 10px;">
-													<button type="submit" class="btn btn-success">팔로우 하기</button>
+													<button id="asd" onclick="fInsert(${follower.member_num})" class="btn btn-success">follow</button>	
 												</span>
 											</div>
 										</div>
-										</form>
+<!-- 										</form> -->
+										
 
 										</c:otherwise>
 										</c:choose>											
