@@ -265,7 +265,6 @@ $(function () {
 	
 <script type="text/javascript" src="./js/search.js"></script>
 <script type="text/javascript" src="./js/replyWrite.js"></script>
-<script type="text/javascript" src="./js/like.js"></script>
 	
 	
 </body>

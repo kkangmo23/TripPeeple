@@ -4,7 +4,7 @@
 
 $(".board-reply").on('click', 'button[name="replyBtn"]', writeReply);
 $(".board-reply").on('click', '.modifyBtn', clickModifyBtn);
-$(".board-reply").on('keydown', 'input[name="writeReply"]', triggerWriteReply);
+$(".board-reply").on('keydown', '.form-control', triggerWriteReply);
 $(".board-reply").on('click', '.deleteBtn', deleteReply);
 $(".board-reply").on('click', '.edit_ok', modifyReply);
 $(".board-reply").on('click', '.edit_cancel', cancelReply);
@@ -25,7 +25,7 @@ function writeReply(e){
 	var target = $(e.target)
 	var replaySection =target.parents('.board-reply'); 
 	boardNum = replaySection.data('num'),
-	text = replaySection.find('input[name="writeReply"]').val();
+	text = replaySection.find('.form-control').val();
 	var replyWrap = replaySection.find('.replyDiv-wrap');
 	var sendData="boardNumber="+boardNum+"&r_content="+text;
 	$.ajax({
@@ -38,7 +38,7 @@ function writeReply(e){
 			var replyList = JSON.parse(decodeURIComponent(data));
 			replyWrap.html(getReplyList(replyList));
 
-			replaySection.find('input[name="writeReply"]').val('');
+			replaySection.find('.form-control').val('');
 		
 			
 		},
@@ -67,15 +67,22 @@ function makeReplyDiv(reply) {
 		month="0"+month;
 	}
 	
-	var day = time.substring(9, 11);
-	var hour = time.substring(16, 17);
+	var day = time.substring(9, 10);
+	if(day<10){
+		day="0"+day;
+	}
+	
+	var hour = time.substring(15, 16);
 	if(hour<10){
 		hour="0"+hour;
 	}
 	
-	var minute = time.substring(18, 20);
-	var second = time.substring(21, 23);	
-
+	var minute = time.substring(17, 18);
+	if(minute<10){
+		minute="0"+minute;
+	}
+	
+	var second = time.substring(20, 22);	
 	console.log(time);
 	
 	var text = '<div class="replyDiv" data-replynum="' + reply.reply_num + '">';
