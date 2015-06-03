@@ -60,10 +60,4 @@
 	WHERE BOARD_NUM=#board_num# 
 </update>
 
-<!-- <update id="boardUpdateLike" parameterClass="java.lang.Integer"> -->
-<!-- 	UPDATE BOARD  -->
-<!-- 	SET LIKES=LIKES+1  -->
-<!-- 	WHERE BOARD_NUM=#board_num#  -->
-<!-- </update> -->
-
 </sqlMap>
